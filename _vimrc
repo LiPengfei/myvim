@@ -379,7 +379,6 @@ command! Spj :call SaveProject()
 "}}}
 
 " omnicppcomplete {{{
-let OmniCpp_ShowPrototypeInAbbr = 1
 let OmniCpp_MayCompleteDot = 1 " autocomplete with .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete with ::
@@ -661,7 +660,8 @@ Bundle 'fholgado/minibufexpl.vim'
 Plugin 'javascript.vim'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'vim-scripts/grep.vim'
-Plugin 'vim-scripts/STL-improved'
+Plugin 'mbbill/code_complete'
+" Plugin 'vim-scripts/STL-improved'
 " Bundle 'vim-scripts/pydoc.vim'
 " Bundle 'pythoncomplete'
 " Bundle 'vim-scripts/visualMarks.vim'

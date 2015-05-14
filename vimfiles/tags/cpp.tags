@@ -1,0 +1,264 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+_CXXABI_H	/usr/include/c++/4.8.3/cxxabi.h	42;"	d
+_GLIBCXX_CDTOR_CALLABI	/usr/include/c++/4.8.3/cxxabi.h	54;"	d
+_GLIBCXX_COMPLEX_H	/usr/include/c++/4.8.3/complex.h	44;"	d
+_GLIBCXX_FENV_H	/usr/include/c++/4.8.3/fenv.h	30;"	d
+_GLIBCXX_TGMATH_H	/usr/include/c++/4.8.3/tgmath.h	40;"	d
+__array_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __array_type_info(const char* __n) : std::type_info(__n) { }$/;"	f	class:__cxxabiv1::__array_type_info	access:public	signature:(const char* __n)
+__array_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __array_type_info : public std::type_info$/;"	c	namespace:__cxxabiv1	inherits:std::type_info
+__base_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __base_class_type_info$/;"	c	namespace:__cxxabiv1
+__base_count	/usr/include/c++/4.8.3/cxxabi.h	/^    unsigned int 		__base_count;  \/\/ Number of direct bases.$/;"	m	class:__cxxabiv1::__vmi_class_type_info	access:public
+__base_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __base_class_type_info 	__base_info[1];  \/\/ Array of bases.$/;"	m	class:__cxxabiv1::__vmi_class_type_info	access:public
+__base_type	/usr/include/c++/4.8.3/cxxabi.h	/^    const __class_type_info* 	__base_type;  \/\/ Base class type.$/;"	m	class:__cxxabiv1::__base_class_type_info	access:public
+__base_type	/usr/include/c++/4.8.3/cxxabi.h	/^    const __class_type_info* __base_type;$/;"	m	class:__cxxabiv1::__si_class_type_info	access:public
+__class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __class_type_info (const char *__n) : type_info(__n) { }$/;"	f	class:__cxxabiv1::__class_type_info	access:public	signature:(const char *__n)
+__class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __class_type_info : public std::type_info$/;"	c	namespace:__cxxabiv1	inherits:std::type_info
+__const_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__const_mask = 0x1,$/;"	e	enum:__cxxabiv1::__pbase_type_info::__masks
+__contained_ambig	/usr/include/c++/4.8.3/cxxabi.h	/^	__contained_ambig,$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__contained_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__contained_mask = 1 << __base_class_type_info::__hwm_bit,$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__contained_private	/usr/include/c++/4.8.3/cxxabi.h	/^	__contained_private = __contained_mask,$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__contained_public	/usr/include/c++/4.8.3/cxxabi.h	/^	__contained_public = __contained_mask | __contained_public_mask$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__contained_public_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__contained_public_mask = __base_class_type_info::__public_mask,$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__contained_virtual_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__contained_virtual_mask = __base_class_type_info::__virtual_mask,$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__context	/usr/include/c++/4.8.3/cxxabi.h	/^    __class_type_info* __context;   \/\/ Class of the member.$/;"	m	class:__cxxabiv1::__pointer_to_member_type_info	access:public
+__cxa_bad_cast	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_bad_cast() __attribute__((__noreturn__));$/;"	p	signature:()
+__cxa_bad_typeid	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_bad_typeid() __attribute__((__noreturn__));$/;"	p	signature:()
+__cxa_cdtor_type	/usr/include/c++/4.8.3/cxxabi.h	/^  typedef __cxa_cdtor_return_type (*__cxa_cdtor_type)(void *);$/;"	t
+__cxa_deleted_virtual	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_deleted_virtual(void) __attribute__ ((__noreturn__));$/;"	p	signature:(void)
+__cxa_demangle	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_demangle(const char* __mangled_name, char* __output_buffer,$/;"	p	signature:(const char* __mangled_name, char* __output_buffer, size_t* __length, int* __status)
+__cxa_end_catch	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_end_catch();$/;"	p	signature:()
+__cxa_finalize	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_finalize(void*);$/;"	p	signature:(void*)
+__cxa_guard_acquire	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_guard_acquire(__guard*);$/;"	p	signature:(__guard*)
+__cxa_pure_virtual	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_pure_virtual(void) __attribute__ ((__noreturn__));$/;"	p	signature:(void)
+__cxa_rethrow	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_rethrow() __attribute__((__noreturn__));$/;"	p	signature:()
+__cxa_throw	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_throw(void*, std::type_info*, void (_GLIBCXX_CDTOR_CALLABI *) (void *))$/;"	p	signature:(void*, std::type_info*, void (_GLIBCXX_CDTOR_CALLABI *) (void *))
+__cxa_vec_cctor	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_cctor(void* __dest_array, void* __src_array,$/;"	p	signature:(void* __dest_array, void* __src_array, size_t __element_count, size_t __element_size, __cxa_cdtor_return_type (*__constructor) (void*, void*), __cxa_cdtor_type __destructor)
+__cxa_vec_ctor	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_ctor(void* __array_address, size_t __element_count,$/;"	p	signature:(void* __array_address, size_t __element_count, size_t __element_size, __cxa_cdtor_type __constructor, __cxa_cdtor_type __destructor)
+__cxa_vec_delete	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_delete(void* __array_address, size_t __element_size,$/;"	p	signature:(void* __array_address, size_t __element_size, size_t __padding_size, __cxa_cdtor_type __destructor)
+__cxa_vec_delete2	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_delete2(void* __array_address, size_t __element_size,$/;"	p	signature:(void* __array_address, size_t __element_size, size_t __padding_size, __cxa_cdtor_type __destructor, void (*__dealloc) (void*))
+__cxa_vec_delete3	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_delete3(void* __array_address, size_t __element_size,$/;"	p	signature:(void* __array_address, size_t __element_size, size_t __padding_size, __cxa_cdtor_type __destructor, void (*__dealloc) (void*, size_t))
+__cxa_vec_dtor	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_dtor(void* __array_address, size_t __element_count,$/;"	p	signature:(void* __array_address, size_t __element_count, size_t __element_size, __cxa_cdtor_type __destructor)
+__cxa_vec_new	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_new(size_t __element_count, size_t __element_size,$/;"	p	signature:(size_t __element_count, size_t __element_size, size_t __padding_size, __cxa_cdtor_type __constructor, __cxa_cdtor_type __destructor)
+__cxa_vec_new2	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_new2(size_t __element_count, size_t __element_size,$/;"	p	signature:(size_t __element_count, size_t __element_size, size_t __padding_size, __cxa_cdtor_type __constructor, __cxa_cdtor_type __destructor, void *(*__alloc) (size_t), void (*__dealloc) (void*))
+__cxa_vec_new3	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_new3(size_t __element_count, size_t __element_size,$/;"	p	signature:(size_t __element_count, size_t __element_size, size_t __padding_size, __cxa_cdtor_type __constructor, __cxa_cdtor_type __destructor, void *(*__alloc) (size_t), void (*__dealloc) (void*, size_t))
+__cxxabiv1	/usr/include/c++/4.8.3/cxxabi.h	/^namespace __cxxabiv1$/;"	n
+__cxxabiv1::__array_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __array_type_info : public std::type_info$/;"	c	namespace:__cxxabiv1	inherits:std::type_info
+__cxxabiv1::__array_type_info::__array_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __array_type_info(const char* __n) : std::type_info(__n) { }$/;"	f	class:__cxxabiv1::__array_type_info	access:public	signature:(const char* __n)
+__cxxabiv1::__array_type_info::~__array_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__array_type_info();$/;"	p	class:__cxxabiv1::__array_type_info	access:public	signature:()
+__cxxabiv1::__base_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __base_class_type_info$/;"	c	namespace:__cxxabiv1
+__cxxabiv1::__base_class_type_info::__base_type	/usr/include/c++/4.8.3/cxxabi.h	/^    const __class_type_info* 	__base_type;  \/\/ Base class type.$/;"	m	class:__cxxabiv1::__base_class_type_info	access:public
+__cxxabiv1::__base_class_type_info::__hwm_bit	/usr/include/c++/4.8.3/cxxabi.h	/^	__hwm_bit = 2,$/;"	e	enum:__cxxabiv1::__base_class_type_info::__offset_flags_masks
+__cxxabiv1::__base_class_type_info::__is_public_p	/usr/include/c++/4.8.3/cxxabi.h	/^    __is_public_p() const$/;"	f	class:__cxxabiv1::__base_class_type_info	access:public	signature:() const
+__cxxabiv1::__base_class_type_info::__is_virtual_p	/usr/include/c++/4.8.3/cxxabi.h	/^    __is_virtual_p() const$/;"	f	class:__cxxabiv1::__base_class_type_info	access:public	signature:() const
+__cxxabiv1::__base_class_type_info::__offset	/usr/include/c++/4.8.3/cxxabi.h	/^    __offset() const$/;"	f	class:__cxxabiv1::__base_class_type_info	access:public	signature:() const
+__cxxabiv1::__base_class_type_info::__offset_flags	/usr/include/c++/4.8.3/cxxabi.h	/^    long 			__offset_flags;  \/\/ Offset and info.$/;"	m	class:__cxxabiv1::__base_class_type_info	access:public
+__cxxabiv1::__base_class_type_info::__offset_flags	/usr/include/c++/4.8.3/cxxabi.h	/^    long long			__offset_flags;  \/\/ Offset and info.$/;"	m	class:__cxxabiv1::__base_class_type_info	access:public
+__cxxabiv1::__base_class_type_info::__offset_flags_masks	/usr/include/c++/4.8.3/cxxabi.h	/^    enum __offset_flags_masks$/;"	g	class:__cxxabiv1::__base_class_type_info	access:public
+__cxxabiv1::__base_class_type_info::__offset_shift	/usr/include/c++/4.8.3/cxxabi.h	/^	__offset_shift = 8          \/\/ Bits to shift offset.$/;"	e	enum:__cxxabiv1::__base_class_type_info::__offset_flags_masks
+__cxxabiv1::__base_class_type_info::__public_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__public_mask = 0x2,$/;"	e	enum:__cxxabiv1::__base_class_type_info::__offset_flags_masks
+__cxxabiv1::__base_class_type_info::__virtual_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__virtual_mask = 0x1,$/;"	e	enum:__cxxabiv1::__base_class_type_info::__offset_flags_masks
+__cxxabiv1::__class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __class_type_info : public std::type_info$/;"	c	namespace:__cxxabiv1	inherits:std::type_info
+__cxxabiv1::__class_type_info::__class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __class_type_info (const char *__n) : type_info(__n) { }$/;"	f	class:__cxxabiv1::__class_type_info	access:public	signature:(const char *__n)
+__cxxabiv1::__class_type_info::__contained_ambig	/usr/include/c++/4.8.3/cxxabi.h	/^	__contained_ambig,$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__cxxabiv1::__class_type_info::__contained_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__contained_mask = 1 << __base_class_type_info::__hwm_bit,$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__cxxabiv1::__class_type_info::__contained_private	/usr/include/c++/4.8.3/cxxabi.h	/^	__contained_private = __contained_mask,$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__cxxabiv1::__class_type_info::__contained_public	/usr/include/c++/4.8.3/cxxabi.h	/^	__contained_public = __contained_mask | __contained_public_mask$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__cxxabiv1::__class_type_info::__contained_public_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__contained_public_mask = __base_class_type_info::__public_mask,$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__cxxabiv1::__class_type_info::__contained_virtual_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__contained_virtual_mask = __base_class_type_info::__virtual_mask,$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__cxxabiv1::__class_type_info::__do_catch	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_catch(const type_info* __thr_type, void** __thr_obj,$/;"	p	class:__cxxabiv1::__class_type_info	access:protected	signature:(const type_info* __thr_type, void** __thr_obj, unsigned __outer) const
+__cxxabiv1::__class_type_info::__do_dyncast	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_dyncast(ptrdiff_t __src2dst, __sub_kind __access_path,$/;"	p	class:__cxxabiv1::__class_type_info	access:public	signature:(ptrdiff_t __src2dst, __sub_kind __access_path, const __class_type_info* __dst_type, const void* __obj_ptr, const __class_type_info* __src_type, const void* __src_ptr, __dyncast_result& __result) const
+__cxxabiv1::__class_type_info::__do_find_public_src	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_find_public_src(ptrdiff_t __src2dst, const void* __obj_ptr,$/;"	p	class:__cxxabiv1::__class_type_info	access:public	signature:(ptrdiff_t __src2dst, const void* __obj_ptr, const __class_type_info* __src_type, const void* __src_ptr) const
+__cxxabiv1::__class_type_info::__do_upcast	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_upcast(const __class_type_info* __dst, const void* __obj,$/;"	p	class:__cxxabiv1::__class_type_info	access:public	signature:(const __class_type_info* __dst, const void* __obj, __upcast_result& __restrict __result) const
+__cxxabiv1::__class_type_info::__do_upcast	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_upcast(const __class_type_info* __dst_type, void**__obj_ptr) const;$/;"	p	class:__cxxabiv1::__class_type_info	access:protected	signature:(const __class_type_info* __dst_type, void**__obj_ptr) const
+__cxxabiv1::__class_type_info::__find_public_src	/usr/include/c++/4.8.3/cxxabi.h	/^    __find_public_src(ptrdiff_t __src2dst, const void* __obj_ptr,$/;"	p	class:__cxxabiv1::__class_type_info	access:public	signature:(ptrdiff_t __src2dst, const void* __obj_ptr, const __class_type_info* __src_type, const void* __src_ptr) const
+__cxxabiv1::__class_type_info::__not_contained	/usr/include/c++/4.8.3/cxxabi.h	/^	__not_contained,$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__cxxabiv1::__class_type_info::__sub_kind	/usr/include/c++/4.8.3/cxxabi.h	/^    enum __sub_kind$/;"	g	class:__cxxabiv1::__class_type_info	access:public
+__cxxabiv1::__class_type_info::__unknown	/usr/include/c++/4.8.3/cxxabi.h	/^	__unknown = 0,$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__cxxabiv1::__class_type_info::~__class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__class_type_info ();$/;"	p	class:__cxxabiv1::__class_type_info	access:public	signature:()
+__cxxabiv1::__cxa_bad_cast	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_bad_cast() __attribute__((__noreturn__));$/;"	p	signature:()
+__cxxabiv1::__cxa_bad_typeid	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_bad_typeid() __attribute__((__noreturn__));$/;"	p	signature:()
+__cxxabiv1::__cxa_cdtor_type	/usr/include/c++/4.8.3/cxxabi.h	/^  typedef __cxa_cdtor_return_type (*__cxa_cdtor_type)(void *);$/;"	t
+__cxxabiv1::__cxa_deleted_virtual	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_deleted_virtual(void) __attribute__ ((__noreturn__));$/;"	p	signature:(void)
+__cxxabiv1::__cxa_demangle	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_demangle(const char* __mangled_name, char* __output_buffer,$/;"	p	signature:(const char* __mangled_name, char* __output_buffer, size_t* __length, int* __status)
+__cxxabiv1::__cxa_end_catch	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_end_catch();$/;"	p	signature:()
+__cxxabiv1::__cxa_finalize	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_finalize(void*);$/;"	p	signature:(void*)
+__cxxabiv1::__cxa_guard_acquire	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_guard_acquire(__guard*);$/;"	p	signature:(__guard*)
+__cxxabiv1::__cxa_pure_virtual	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_pure_virtual(void) __attribute__ ((__noreturn__));$/;"	p	signature:(void)
+__cxxabiv1::__cxa_rethrow	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_rethrow() __attribute__((__noreturn__));$/;"	p	signature:()
+__cxxabiv1::__cxa_throw	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_throw(void*, std::type_info*, void (_GLIBCXX_CDTOR_CALLABI *) (void *))$/;"	p	signature:(void*, std::type_info*, void (_GLIBCXX_CDTOR_CALLABI *) (void *))
+__cxxabiv1::__cxa_vec_cctor	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_cctor(void* __dest_array, void* __src_array,$/;"	p	signature:(void* __dest_array, void* __src_array, size_t __element_count, size_t __element_size, __cxa_cdtor_return_type (*__constructor) (void*, void*), __cxa_cdtor_type __destructor)
+__cxxabiv1::__cxa_vec_ctor	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_ctor(void* __array_address, size_t __element_count,$/;"	p	signature:(void* __array_address, size_t __element_count, size_t __element_size, __cxa_cdtor_type __constructor, __cxa_cdtor_type __destructor)
+__cxxabiv1::__cxa_vec_delete	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_delete(void* __array_address, size_t __element_size,$/;"	p	signature:(void* __array_address, size_t __element_size, size_t __padding_size, __cxa_cdtor_type __destructor)
+__cxxabiv1::__cxa_vec_delete2	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_delete2(void* __array_address, size_t __element_size,$/;"	p	signature:(void* __array_address, size_t __element_size, size_t __padding_size, __cxa_cdtor_type __destructor, void (*__dealloc) (void*))
+__cxxabiv1::__cxa_vec_delete3	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_delete3(void* __array_address, size_t __element_size,$/;"	p	signature:(void* __array_address, size_t __element_size, size_t __padding_size, __cxa_cdtor_type __destructor, void (*__dealloc) (void*, size_t))
+__cxxabiv1::__cxa_vec_dtor	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_dtor(void* __array_address, size_t __element_count,$/;"	p	signature:(void* __array_address, size_t __element_count, size_t __element_size, __cxa_cdtor_type __destructor)
+__cxxabiv1::__cxa_vec_new	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_new(size_t __element_count, size_t __element_size,$/;"	p	signature:(size_t __element_count, size_t __element_size, size_t __padding_size, __cxa_cdtor_type __constructor, __cxa_cdtor_type __destructor)
+__cxxabiv1::__cxa_vec_new2	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_new2(size_t __element_count, size_t __element_size,$/;"	p	signature:(size_t __element_count, size_t __element_size, size_t __padding_size, __cxa_cdtor_type __constructor, __cxa_cdtor_type __destructor, void *(*__alloc) (size_t), void (*__dealloc) (void*))
+__cxxabiv1::__cxa_vec_new3	/usr/include/c++/4.8.3/cxxabi.h	/^  __cxa_vec_new3(size_t __element_count, size_t __element_size,$/;"	p	signature:(size_t __element_count, size_t __element_size, size_t __padding_size, __cxa_cdtor_type __constructor, __cxa_cdtor_type __destructor, void *(*__alloc) (size_t), void (*__dealloc) (void*, size_t))
+__cxxabiv1::__dynamic_cast	/usr/include/c++/4.8.3/cxxabi.h	/^  __dynamic_cast(const void* __src_ptr, \/\/ Starting object.$/;"	p	signature:(const void* __src_ptr, const __class_type_info* __src_type, const __class_type_info* __dst_type, ptrdiff_t __src2dst)
+__cxxabiv1::__enum_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __enum_type_info : public std::type_info$/;"	c	namespace:__cxxabiv1	inherits:std::type_info
+__cxxabiv1::__enum_type_info::__enum_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __enum_type_info(const char* __n) : std::type_info(__n) { }$/;"	f	class:__cxxabiv1::__enum_type_info	access:public	signature:(const char* __n)
+__cxxabiv1::__enum_type_info::~__enum_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__enum_type_info();$/;"	p	class:__cxxabiv1::__enum_type_info	access:public	signature:()
+__cxxabiv1::__foreign_exception	/usr/include/c++/4.8.3/cxxabi.h	/^  class __foreign_exception$/;"	c	namespace:__cxxabiv1
+__cxxabiv1::__foreign_exception::__pure_dummy	/usr/include/c++/4.8.3/cxxabi.h	/^    virtual void __pure_dummy() = 0; \/\/ prevent catch by value$/;"	p	class:__cxxabiv1::__foreign_exception	access:private	signature:()
+__cxxabiv1::__foreign_exception::~__foreign_exception	/usr/include/c++/4.8.3/cxxabi.h	/^    virtual ~__foreign_exception() throw();$/;"	p	class:__cxxabiv1::__foreign_exception	access:private	signature:()
+__cxxabiv1::__function_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __function_type_info : public std::type_info$/;"	c	namespace:__cxxabiv1	inherits:std::type_info
+__cxxabiv1::__function_type_info::__function_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __function_type_info(const char* __n) : std::type_info(__n) { }$/;"	f	class:__cxxabiv1::__function_type_info	access:public	signature:(const char* __n)
+__cxxabiv1::__function_type_info::__is_function_p	/usr/include/c++/4.8.3/cxxabi.h	/^    __is_function_p() const;$/;"	p	class:__cxxabiv1::__function_type_info	access:protected	signature:() const
+__cxxabiv1::__function_type_info::~__function_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__function_type_info();$/;"	p	class:__cxxabiv1::__function_type_info	access:public	signature:()
+__cxxabiv1::__fundamental_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __fundamental_type_info : public std::type_info$/;"	c	namespace:__cxxabiv1	inherits:std::type_info
+__cxxabiv1::__fundamental_type_info::__fundamental_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __fundamental_type_info(const char* __n) : std::type_info(__n) { }$/;"	f	class:__cxxabiv1::__fundamental_type_info	access:public	signature:(const char* __n)
+__cxxabiv1::__fundamental_type_info::~__fundamental_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__fundamental_type_info();$/;"	p	class:__cxxabiv1::__fundamental_type_info	access:public	signature:()
+__cxxabiv1::__pbase_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __pbase_type_info : public std::type_info$/;"	c	namespace:__cxxabiv1	inherits:std::type_info
+__cxxabiv1::__pbase_type_info::__const_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__const_mask = 0x1,$/;"	e	enum:__cxxabiv1::__pbase_type_info::__masks
+__cxxabiv1::__pbase_type_info::__do_catch	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_catch(const std::type_info* __thr_type, void** __thr_obj,$/;"	p	class:__cxxabiv1::__pbase_type_info	access:protected	signature:(const std::type_info* __thr_type, void** __thr_obj, unsigned int __outer) const
+__cxxabiv1::__pbase_type_info::__flags	/usr/include/c++/4.8.3/cxxabi.h	/^    unsigned int 		__flags; \/\/ Qualification of the target object.$/;"	m	class:__cxxabiv1::__pbase_type_info	access:public
+__cxxabiv1::__pbase_type_info::__incomplete_class_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__incomplete_class_mask = 0x10$/;"	e	enum:__cxxabiv1::__pbase_type_info::__masks
+__cxxabiv1::__pbase_type_info::__incomplete_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__incomplete_mask = 0x8,$/;"	e	enum:__cxxabiv1::__pbase_type_info::__masks
+__cxxabiv1::__pbase_type_info::__masks	/usr/include/c++/4.8.3/cxxabi.h	/^    enum __masks$/;"	g	class:__cxxabiv1::__pbase_type_info	access:public
+__cxxabiv1::__pbase_type_info::__pbase_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __pbase_type_info(const __pbase_type_info&);$/;"	p	class:__cxxabiv1::__pbase_type_info	access:protected	signature:(const __pbase_type_info&)
+__cxxabiv1::__pbase_type_info::__pbase_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __pbase_type_info(const char* __n, int __quals,$/;"	f	class:__cxxabiv1::__pbase_type_info	access:public	signature:(const char* __n, int __quals, const std::type_info* __type)
+__cxxabiv1::__pbase_type_info::__pointee	/usr/include/c++/4.8.3/cxxabi.h	/^    const std::type_info* 	__pointee; \/\/ Type of pointed to object.$/;"	m	class:__cxxabiv1::__pbase_type_info	access:public
+__cxxabiv1::__pbase_type_info::__pointer_catch	/usr/include/c++/4.8.3/cxxabi.h	/^    __pointer_catch(const __pbase_type_info* __thr_type, void** __thr_obj,$/;"	p	class:__cxxabiv1::__pbase_type_info	access:protected	signature:(const __pbase_type_info* __thr_type, void** __thr_obj, unsigned __outer) const
+__cxxabiv1::__pbase_type_info::__restrict_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__restrict_mask = 0x4,$/;"	e	enum:__cxxabiv1::__pbase_type_info::__masks
+__cxxabiv1::__pbase_type_info::__volatile_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__volatile_mask = 0x2,$/;"	e	enum:__cxxabiv1::__pbase_type_info::__masks
+__cxxabiv1::__pbase_type_info::operator =	/usr/include/c++/4.8.3/cxxabi.h	/^    operator=(const __pbase_type_info&);$/;"	p	class:__cxxabiv1::__pbase_type_info	access:protected	signature:(const __pbase_type_info&)
+__cxxabiv1::__pbase_type_info::~__pbase_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__pbase_type_info();$/;"	p	class:__cxxabiv1::__pbase_type_info	access:public	signature:()
+__cxxabiv1::__pointer_to_member_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __pointer_to_member_type_info : public __pbase_type_info$/;"	c	namespace:__cxxabiv1	inherits:__pbase_type_info
+__cxxabiv1::__pointer_to_member_type_info::__context	/usr/include/c++/4.8.3/cxxabi.h	/^    __class_type_info* __context;   \/\/ Class of the member.$/;"	m	class:__cxxabiv1::__pointer_to_member_type_info	access:public
+__cxxabiv1::__pointer_to_member_type_info::__pointer_catch	/usr/include/c++/4.8.3/cxxabi.h	/^    __pointer_catch(const __pbase_type_info* __thr_type, void** __thr_obj,$/;"	p	class:__cxxabiv1::__pointer_to_member_type_info	access:protected	signature:(const __pbase_type_info* __thr_type, void** __thr_obj, unsigned __outer) const
+__cxxabiv1::__pointer_to_member_type_info::__pointer_to_member_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __pointer_to_member_type_info(const __pointer_to_member_type_info&);$/;"	p	class:__cxxabiv1::__pointer_to_member_type_info	access:protected	signature:(const __pointer_to_member_type_info&)
+__cxxabiv1::__pointer_to_member_type_info::__pointer_to_member_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __pointer_to_member_type_info(const char* __n, int __quals,$/;"	f	class:__cxxabiv1::__pointer_to_member_type_info	access:public	signature:(const char* __n, int __quals, const std::type_info* __type, __class_type_info* __klass)
+__cxxabiv1::__pointer_to_member_type_info::operator =	/usr/include/c++/4.8.3/cxxabi.h	/^    operator=(const __pointer_to_member_type_info&);$/;"	p	class:__cxxabiv1::__pointer_to_member_type_info	access:protected	signature:(const __pointer_to_member_type_info&)
+__cxxabiv1::__pointer_to_member_type_info::~__pointer_to_member_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__pointer_to_member_type_info();$/;"	p	class:__cxxabiv1::__pointer_to_member_type_info	access:public	signature:()
+__cxxabiv1::__pointer_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __pointer_type_info : public __pbase_type_info$/;"	c	namespace:__cxxabiv1	inherits:__pbase_type_info
+__cxxabiv1::__pointer_type_info::__is_pointer_p	/usr/include/c++/4.8.3/cxxabi.h	/^    __is_pointer_p() const;$/;"	p	class:__cxxabiv1::__pointer_type_info	access:protected	signature:() const
+__cxxabiv1::__pointer_type_info::__pointer_catch	/usr/include/c++/4.8.3/cxxabi.h	/^    __pointer_catch(const __pbase_type_info* __thr_type, void** __thr_obj,$/;"	p	class:__cxxabiv1::__pointer_type_info	access:protected	signature:(const __pbase_type_info* __thr_type, void** __thr_obj, unsigned __outer) const
+__cxxabiv1::__pointer_type_info::__pointer_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __pointer_type_info(const char* __n, int __quals,$/;"	f	class:__cxxabiv1::__pointer_type_info	access:public	signature:(const char* __n, int __quals, const std::type_info* __type)
+__cxxabiv1::__pointer_type_info::~__pointer_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__pointer_type_info();$/;"	p	class:__cxxabiv1::__pointer_type_info	access:public	signature:()
+__cxxabiv1::__si_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __si_class_type_info : public __class_type_info$/;"	c	namespace:__cxxabiv1	inherits:__class_type_info
+__cxxabiv1::__si_class_type_info::__base_type	/usr/include/c++/4.8.3/cxxabi.h	/^    const __class_type_info* __base_type;$/;"	m	class:__cxxabiv1::__si_class_type_info	access:public
+__cxxabiv1::__si_class_type_info::__do_dyncast	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_dyncast(ptrdiff_t __src2dst, __sub_kind __access_path,$/;"	p	class:__cxxabiv1::__si_class_type_info	access:protected	signature:(ptrdiff_t __src2dst, __sub_kind __access_path, const __class_type_info* __dst_type, const void* __obj_ptr, const __class_type_info* __src_type, const void* __src_ptr, __dyncast_result& __result) const
+__cxxabiv1::__si_class_type_info::__do_find_public_src	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_find_public_src(ptrdiff_t __src2dst, const void* __obj_ptr,$/;"	p	class:__cxxabiv1::__si_class_type_info	access:protected	signature:(ptrdiff_t __src2dst, const void* __obj_ptr, const __class_type_info* __src_type, const void* __sub_ptr) const
+__cxxabiv1::__si_class_type_info::__do_upcast	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_upcast(const __class_type_info*__dst, const void*__obj,$/;"	p	class:__cxxabiv1::__si_class_type_info	access:protected	signature:(const __class_type_info*__dst, const void*__obj, __upcast_result& __restrict __result) const
+__cxxabiv1::__si_class_type_info::__si_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __si_class_type_info(const __si_class_type_info&);$/;"	p	class:__cxxabiv1::__si_class_type_info	access:protected	signature:(const __si_class_type_info&)
+__cxxabiv1::__si_class_type_info::__si_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __si_class_type_info(const char *__n, const __class_type_info *__base)$/;"	f	class:__cxxabiv1::__si_class_type_info	access:public	signature:(const char *__n, const __class_type_info *__base)
+__cxxabiv1::__si_class_type_info::operator =	/usr/include/c++/4.8.3/cxxabi.h	/^    operator=(const __si_class_type_info&);$/;"	p	class:__cxxabiv1::__si_class_type_info	access:protected	signature:(const __si_class_type_info&)
+__cxxabiv1::__si_class_type_info::~__si_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__si_class_type_info();$/;"	p	class:__cxxabiv1::__si_class_type_info	access:public	signature:()
+__cxxabiv1::__vmi_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __vmi_class_type_info : public __class_type_info$/;"	c	namespace:__cxxabiv1	inherits:__class_type_info
+__cxxabiv1::__vmi_class_type_info::__base_count	/usr/include/c++/4.8.3/cxxabi.h	/^    unsigned int 		__base_count;  \/\/ Number of direct bases.$/;"	m	class:__cxxabiv1::__vmi_class_type_info	access:public
+__cxxabiv1::__vmi_class_type_info::__base_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __base_class_type_info 	__base_info[1];  \/\/ Array of bases.$/;"	m	class:__cxxabiv1::__vmi_class_type_info	access:public
+__cxxabiv1::__vmi_class_type_info::__diamond_shaped_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__diamond_shaped_mask = 0x2, \/\/ Diamond shaped multiple inheritance.$/;"	e	enum:__cxxabiv1::__vmi_class_type_info::__flags_masks
+__cxxabiv1::__vmi_class_type_info::__do_dyncast	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_dyncast(ptrdiff_t __src2dst, __sub_kind __access_path,$/;"	p	class:__cxxabiv1::__vmi_class_type_info	access:protected	signature:(ptrdiff_t __src2dst, __sub_kind __access_path, const __class_type_info* __dst_type, const void* __obj_ptr, const __class_type_info* __src_type, const void* __src_ptr, __dyncast_result& __result) const
+__cxxabiv1::__vmi_class_type_info::__do_find_public_src	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_find_public_src(ptrdiff_t __src2dst, const void* __obj_ptr,$/;"	p	class:__cxxabiv1::__vmi_class_type_info	access:protected	signature:(ptrdiff_t __src2dst, const void* __obj_ptr, const __class_type_info* __src_type, const void* __src_ptr) const
+__cxxabiv1::__vmi_class_type_info::__do_upcast	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_upcast(const __class_type_info* __dst, const void* __obj,$/;"	p	class:__cxxabiv1::__vmi_class_type_info	access:protected	signature:(const __class_type_info* __dst, const void* __obj, __upcast_result& __restrict __result) const
+__cxxabiv1::__vmi_class_type_info::__flags	/usr/include/c++/4.8.3/cxxabi.h	/^    unsigned int 		__flags;  \/\/ Details about the class hierarchy.$/;"	m	class:__cxxabiv1::__vmi_class_type_info	access:public
+__cxxabiv1::__vmi_class_type_info::__flags_masks	/usr/include/c++/4.8.3/cxxabi.h	/^    enum __flags_masks$/;"	g	class:__cxxabiv1::__vmi_class_type_info	access:public
+__cxxabiv1::__vmi_class_type_info::__flags_unknown_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__flags_unknown_mask = 0x10$/;"	e	enum:__cxxabiv1::__vmi_class_type_info::__flags_masks
+__cxxabiv1::__vmi_class_type_info::__non_diamond_repeat_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__non_diamond_repeat_mask = 0x1, \/\/ Distinct instance of repeated base.$/;"	e	enum:__cxxabiv1::__vmi_class_type_info::__flags_masks
+__cxxabiv1::__vmi_class_type_info::__vmi_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __vmi_class_type_info(const char* __n, int ___flags)$/;"	f	class:__cxxabiv1::__vmi_class_type_info	access:public	signature:(const char* __n, int ___flags)
+__cxxabiv1::__vmi_class_type_info::~__vmi_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__vmi_class_type_info();$/;"	p	class:__cxxabiv1::__vmi_class_type_info	access:public	signature:()
+__diamond_shaped_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__diamond_shaped_mask = 0x2, \/\/ Diamond shaped multiple inheritance.$/;"	e	enum:__cxxabiv1::__vmi_class_type_info::__flags_masks
+__do_catch	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_catch(const std::type_info* __thr_type, void** __thr_obj,$/;"	p	class:__cxxabiv1::__pbase_type_info	access:protected	signature:(const std::type_info* __thr_type, void** __thr_obj, unsigned int __outer) const
+__do_catch	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_catch(const type_info* __thr_type, void** __thr_obj,$/;"	p	class:__cxxabiv1::__class_type_info	access:protected	signature:(const type_info* __thr_type, void** __thr_obj, unsigned __outer) const
+__do_dyncast	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_dyncast(ptrdiff_t __src2dst, __sub_kind __access_path,$/;"	p	class:__cxxabiv1::__class_type_info	access:public	signature:(ptrdiff_t __src2dst, __sub_kind __access_path, const __class_type_info* __dst_type, const void* __obj_ptr, const __class_type_info* __src_type, const void* __src_ptr, __dyncast_result& __result) const
+__do_dyncast	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_dyncast(ptrdiff_t __src2dst, __sub_kind __access_path,$/;"	p	class:__cxxabiv1::__si_class_type_info	access:protected	signature:(ptrdiff_t __src2dst, __sub_kind __access_path, const __class_type_info* __dst_type, const void* __obj_ptr, const __class_type_info* __src_type, const void* __src_ptr, __dyncast_result& __result) const
+__do_dyncast	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_dyncast(ptrdiff_t __src2dst, __sub_kind __access_path,$/;"	p	class:__cxxabiv1::__vmi_class_type_info	access:protected	signature:(ptrdiff_t __src2dst, __sub_kind __access_path, const __class_type_info* __dst_type, const void* __obj_ptr, const __class_type_info* __src_type, const void* __src_ptr, __dyncast_result& __result) const
+__do_find_public_src	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_find_public_src(ptrdiff_t __src2dst, const void* __obj_ptr,$/;"	p	class:__cxxabiv1::__class_type_info	access:public	signature:(ptrdiff_t __src2dst, const void* __obj_ptr, const __class_type_info* __src_type, const void* __src_ptr) const
+__do_find_public_src	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_find_public_src(ptrdiff_t __src2dst, const void* __obj_ptr,$/;"	p	class:__cxxabiv1::__si_class_type_info	access:protected	signature:(ptrdiff_t __src2dst, const void* __obj_ptr, const __class_type_info* __src_type, const void* __sub_ptr) const
+__do_find_public_src	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_find_public_src(ptrdiff_t __src2dst, const void* __obj_ptr,$/;"	p	class:__cxxabiv1::__vmi_class_type_info	access:protected	signature:(ptrdiff_t __src2dst, const void* __obj_ptr, const __class_type_info* __src_type, const void* __src_ptr) const
+__do_upcast	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_upcast(const __class_type_info* __dst, const void* __obj,$/;"	p	class:__cxxabiv1::__class_type_info	access:public	signature:(const __class_type_info* __dst, const void* __obj, __upcast_result& __restrict __result) const
+__do_upcast	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_upcast(const __class_type_info* __dst, const void* __obj,$/;"	p	class:__cxxabiv1::__vmi_class_type_info	access:protected	signature:(const __class_type_info* __dst, const void* __obj, __upcast_result& __restrict __result) const
+__do_upcast	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_upcast(const __class_type_info* __dst_type, void**__obj_ptr) const;$/;"	p	class:__cxxabiv1::__class_type_info	access:protected	signature:(const __class_type_info* __dst_type, void**__obj_ptr) const
+__do_upcast	/usr/include/c++/4.8.3/cxxabi.h	/^    __do_upcast(const __class_type_info*__dst, const void*__obj,$/;"	p	class:__cxxabiv1::__si_class_type_info	access:protected	signature:(const __class_type_info*__dst, const void*__obj, __upcast_result& __restrict __result) const
+__dynamic_cast	/usr/include/c++/4.8.3/cxxabi.h	/^  __dynamic_cast(const void* __src_ptr, \/\/ Starting object.$/;"	p	signature:(const void* __src_ptr, const __class_type_info* __src_type, const __class_type_info* __dst_type, ptrdiff_t __src2dst)
+__enum_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __enum_type_info(const char* __n) : std::type_info(__n) { }$/;"	f	class:__cxxabiv1::__enum_type_info	access:public	signature:(const char* __n)
+__enum_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __enum_type_info : public std::type_info$/;"	c	namespace:__cxxabiv1	inherits:std::type_info
+__find_public_src	/usr/include/c++/4.8.3/cxxabi.h	/^    __find_public_src(ptrdiff_t __src2dst, const void* __obj_ptr,$/;"	p	class:__cxxabiv1::__class_type_info	access:public	signature:(ptrdiff_t __src2dst, const void* __obj_ptr, const __class_type_info* __src_type, const void* __src_ptr) const
+__flags	/usr/include/c++/4.8.3/cxxabi.h	/^    unsigned int 		__flags;  \/\/ Details about the class hierarchy.$/;"	m	class:__cxxabiv1::__vmi_class_type_info	access:public
+__flags	/usr/include/c++/4.8.3/cxxabi.h	/^    unsigned int 		__flags; \/\/ Qualification of the target object.$/;"	m	class:__cxxabiv1::__pbase_type_info	access:public
+__flags_masks	/usr/include/c++/4.8.3/cxxabi.h	/^    enum __flags_masks$/;"	g	class:__cxxabiv1::__vmi_class_type_info	access:public
+__flags_unknown_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__flags_unknown_mask = 0x10$/;"	e	enum:__cxxabiv1::__vmi_class_type_info::__flags_masks
+__foreign_exception	/usr/include/c++/4.8.3/cxxabi.h	/^  class __foreign_exception$/;"	c	namespace:__cxxabiv1
+__function_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __function_type_info(const char* __n) : std::type_info(__n) { }$/;"	f	class:__cxxabiv1::__function_type_info	access:public	signature:(const char* __n)
+__function_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __function_type_info : public std::type_info$/;"	c	namespace:__cxxabiv1	inherits:std::type_info
+__fundamental_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __fundamental_type_info(const char* __n) : std::type_info(__n) { }$/;"	f	class:__cxxabiv1::__fundamental_type_info	access:public	signature:(const char* __n)
+__fundamental_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __fundamental_type_info : public std::type_info$/;"	c	namespace:__cxxabiv1	inherits:std::type_info
+__gnu_cxx	/usr/include/c++/4.8.3/cxxabi.h	/^namespace __gnu_cxx$/;"	n
+__gnu_cxx::recursive_init_error	/usr/include/c++/4.8.3/cxxabi.h	/^  class recursive_init_error: public std::exception$/;"	c	namespace:__gnu_cxx	inherits:std::exception
+__gnu_cxx::recursive_init_error::recursive_init_error	/usr/include/c++/4.8.3/cxxabi.h	/^    recursive_init_error() throw() { }$/;"	f	class:__gnu_cxx::recursive_init_error	access:public	signature:()
+__gnu_cxx::recursive_init_error::~recursive_init_error	/usr/include/c++/4.8.3/cxxabi.h	/^    virtual ~recursive_init_error() throw ();$/;"	p	class:__gnu_cxx::recursive_init_error	access:public	signature:()
+__hwm_bit	/usr/include/c++/4.8.3/cxxabi.h	/^	__hwm_bit = 2,$/;"	e	enum:__cxxabiv1::__base_class_type_info::__offset_flags_masks
+__incomplete_class_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__incomplete_class_mask = 0x10$/;"	e	enum:__cxxabiv1::__pbase_type_info::__masks
+__incomplete_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__incomplete_mask = 0x8,$/;"	e	enum:__cxxabiv1::__pbase_type_info::__masks
+__is_function_p	/usr/include/c++/4.8.3/cxxabi.h	/^    __is_function_p() const;$/;"	p	class:__cxxabiv1::__function_type_info	access:protected	signature:() const
+__is_pointer_p	/usr/include/c++/4.8.3/cxxabi.h	/^    __is_pointer_p() const;$/;"	p	class:__cxxabiv1::__pointer_type_info	access:protected	signature:() const
+__is_public_p	/usr/include/c++/4.8.3/cxxabi.h	/^    __is_public_p() const$/;"	f	class:__cxxabiv1::__base_class_type_info	access:public	signature:() const
+__is_virtual_p	/usr/include/c++/4.8.3/cxxabi.h	/^    __is_virtual_p() const$/;"	f	class:__cxxabiv1::__base_class_type_info	access:public	signature:() const
+__masks	/usr/include/c++/4.8.3/cxxabi.h	/^    enum __masks$/;"	g	class:__cxxabiv1::__pbase_type_info	access:public
+__non_diamond_repeat_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__non_diamond_repeat_mask = 0x1, \/\/ Distinct instance of repeated base.$/;"	e	enum:__cxxabiv1::__vmi_class_type_info::__flags_masks
+__not_contained	/usr/include/c++/4.8.3/cxxabi.h	/^	__not_contained,$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__offset	/usr/include/c++/4.8.3/cxxabi.h	/^    __offset() const$/;"	f	class:__cxxabiv1::__base_class_type_info	access:public	signature:() const
+__offset_flags	/usr/include/c++/4.8.3/cxxabi.h	/^    long 			__offset_flags;  \/\/ Offset and info.$/;"	m	class:__cxxabiv1::__base_class_type_info	access:public
+__offset_flags	/usr/include/c++/4.8.3/cxxabi.h	/^    long long			__offset_flags;  \/\/ Offset and info.$/;"	m	class:__cxxabiv1::__base_class_type_info	access:public
+__offset_flags_masks	/usr/include/c++/4.8.3/cxxabi.h	/^    enum __offset_flags_masks$/;"	g	class:__cxxabiv1::__base_class_type_info	access:public
+__offset_shift	/usr/include/c++/4.8.3/cxxabi.h	/^	__offset_shift = 8          \/\/ Bits to shift offset.$/;"	e	enum:__cxxabiv1::__base_class_type_info::__offset_flags_masks
+__pbase_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __pbase_type_info(const __pbase_type_info&);$/;"	p	class:__cxxabiv1::__pbase_type_info	access:protected	signature:(const __pbase_type_info&)
+__pbase_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __pbase_type_info(const char* __n, int __quals,$/;"	f	class:__cxxabiv1::__pbase_type_info	access:public	signature:(const char* __n, int __quals, const std::type_info* __type)
+__pbase_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __pbase_type_info : public std::type_info$/;"	c	namespace:__cxxabiv1	inherits:std::type_info
+__pointee	/usr/include/c++/4.8.3/cxxabi.h	/^    const std::type_info* 	__pointee; \/\/ Type of pointed to object.$/;"	m	class:__cxxabiv1::__pbase_type_info	access:public
+__pointer_catch	/usr/include/c++/4.8.3/cxxabi.h	/^    __pointer_catch(const __pbase_type_info* __thr_type, void** __thr_obj,$/;"	p	class:__cxxabiv1::__pbase_type_info	access:protected	signature:(const __pbase_type_info* __thr_type, void** __thr_obj, unsigned __outer) const
+__pointer_catch	/usr/include/c++/4.8.3/cxxabi.h	/^    __pointer_catch(const __pbase_type_info* __thr_type, void** __thr_obj,$/;"	p	class:__cxxabiv1::__pointer_to_member_type_info	access:protected	signature:(const __pbase_type_info* __thr_type, void** __thr_obj, unsigned __outer) const
+__pointer_catch	/usr/include/c++/4.8.3/cxxabi.h	/^    __pointer_catch(const __pbase_type_info* __thr_type, void** __thr_obj,$/;"	p	class:__cxxabiv1::__pointer_type_info	access:protected	signature:(const __pbase_type_info* __thr_type, void** __thr_obj, unsigned __outer) const
+__pointer_to_member_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __pointer_to_member_type_info(const __pointer_to_member_type_info&);$/;"	p	class:__cxxabiv1::__pointer_to_member_type_info	access:protected	signature:(const __pointer_to_member_type_info&)
+__pointer_to_member_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __pointer_to_member_type_info(const char* __n, int __quals,$/;"	f	class:__cxxabiv1::__pointer_to_member_type_info	access:public	signature:(const char* __n, int __quals, const std::type_info* __type, __class_type_info* __klass)
+__pointer_to_member_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __pointer_to_member_type_info : public __pbase_type_info$/;"	c	namespace:__cxxabiv1	inherits:__pbase_type_info
+__pointer_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __pointer_type_info(const char* __n, int __quals,$/;"	f	class:__cxxabiv1::__pointer_type_info	access:public	signature:(const char* __n, int __quals, const std::type_info* __type)
+__pointer_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __pointer_type_info : public __pbase_type_info$/;"	c	namespace:__cxxabiv1	inherits:__pbase_type_info
+__public_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__public_mask = 0x2,$/;"	e	enum:__cxxabiv1::__base_class_type_info::__offset_flags_masks
+__pure_dummy	/usr/include/c++/4.8.3/cxxabi.h	/^    virtual void __pure_dummy() = 0; \/\/ prevent catch by value$/;"	p	class:__cxxabiv1::__foreign_exception	access:private	signature:()
+__restrict_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__restrict_mask = 0x4,$/;"	e	enum:__cxxabiv1::__pbase_type_info::__masks
+__si_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __si_class_type_info(const __si_class_type_info&);$/;"	p	class:__cxxabiv1::__si_class_type_info	access:protected	signature:(const __si_class_type_info&)
+__si_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __si_class_type_info(const char *__n, const __class_type_info *__base)$/;"	f	class:__cxxabiv1::__si_class_type_info	access:public	signature:(const char *__n, const __class_type_info *__base)
+__si_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __si_class_type_info : public __class_type_info$/;"	c	namespace:__cxxabiv1	inherits:__class_type_info
+__sub_kind	/usr/include/c++/4.8.3/cxxabi.h	/^    enum __sub_kind$/;"	g	class:__cxxabiv1::__class_type_info	access:public
+__unknown	/usr/include/c++/4.8.3/cxxabi.h	/^	__unknown = 0,$/;"	e	enum:__cxxabiv1::__class_type_info::__sub_kind
+__virtual_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__virtual_mask = 0x1,$/;"	e	enum:__cxxabiv1::__base_class_type_info::__offset_flags_masks
+__vmi_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    __vmi_class_type_info(const char* __n, int ___flags)$/;"	f	class:__cxxabiv1::__vmi_class_type_info	access:public	signature:(const char* __n, int ___flags)
+__vmi_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^  class __vmi_class_type_info : public __class_type_info$/;"	c	namespace:__cxxabiv1	inherits:__class_type_info
+__volatile_mask	/usr/include/c++/4.8.3/cxxabi.h	/^	__volatile_mask = 0x2,$/;"	e	enum:__cxxabiv1::__pbase_type_info::__masks
+complex	/usr/include/c++/4.8.3/complex.h	39;"	d
+feclearexcept	/usr/include/c++/4.8.3/fenv.h	43;"	d
+fegetenv	/usr/include/c++/4.8.3/fenv.h	50;"	d
+fegetexceptflag	/usr/include/c++/4.8.3/fenv.h	44;"	d
+fegetround	/usr/include/c++/4.8.3/fenv.h	48;"	d
+feholdexcept	/usr/include/c++/4.8.3/fenv.h	51;"	d
+feraiseexcept	/usr/include/c++/4.8.3/fenv.h	45;"	d
+fesetenv	/usr/include/c++/4.8.3/fenv.h	52;"	d
+fesetexceptflag	/usr/include/c++/4.8.3/fenv.h	46;"	d
+fesetround	/usr/include/c++/4.8.3/fenv.h	49;"	d
+fetestexcept	/usr/include/c++/4.8.3/fenv.h	47;"	d
+feupdateenv	/usr/include/c++/4.8.3/fenv.h	53;"	d
+operator =	/usr/include/c++/4.8.3/cxxabi.h	/^    operator=(const __pbase_type_info&);$/;"	p	class:__cxxabiv1::__pbase_type_info	access:protected	signature:(const __pbase_type_info&)
+operator =	/usr/include/c++/4.8.3/cxxabi.h	/^    operator=(const __pointer_to_member_type_info&);$/;"	p	class:__cxxabiv1::__pointer_to_member_type_info	access:protected	signature:(const __pointer_to_member_type_info&)
+operator =	/usr/include/c++/4.8.3/cxxabi.h	/^    operator=(const __si_class_type_info&);$/;"	p	class:__cxxabiv1::__si_class_type_info	access:protected	signature:(const __si_class_type_info&)
+recursive_init_error	/usr/include/c++/4.8.3/cxxabi.h	/^    recursive_init_error() throw() { }$/;"	f	class:__gnu_cxx::recursive_init_error	access:public	signature:()
+recursive_init_error	/usr/include/c++/4.8.3/cxxabi.h	/^  class recursive_init_error: public std::exception$/;"	c	namespace:__gnu_cxx	inherits:std::exception
+std	/usr/include/c++/4.8.3/fenv.h	/^namespace std$/;"	n
+~__array_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__array_type_info();$/;"	p	class:__cxxabiv1::__array_type_info	access:public	signature:()
+~__class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__class_type_info ();$/;"	p	class:__cxxabiv1::__class_type_info	access:public	signature:()
+~__enum_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__enum_type_info();$/;"	p	class:__cxxabiv1::__enum_type_info	access:public	signature:()
+~__foreign_exception	/usr/include/c++/4.8.3/cxxabi.h	/^    virtual ~__foreign_exception() throw();$/;"	p	class:__cxxabiv1::__foreign_exception	access:private	signature:()
+~__function_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__function_type_info();$/;"	p	class:__cxxabiv1::__function_type_info	access:public	signature:()
+~__fundamental_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__fundamental_type_info();$/;"	p	class:__cxxabiv1::__fundamental_type_info	access:public	signature:()
+~__pbase_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__pbase_type_info();$/;"	p	class:__cxxabiv1::__pbase_type_info	access:public	signature:()
+~__pointer_to_member_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__pointer_to_member_type_info();$/;"	p	class:__cxxabiv1::__pointer_to_member_type_info	access:public	signature:()
+~__pointer_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__pointer_type_info();$/;"	p	class:__cxxabiv1::__pointer_type_info	access:public	signature:()
+~__si_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__si_class_type_info();$/;"	p	class:__cxxabiv1::__si_class_type_info	access:public	signature:()
+~__vmi_class_type_info	/usr/include/c++/4.8.3/cxxabi.h	/^    ~__vmi_class_type_info();$/;"	p	class:__cxxabiv1::__vmi_class_type_info	access:public	signature:()
+~recursive_init_error	/usr/include/c++/4.8.3/cxxabi.h	/^    virtual ~recursive_init_error() throw ();$/;"	p	class:__gnu_cxx::recursive_init_error	access:public	signature:()

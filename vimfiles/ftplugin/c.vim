@@ -100,8 +100,12 @@ if MySys() == 'windows'
     setlocal path+=C:/Program\\\ Files/MySQL/MySQL\\\ Server\\\ 5.0/include
     setlocal path+=C:/Program\\\ Files/Lua/5.1/include
 else
-    setlocal tags+=~/tags/tags.linux
+    setlocal tags+=~/.vim/tags/stl.tags
+    setlocal tags+=~/.vim/tags/cpp.tags
+    setlocal tags+=~/.vim/tags/c.tags
+    setlocal tags+=~/.vim/tags/gl.tags
     setlocal path+=/usr/local/include
+    setlocal path+=/usr/include/c++/4.8.3/
 endif
 
 "====================================================
@@ -111,24 +115,6 @@ setlocal foldmethod=indent
 setlocal foldmethod=syntax
 " setlocal foldlevel=1
 setlocal foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
-
-function! OpenZFAndSetmap()
-    :normal zR
-
-    if MySys() == 'windows'
-        :nnoremap <buffer> <leader>sf :vsp D:\Vim\vimfiles\ftplugin\cpp.vim<CR>
-        :inoremap <buffer> <leader>sf <C-[>:vsp D:\Vim\vimfiles\ftplugin\cpp.vim<CR>
-    else
-        :nnoremap <buffer> <leader>sf :vsp ~/.vim/ftplugin/cpp.vim<CR>
-        :nnoremap <buffer> <leader>sf <C-[>:vsp ~/.vim/ftplugin/cpp.vim<CR>
-    endif
-endfunction
-
-autocmd BufWinEnter *.cpp,*.h  silent call OpenZFAndSetmap()
-
-inoremap <buffer> <leader>te <C-O>:Vexplore<CR> 
-nnoremap <buffer> <leader>te :Vexplore<CR>
-inoreabbrev <buffer> /**** /***************************************************/<CR>/***************************************************/<UP>
 
 inoremap <buffer> <M-;> <C-O>A;
 inoremap <buffer> <C-;> <C-O>A;
