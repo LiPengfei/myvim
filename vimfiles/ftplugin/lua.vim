@@ -179,7 +179,6 @@ map    <buffer>  <silent>  <Leader>h     <Esc>:call Lua_Help()<CR>
 
 "add by lipengfei 2013/03/09
 set ts=4                        "tab键空格个数
-" set expandtab                   "tab转为空格
 :normal zR
 :inoremap <buffer> ,cls class<CR>;<Left><Left><CR><CR><Up><Up><Up><Right><Right><Right><Right><Right><Space>
 :inoremap <buffer> <M-;> <C-O>A;

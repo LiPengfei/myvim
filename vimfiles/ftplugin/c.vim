@@ -14,39 +14,22 @@ inoremap <buffer> <C-F1> <Esc>:call Do_CsTag()<CR><CR>a
 "f: 查找并打开文件，类似vim的find功能
 "i: 查找包含本文件的文件
 
-" nnoremap <buffer> <M-f>s       :cclose<CR>:cs find s <C-R>=expand("<cword>")<CR><CR>:clist<CR>
-" nnoremap <buffer> <M-f>g       :cclose<CR>:cs find g <C-R>=expand("<cword>")<CR><CR>
-" nnoremap <buffer> <M-f>c       :cclose<CR>:cs find c <C-R>=expand("<cword>")<CR><CR>:clist<CR>
-" nnoremap <buffer> <M-f>t       :cclose<CR>:cs find t <C-R>=expand("<cword>")<CR><CR>:clist<CR>
-" nnoremap <buffer> <M-f>e       :cclose<CR>:cs find e <C-R>=expand("<cword>")<CR><CR>:clist<CR>
-" nnoremap <buffer> <M-f>f       :cclose<CR>:cs find f <C-R>=expand("<cfile>")<CR><CR>:clist<CR>
-" nnoremap <buffer> <M-f>i       :cclose<CR>:cs find i <C-R>=expand("<cfile>")<CR><CR>:clist<CR>
-" nnoremap <buffer> <M-f>d       :cclose<CR>:cs find d <C-R>=expand("<cword>")<CR><CR>:clist<CR>
-" inoremap <buffer> <M-f>s  <Esc>:cclose<CR>:cs find s <C-R>=expand("<cword>")<CR><CR>:clist<CR>
-" inoremap <buffer> <M-f>g  <Esc>:cclose<CR>:cs find g <C-R>=expand("<cword>")<CR><CR>
-" inoremap <buffer> <M-f>c  <Esc>:cclose<CR>:cs find c <C-R>=expand("<cword>")<CR><CR>:clist<CR>
-" inoremap <buffer> <M-f>t  <Esc>:cclose<CR>:cs find t <C-R>=expand("<cword>")<CR><CR>:clist<CR>
-" inoremap <buffer> <M-f>e  <Esc>:cclose<CR>:cs find e <C-R>=expand("<cword>")<CR><CR>:clist<CR>
-" inoremap <buffer> <M-f>f  <Esc>:cclose<CR>:cs find f <C-R>=expand("<cfile>")<CR><CR>:clist<CR>
-" inoremap <buffer> <M-f>i  <Esc>:cclose<CR>:cs find i <C-R>=expand("<cfile>")<CR><CR>:clist<CR>
-" inoremap <buffer> <M-f>d  <Esc>:cclose<CR>:cs find d <C-R>=expand("<cword>")<CR><CR>:clist<CR>
-
-nnoremap <buffer> <M-g>s       :cs find s <C-R>=expand("<cword>")<CR><CR>
-nnoremap <buffer> <M-g>g       :cs find g <C-R>=expand("<cword>")<CR><CR>
-nnoremap <buffer> <M-g>c       :cs find c <C-R>=expand("<cword>")<CR><CR>
-nnoremap <buffer> <M-g>t       :cs find t <C-R>=expand("<cword>")<CR><CR>
-nnoremap <buffer> <M-g>e       :cs find e <C-R>=expand("<cword>")<CR><CR>
-nnoremap <buffer> <M-g>f       :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nnoremap <buffer> <M-g>i       :cs find i <C-R>=expand("<cfile>")<CR><CR>
-nnoremap <buffer> <M-g>d       :cs find d <C-R>=expand("<cword>")<CR><CR>
-inoremap <buffer> <M-g>s  <Esc>:cs find s <C-R>=expand("<cword>")<CR><CR>
-inoremap <buffer> <M-g>g  <Esc>:cs find g <C-R>=expand("<cword>")<CR><CR>
-inoremap <buffer> <M-g>c  <Esc>:cs find c <C-R>=expand("<cword>")<CR><CR>
-inoremap <buffer> <M-g>t  <Esc>:cs find t <C-R>=expand("<cword>")<CR><CR>
-inoremap <buffer> <M-g>e  <Esc>:cs find e <C-R>=expand("<cword>")<CR><CR>
-inoremap <buffer> <M-g>f  <Esc>:cs find f <C-R>=expand("<cfile>")<CR><CR>
-inoremap <buffer> <M-g>i  <Esc>:cs find i <C-R>=expand("<cfile>")<CR><CR>
-inoremap <buffer> <M-g>d  <Esc>:cs find d <C-R>=expand("<cword>")<CR><CR>
+nnoremap <buffer> <m-g>s       :cclose<CR>:cs find s <C-R>=expand("<cword>")<CR><CR>
+nnoremap <buffer> <m-g>g       :cclose<CR>:cs find g <C-R>=expand("<cword>")<CR><CR>
+nnoremap <buffer> <m-g>c       :cclose<CR>:cs find c <C-R>=expand("<cword>")<CR><CR>
+nnoremap <buffer> <m-g>t       :cclose<CR>:cs find t <C-R>=expand("<cword>")<CR><CR>
+nnoremap <buffer> <m-g>e       :cclose<CR>:cs find e <C-R>=expand("<cword>")<CR><CR>
+nnoremap <buffer> <m-g>f       :cclose<CR>:cs find f <C-R>=expand("<cfile>")<CR><CR>
+nnoremap <buffer> <m-g>i       :cclose<CR>:cs find i <C-R>=expand("<cfile>")<CR><CR>
+nnoremap <buffer> <m-g>d       :cclose<CR>:cs find d <C-R>=expand("<cword>")<CR><CR>
+inoremap <buffer> <m-g>s  <Esc>:cclose<CR>:cs find s <C-R>=expand("<cword>")<CR><CR>
+inoremap <buffer> <m-g>g  <Esc>:cclose<CR>:cs find g <C-R>=expand("<cword>")<CR><CR>
+inoremap <buffer> <m-g>c  <Esc>:cclose<CR>:cs find c <C-R>=expand("<cword>")<CR><CR>
+inoremap <buffer> <m-g>t  <Esc>:cclose<CR>:cs find t <C-R>=expand("<cword>")<CR><CR>
+inoremap <buffer> <m-g>e  <Esc>:cclose<CR>:cs find e <C-R>=expand("<cword>")<CR><CR>
+inoremap <buffer> <m-g>f  <Esc>:cclose<CR>:cs find f <C-R>=expand("<cfile>")<CR><CR>
+inoremap <buffer> <m-g>i  <Esc>:cclose<CR>:cs find i <C-R>=expand("<cfile>")<CR><CR>
+inoremap <buffer> <m-g>d  <Esc>:cclose<CR>:cs find d <C-R>=expand("<cword>")<CR><CR>
 
 function! Do_CsTag()
     let dir = getcwd()
@@ -91,24 +74,20 @@ function! Do_CsTag()
     endif
 
     if(executable('ctags'))
-        silent! execute "!ctags --exclude=.git --exclude=.svn --exclude=DevEnv -R --c-types=+p --fields=+S *"
-        silent! execute "!ctags --exclude=.git --exclude=.svn --exclude=DevEnv -R --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++"
+        "silent! execute "!ctags -R --c-types=+p --fields=+S *"
+        silent! execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++"
     endif
 
     if(executable('cscope') && has("cscope") )
         if(MySys()!='windows')
             silent! execute "!find . -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
-            silent! execute "!cscope -bq"
         else
-            let cwd = getcwd()
-            " silent! execute "!dir /s/b *.hpp *.c,*.cpp,*.h,* >> cscope.files"
-            silent! execute "!findex.exe " . cwd . " -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp  -o ! -path \"./DevEnv/*\" -o ! -path \"./.git/*\"' > cscope.files"
-            silent! execute "!cscope -bq"
+            silent! execute "!dir /s/b *.hpp *.c,*.cpp,*.h,* >> cscope.files"
         endif
+            silent! execute "!cscope -bq"
         execute "normal :"
 
         if filereadable("cscope.out")
-            " execute "cs add cscope.out -q"
             execute "cs add cscope.out"
         endif
     endif
@@ -151,18 +130,6 @@ inoremap <buffer> <leader>te <C-O>:Vexplore<CR>
 nnoremap <buffer> <leader>te :Vexplore<CR>
 inoreabbrev <buffer> /**** /***************************************************/<CR>/***************************************************/<UP>
 
-inoremap <buffer> #ifn #ifndef<Space><CR>#define<Space><CR><CR>#endif<Up><Up><Up><Right><Right>
-" inoremap <buffer> { {}<Left><CR><Up><Right>
-" inoremap <buffer> {} { }
-inoremap <buffer> <leader>cls class<CR>;<Left>{<CR><CR>}<Up><Up><Up><Right><Right><Right><Right><Space>
-inoremap <buffer> ( ()<Left>
-inoremap <buffer> () ()
-inoremap <buffer> [ []<Left>
-inoremap <buffer> [] []
-inoremap <buffer> " ""<Left>
-inoremap <buffer> "" ""
-inoremap <buffer> ' ''<Left>
-inoremap <buffer> '' ''
 inoremap <buffer> <M-;> <C-O>A;
 inoremap <buffer> <C-;> <C-O>A;
 

@@ -148,7 +148,7 @@ set foldlevel=1
 set foldmethod=indent
 set diffopt+=vertical
 set fileencodings=utf-8,cp936
-set fileencoding=cp936
+set fileencoding=utf-8
 set list
 set listchars=tab:\|\ ,extends:>,precedes:<
 set nocompatible                "make it vim style, not vi style
@@ -165,7 +165,7 @@ set showcmd                     "help you use command mode easily
 set nobackup
 set shiftwidth=4                "自动缩进4格
 set tabstop=4
-" set softtabstop=4
+set softtabstop=4
 set expandtab
 set autowrite                   "自动保存
 set nu                          "显示行号
@@ -200,7 +200,7 @@ set pastetoggle=<F3>
 set iskeyword&
 set iskeyword+=	    
 if MySys() == 'windows'
-     set guifont=monaco:h10
+     set guifont=monaco:h11
 else
     set guifont=Courier\ new\ 13
 endif
@@ -312,14 +312,14 @@ end
 " autocmd {{{
 augroup common_au
     autocmd!
-	au VIMENTER * silent exec "set vb t_vb="
-" autocmd VimLeavePre *.lua silent call SaveProject()
-	au FileType lua setlocal fileencoding=cp936
-	au FileType python exec 'nnoremap <buffer> K :call ShowPyDoc(expand("<cword>"), 1)<cr>'
+    au VIMENTER * silent exec "set vb t_vb="
+  " autocmd VimLeavePre *.lua silent call SaveProject()
+    au FileType lua setlocal fileencoding=cp936
+    au FileType python exec 'nnoremap <buffer> K :call ShowPyDoc(expand("<cword>"), 1)<cr>'
     au FileType python setlocal fileencodings=utf-8
     au FileType python setlocal fileencoding=utf-8
-	au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile setlocal noexpandtab
-	au FileType javascript setlocal dictionary=d:/Vim/vimfiles/javascript.dict
+    au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile setlocal noexpandtab
+    au FileType javascript setlocal dictionary=d:/Vim/vimfiles/javascript.dict
 augroup END
 
 if MySys() == "windows"
@@ -329,10 +329,11 @@ if MySys() == "windows"
     augroup END
 else
     augroup linux_aug
-		autocmd!
-		au GUIEnter * call MaximizeWindow()
-	augroup END
+	autocmd!
+	au GUIEnter * call MaximizeWindow()
+    augroup END
 end
+
 augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
@@ -683,3 +684,4 @@ set wildignore+=.gitignore
 
 " 8. add search map number                                   2014-10-28
 
+" 9. remove pydoc                                            2015-05-12
