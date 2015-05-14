@@ -154,7 +154,7 @@ set foldlevel=1
 set foldmethod=indent
 set diffopt+=vertical
 set fileencodings=utf-8,cp936
-set fileencoding=cp936
+set fileencoding=utf-8
 set list
 set listchars=tab:\|\ ,extends:>,precedes:<
 set nocompatible                "make it vim style, not vi style
@@ -171,7 +171,7 @@ set showcmd                     "help you use command mode easily
 set nobackup
 set shiftwidth=4                "自动缩进4格
 set tabstop=4
-" set softtabstop=4
+set softtabstop=4
 set expandtab
 set autowrite                   "自动保存
 set nu                          "显示行号
@@ -206,7 +206,7 @@ set pastetoggle=<F3>
 set iskeyword&
 set iskeyword+=	    
 if MySys() == 'windows'
-     set guifont=monaco:h10
+     set guifont=monaco:h11
 else
     set guifont=Courier\ new\ 13
 endif
@@ -355,15 +355,14 @@ augroup common_au
     au InsertLeave * hi User5 guibg=#C9C9C9 guifg=#404040 gui=bold
     au InsertLeave * hi StatusLine guibg=#2B2B2B guifg=#C9C9C9 ctermfg=238 ctermbg=253 gui=none
     au InsertLeave * hi link User1 User3
-" endif
-	au VIMENTER * silent exec "set vb t_vb="
-" autocmd VimLeavePre *.lua silent call SaveProject()
-	au FileType lua setlocal fileencoding=cp936
-	au FileType python exec 'nnoremap <buffer> K :call ShowPyDoc(expand("<cword>"), 1)<cr>'
+    au VIMENTER * silent exec "set vb t_vb="
+  " autocmd VimLeavePre *.lua silent call SaveProject()
+    au FileType lua setlocal fileencoding=cp936
+    au FileType python exec 'nnoremap <buffer> K :call ShowPyDoc(expand("<cword>"), 1)<cr>'
     au FileType python setlocal fileencodings=utf-8
     au FileType python setlocal fileencoding=utf-8
-	au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile setlocal noexpandtab
-	au FileType javascript setlocal dictionary=d:/Vim/vimfiles/javascript.dict
+    au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile setlocal noexpandtab
+    au FileType javascript setlocal dictionary=d:/Vim/vimfiles/javascript.dict
 augroup END
 
 if MySys() == "windows"
@@ -373,9 +372,9 @@ if MySys() == "windows"
     augroup END
 else
     augroup linux_aug
-		autocmd!
-		au GUIEnter * call MaximizeWindow()
-	augroup END
+	autocmd!
+	au GUIEnter * call MaximizeWindow()
+    augroup END
 end
 
 augroup filetype_vim
@@ -660,7 +659,6 @@ xnoremap <silent> <cr> :EasyAlign<cr>
 "==============================================================================================
 let g:user_emmet_settings = {'indentation' : '    ' } 
 " let g:user_emmet_leader_key = '<m-n>'
-"
 
 "==============================================================================================
 " delimitMate c-g g jump out to end
@@ -697,3 +695,5 @@ augroup END
 " 7. add {% %} for tornado syntax                            2014-07-28
 
 " 8. add search map number                                   2014-10-28
+
+" 9. remove pydoc                                            2015-05-12
