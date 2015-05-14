@@ -1,6 +1,4 @@
-"==============================================================================================
-" functions
-"==============================================================================================
+" functions {{{
 " get the word in visual mode
 fun! VsbFuntion(arg1)
     execute 'vert bel sb' a:arg1
@@ -137,19 +135,15 @@ function! MyDiff()
 	endif
 	silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
+"}}}
 
-"==============================================================================================
-" common config
-"==============================================================================================
+" common config before vundle {{{
 let mapleader = ","
+filetype off
 syntax enable
-filetype plugin indent on       "根据文件类型定义缩进
-filetype plugin on              "使用文件类型插件
-colorscheme molokai
+"}}}
 
-"==============================================================================================
-" common set
-"===============================================================================================
+" common set {{{
 set foldlevel=1
 set foldmethod=indent
 set diffopt+=vertical
@@ -210,11 +204,9 @@ if MySys() == 'windows'
 else
     set guifont=Courier\ new\ 13
 endif
+"}}}
 
-"==============================================================================================
-" common map
-"==============================================================================================
-" nnoremap %{ I<space><left>{%<esc>A<space>%}<esc>
+" common map {{{
 nnoremap %{ I{%<space><esc>A<space>%}<esc>
 nnoremap <leader>p "0p
 inoremap <leader>cp <c-o>:cp<cr>
@@ -251,9 +243,6 @@ inoremap <M-h> <Left>
 inoremap <M-l> <Right>
 inoremap <M-j> <Down>
 inoremap <M-k> <Up>
-inoremap <M-d> <Esc>ddi
-"TODO <m-d> 和 <m-y> 有改动
-inoremap <M-y> <Esc>yya
 inoremap <M-w> <Esc><Space>wi
 inoremap <M-b> <Esc>bi
 inoremap <M-e> <Esc><Space>ea
@@ -312,49 +301,17 @@ nnoremap <leader>wc :%s/\<<c-r>=expand("<cword>")<cr>\>//gc<Left><Left><Left>
 nnoremap <leader>wn :%s/\<<c-r>=expand("<cword>")<cr>\>//gn<cr>
 xnoremap <leader>f  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//g<left><left>
 xnoremap <leader>fc  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//gc<left><left><left>
-
 xnoremap <m-g>    :tag <c-r>=Get_visual_selection()<cr><cr>
 if MySys() == 'windows'
     inoremap <C-V> <MiddleMouse>
 else
     inoremap <C-V> <MiddleMouse>
 end
+"}}}
 
-"==============================================================================================
-" common colors
-"==============================================================================================
-hi User2 guibg=White guifg=#00608B gui=bold
-hi User3 guibg=#008096 guifg=White gui=bold
-hi User4 guibg=#008096 guifg=#BFEFFF gui=none
-hi User5 guibg=#BFEFFF guifg=#00608B gui=bold
-"VISUAL mode show mode
-hi User6 gui=bold guibg=orange guifg=#8B1A1A gui=bold
-"SELECT and Repalce mode show mode
-hi User7 gui=bold guifg=White guibg=Red gui=bold
-"Normal mode show mode fileName guibg guifg percent ln
-hi User2 guibg=#7AC527 guifg=#117511 gui=bold
-hi User3 guibg=#404040 guifg=White gui=bold
-hi User4 guibg=#404040 guifg=#C9C9C9 gui=none
-hi User5 guibg=#C9C9C9 guifg=#404040 gui=bold
-hi link User1 User3
-
-"==============================================================================================
-" autocmd
-"==============================================================================================
+" autocmd {{{
 augroup common_au
     autocmd!
-    au InsertEnter * hi User2 guibg=White guifg=#00608B gui=bold
-    au InsertEnter * hi User3 guibg=#008096 guifg=White gui=bold
-    au InsertEnter * hi User4 guibg=#008096 guifg=#BFEFFF gui=none
-    au InsertEnter * hi User5 guibg=#BFEFFF guifg=#00608B gui=bold
-    au InsertEnter * hi StatusLine guibg=#00608B guifg=#BFEFFF gui=none
-    au InsertEnter * hi link User1 User3
-    au InsertLeave * hi User2 guibg=#7AC527 guifg=#117511 gui=bold
-    au InsertLeave * hi User3 guibg=#404040 guifg=White gui=bold
-    au InsertLeave * hi User4 guibg=#404040 guifg=#C9C9C9 gui=none
-    au InsertLeave * hi User5 guibg=#C9C9C9 guifg=#404040 gui=bold
-    au InsertLeave * hi StatusLine guibg=#2B2B2B guifg=#C9C9C9 ctermfg=238 ctermbg=253 gui=none
-    au InsertLeave * hi link User1 User3
     au VIMENTER * silent exec "set vb t_vb="
   " autocmd VimLeavePre *.lua silent call SaveProject()
     au FileType lua setlocal fileencoding=cp936
@@ -381,10 +338,9 @@ augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
+" }}}
 
-"==============================================================================================
 " common command and iabbrev {{{
-"==============================================================================================
 iabbrev slef self
 iabbrev lpf lipengfei
 iabbrev ksf kingsoft
@@ -401,12 +357,9 @@ command! P2 :call ChangePythonVersion(2)
 command! P3 :call ChangePythonVersion(3)
 command! Lpj :call LoadProject()
 command! Spj :call SaveProject()
-
 "}}}
 
-"==============================================================================================
-" omnicppcomplete
-"==============================================================================================
+" omnicppcomplete {{{
 let OmniCpp_ShowPrototypeInAbbr = 1
 let OmniCpp_MayCompleteDot = 1 " autocomplete with .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
@@ -417,51 +370,53 @@ let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype  in popup window
 let OmniCpp_GlobalScopeSearch=1
 let OmniCpp_DisplayMode=1
 let OmniCpp_DefaultNamespaces=["std"]
+" }}}
 
-"==============================================================================================
-" taglist
-"==============================================================================================
-"let Tlist_Display_Prototype= 1
+" taglist {{{ already remove now
+" let Tlist_Display_Prototype= 1
 " let Tlist_Auto_Open=1                  "自动打开tag window
-let Tlist_Use_Right_Window=1           "tag window显示在右边？
-let Tlist_File_Fold_Auto_Close=0       "自动折叠非当前文件的tag
-let Tlist_Use_SingleClick = 0
-nnoremap <F4> :TlistUpdate<CR>
-nnoremap <leader>tl :Tlist<CR>
-inoremap <F4> <Esc>:TlistUpdate<CR>a
-inoremap <leader>tl <C-[>:Tlist<CR>
+" let Tlist_Use_Right_Window=1           "tag window显示在右边？
+" let Tlist_File_Fold_Auto_Close=0       "自动折叠非当前文件的tag
+" let Tlist_Use_SingleClick = 0
+" nnoremap <F4> :TlistUpdate<CR>
+" nnoremap <leader>tl :Tlist<CR>
+" inoremap <F4> <Esc>:TlistUpdate<CR>a
+" inoremap <leader>tl <C-[>:Tlist<CR>
+"}}}
 
-"==============================================================================================
-" minibuffer
-"==============================================================================================
-let g:miniBufExplMapWindowNavVim = 1 
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapCTabSwitchBufs = 1 
+" minibufexpl {{{
 let g:miniBufExplModSelTarget = 1 
 let g:miniBufExplTabWrap = 1
 let g:miniBufExplUseSingleClick = 1
-highlight MBENormal guifg=LightBlue
-highlight MBEChanged guifg=Red
-highlight MBEVisibleNormal term=bold cterm=bold gui=bold guifg=Green
-highlight MBEVisibleChanged term=bold cterm=bold gui=bold guifg=Green
+let g:miniBufExplCycleArround = 1
+noremap <C-J>     <C-W>j
+noremap <C-K>     <C-W>k
+noremap <C-H>     <C-W>h
+noremap <C-L>     <C-W>l
+noremap <C-Down>  <C-W>j
+noremap <C-Up>    <C-W>k
+noremap <C-Left>  <C-W>h
+noremap <C-Right> <C-W>l
+noremap <C-TAB>   :MBEbn<CR>
+noremap <C-S-TAB> :MBEbp<CR>
+inoremap <C-TAB>   <esc>:MBEbn<CR>
+inoremap <C-S-TAB> <esc>:MBEbp<CR>
 if MySys() == 'windows'
     imap <C-TAB> <C-[><C-TAB>
     imap <C-S-TAB> <C-[><C-S-TAB>
 end
+"}}}
 
-"==============================================================================================
-" lua-support
-"==============================================================================================
+" lua-support {{{ remove now
 if MySys() == 'windows'
     let g:Lua_Interpreter = 'd:\Vim\vimfiles\compiler\lua.exe'
     let g:Lua_Compiler    = 'd:\Vim\vimfiles\compiler\luac.exe'
 end
 let g:Lua_OutputGvim = 'qx'
 let g:Lua_AuthorName = 'lipengfei'
+"}}}
 
-"==============================================================================================
-" netrw
-"==============================================================================================
+" netrw {{{
 "let g:netrw_winsize="30"
 "let g:netrw_altv=1
 let g:netrw_preview  = 1
@@ -472,52 +427,39 @@ let g:netrw_browse_split=4   " 1,2,3,4
 let g:netrw_menu=0
 let g:netrw_use_errorwindow=0
 let g:netrw_banner=0
+"}}}
 
-"==============================================================================================
-"  pydiction
-"==============================================================================================
-let g:pydiction_location='d:/Vim/vimfiles/complete-dict'
-"attention <C-F4> is run for script language
+"  pydiction {{{
+if MySys() == 'windows'
+    let g:pydiction_location='d:/Vim/vimfiles/complete-dict'
+else
+    let g:pydiction_location='~/.vim/complete-dict'
+endif
+" attention <C-F4> is run for script language
+"}}}
 
-"==============================================================================================
-" tcomment
-"==============================================================================================
+" tcomment {{{
 let g:tcommentMapLeader1='<c-f>'
+"}}}
 
-"==============================================================================================
-" surround
-"==============================================================================================
+" surround {{{
 xmap s S
+" }}}
 
-"==============================================================================================
-" MRU
-"==============================================================================================
-if MySys() == 'windows' 
+" MRU {{{
+if MySys() == 'windows'
     let MRU_File = 'd:\Vim\vimfiles\_vim_mru_files'
     let MRU_Exclude_Files = '^c:\\temp\\.*'           " For MS-Windows
 else
-    let MRU_File = '~\.vim_mru_files'
+    let MRU_File = '~/.vim/.vim_mru_files'
     let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
 endif
 "let MRU_Include_Files = '\.c$\|\.h$'
 let MRU_Auto_Close = 1
 let MRU_Add_Menu = 0
+"}}}
 
-"==============================================================================================
-" fufzyFinder
-"==============================================================================================
-" nnoremap <m-n> :FufFile!<cr>
-" inoremap <m-n> <esc>:FufFile!<cr>
-
-"==============================================================================================
-" sparkup
-"==============================================================================================
-" let g:sparkupExecuteMapping='<c-y>'
-" let g:sparkupNextMapping='<c-n>'
-
-"==============================================================================================
-" ControlP
-"==============================================================================================
+" ControlP {{{
 let g:ctrlp_map = '<m-N>'
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_match_window_reversed=0
@@ -541,62 +483,14 @@ let g:ctrlp_cache_dir=$VIM.'/vimfiles/ctrlp'
 let g:ctrlp_max_files=0
 let g:ctrlp_arg_map=1
 inoremap <m-N> <esc>:CtrlP<cr>
+" }}}
 
-"==============================================================================================
-" vundle
-"==============================================================================================
-if MySys() == 'linux'
-    set rtp+=~/.vim/bundle/vundle
-    call vundle#rc()
-    " required! 
-    Bundle 'gmarik/vundle'
-    Bundle 'kien/ctrlp.vim'
-    Bundle 'majutsushi/tagbar'
-    Bundle 'vim-scripts/mru.vim'
-    Bundle 'Lokaltog/vim-easymotion'
-    " Utilities
-    Bundle "tsaleh/vim-matchit"
-    Bundle 'Raimondi/delimitMate'
-    Bundle 'vim-scripts/tComment'
-    Bundle 'vim-scripts/vim-easy-align'
-    " Universal Syntax Checker + Completion
-    Bundle 'vim-scripts/UltiSnips'
-    Bundle 'scrooloose/syntastic'
-    Bundle "vim-scripts/indentpython.vim"
-    Bundle "vim-scripts/AutoComplPop"
-    Bundle "mbriggs/mark.vim"
-    Bundle 'vimwiki/vimwiki'
-    Bundle 'pythoncomplete'
-    Bundle 'vim-scripts/Pydiction'
-    Bundle 'hasifumi/visualmark'
-    Bundle 'vim-scripts/python_fold'
-    Bundle 'vim-scripts/a.vim'
-    Bundle 'vim-scripts/OmniCppComplete'
-    Bundle 'tpope/vim-surround'
-    Bundle 'mattn/emmet-vim'
-endif
-
-"==============================================================================================
-" checksyntax disable it
-"==============================================================================================
+" checksyntax disable it {{{
 let g:checksyntax_key_single="<c-,>"
 let g:checksyntax_key_all="<c-,>"
+"}}}
 
-"==============================================================================================
-" ultisnips
-"==============================================================================================
-" let g:UltiSnipsListSnippets='<m-l>'
-" let g:UltiSnipsEditSplit = 'vertical'
-" let g:UltiSnipsUsePythonVersion = 3
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" let g:UltiSnipsListSnippets='<c-tab>'
-" let g:acp_behaviorSnipmateLength = 1 " add ultisnips with acp support
-
-"==============================================================================================
-" tagbar
-"==============================================================================================
+" tagbar {{{
 let g:tagbar_left = 1
 let g:tagbar_width = 30
 let g:tagbar_autofocus = 1
@@ -604,26 +498,25 @@ let g:tagbar_autoshowtag = 1
 let g:tagbar_indent = 1
 nnoremap <m-m> :TagbarOpenAutoClose<cr>
 nnoremap <m-M> :TagbarToggle<cr>
+"}}}
 
-"==============================================================================================
-" syntastic
-"==============================================================================================
+" syntastic {{{
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': ['lua', 'javascript', 'python'],
                            \ 'passive_filetypes': ['puppet'] }
-let g:syntastic_quiet_warnings = 0
+" let g:syntastic_quiet_warnings = 0
+" let g:syntastic_quiet_messages = {'level' : 'warnings'}
 let g:syntastic_enable_signs = 0
 " let g:syntastic_debug = 1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_python_checkers = ['pyflakes']
 let g:syntastic_javascript_checkers = ['jsl']
+" }}}
 
-"==============================================================================================
-" vimwiki
-"==============================================================================================
+" vimwiki {{{
 let g:vimwiki_use_mouse = 1
 let g:vimwiki_folding = 'list'
 " let g:vimwiki_list      = [{'path': 'D:/vimwiki/person/', 'path_html': 'D:/vimwiki/person/html/', 'template_path': 'D:/vimwiki/template/', 'template_default': 'template'},
@@ -642,33 +535,128 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown',
 			\ '.mkd': 'markdown',
 			\ '.wiki': 'media'}
 let g:vimwiki_html_header_numbering = 2
+"}}}
 
-"==============================================================================================
-" easy-align
-"==============================================================================================
+" easy-align {{{
 xnoremap <silent> <cr> :EasyAlign<cr>
+" }}}
 
-"==============================================================================================
-" snipMate
-"==============================================================================================
+" snipMate {{{
 " ino  <tab> <c-r>=TriggerSnippet()<cr>
 " snor <tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
+" }}}
 
-"==============================================================================================
-" emmet
-"==============================================================================================
+" emmet {{{
 let g:user_emmet_settings = {'indentation' : '    ' } 
 " let g:user_emmet_leader_key = '<m-n>'
+"}}}
 
-"==============================================================================================
-" delimitMate c-g g jump out to end
-"==============================================================================================
-au FileType vim,html let b:delimitMate_matchpairs = "(:),[:],{:},':'"
+" delimitMate c-g g jump out to end {{{
+au FileType vim,html let b:delimitMate_matchpairs = "(:),[:],{:}"
 augroup scheme 
     autocmd!
     au FileType scheme,lisp let b:delimitMate_quotes = "\"" 
     au FileType scheme,lisp setlocal tabstop=2
 augroup END
+"}}}
+
+" grep.vim {{{
+if MySys() == 'windows'
+    let Grep_Find_Path= 'findex'
+endif
+function! FindLuaInWorkPath()
+    let pattern=expand("<cword>")
+    let cwd = getcwd()
+    if g:Grep_Cygwin_Find == 1
+        let cwd = substitute(cwd, "\\", "/", "g")
+    endif
+    if has('win32') && !has('win32unix') && !has('win95')
+        let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name "*.lua" | xargs grep -in "\\<' . pattern . '\\>"'
+        echo cmd
+    endif
+    call s:RunGrepCmd(cmd, pattern, "")
+endfunction
+
+function! FindInWorkPathVisual()
+    let pattern=Get_visual_selection()
+    let cwd = getcwd()
+    if g:Grep_Cygwin_Find == 1
+        let cwd = substitute(cwd, "\\", "/", "g")
+    endif
+    if has('win32') && !has('win32unix') && !has('win95')
+        " let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name '. '"*.lua" '. '| xargs grep -in "' . pattern . '"'
+        let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name ' . '"*.c *.h *.cpp" ' . '| xargs grep -in "' . pattern . '"'
+        echo cmd
+    endif
+    call s:RunGrepCmd(cmd, pattern, "")
+endfunction
+
+noremap <M-F> :call FindLuaInWorkPath() <cr>
+inoremap <M-F> <esc>:call FindLuaInWorkPath() <cr>
+xnoremap <M-F> <esc>:call FindInWorkPathVisual() <cr>
+" }}}
+
+" vundle {{{
+if MySys() == 'windows'
+    set rtp+=$Vim/vimfiles/bundle/Vundle.vim/
+    let path='$Vim/vundle'
+    call vundle#begin(path)
+else
+    set rtp+=~/.vim/bundle/Vundle.vim/
+    call vundle#begin()
+endif
+Bundle 'gmarik/vundle'
+Bundle 'vim-scripts/L9'
+Bundle 'taxilian/a.vim'
+Bundle 'othree/vim-autocomplpop'
+Bundle 'itchyny/calendar.vim'
+Bundle 'tomtom/checksyntax_vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'Raimondi/delimitMate'
+Bundle 'mattn/emmet-vim'
+Bundle 'othree/html5.vim'
+Bundle 'othree/html5-syntax.vim'
+Bundle "msanders/snipmate.vim"
+Bundle 'vim-scripts/tornadotmpl.vim'
+Bundle "vim-scripts/indentpython.vim"
+Bundle "mbriggs/mark.vim"
+Bundle 'vim-scripts/mru.vim'
+Bundle 'vim-scripts/OmniCppComplete'
+Bundle 'rkulla/pydiction'
+" Bundle 'vim-scripts/pydoc.vim'
+" Bundle 'pythoncomplete'
+Bundle 'vim-scripts/python_fold'
+Bundle 'scrooloose/syntastic'
+Bundle 'majutsushi/tagbar'
+Bundle 'vim-scripts/tComment'
+Bundle 'vim-scripts/vim-easy-align'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle "edsono/vim-matchit"
+Bundle 'tpope/vim-surround'
+Bundle 'vimwiki/vimwiki'
+Bundle 'vim-scripts/visualMarks.vim'
+Bundle 'fholgado/minibufexpl.vim'
+Plugin 'javascript.vim'
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'vim-scripts/grep.vim'
+call vundle#end()
+"}}}
+
+"""{{{
+filetype plugin indent on       "根据文件类型定义缩进
+filetype plugin on              "使用文件类型插件
+colorscheme molokai
+
+" set wildignore+=doc            " should not break helptags
+set wildignore+=.git           " should not break clone
+set wildignore+=.git/*         " should not break clone
+set wildignore+=README
+set wildignore+=*.md
+set wildignore+=*.markdown
+set wildignore+=.gitignore
+" set wildignore+=doc/*        " should not break clone
+" set wildignore+=*/doc/*
+"}}}
 
 "==============================================================================================
 " Note and change log
