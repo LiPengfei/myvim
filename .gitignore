@@ -7,4 +7,5 @@ vimfiles/ctrlp/mru/cache.txt
 vundle/
 vimfiles/bundle/
 vim73/
+vim74/
 *.swp

@@ -597,49 +597,49 @@ xnoremap <M-F> <esc>:call FindInWorkPathVisual() <cr>
 " }}}
 
 " vundle {{{
-if MySys() == 'windows'
-    set rtp+=$Vim/vimfiles/bundle/Vundle.vim/
-    let path='$Vim/vundle'
-    call vundle#begin(path)
-else
-    set rtp+=~/.vim/bundle/Vundle.vim/
-    call vundle#begin()
-endif
-Bundle 'gmarik/vundle'
-Bundle 'vim-scripts/L9'
-Bundle 'taxilian/a.vim'
-Bundle 'othree/vim-autocomplpop'
-Bundle 'itchyny/calendar.vim'
-Bundle 'tomtom/checksyntax_vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'mattn/emmet-vim'
-Bundle 'othree/html5.vim'
-Bundle 'othree/html5-syntax.vim'
-Bundle "msanders/snipmate.vim"
-Bundle 'vim-scripts/tornadotmpl.vim'
-Bundle "vim-scripts/indentpython.vim"
-Bundle "mbriggs/mark.vim"
-Bundle 'vim-scripts/mru.vim'
-Bundle 'vim-scripts/OmniCppComplete'
-Bundle 'rkulla/pydiction'
-" Bundle 'vim-scripts/pydoc.vim'
-" Bundle 'pythoncomplete'
-Bundle 'vim-scripts/python_fold'
-Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
-Bundle 'vim-scripts/tComment'
-Bundle 'vim-scripts/vim-easy-align'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle "edsono/vim-matchit"
-Bundle 'tpope/vim-surround'
-Bundle 'vimwiki/vimwiki'
-Bundle 'vim-scripts/visualMarks.vim'
-Bundle 'fholgado/minibufexpl.vim'
-Plugin 'javascript.vim'
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'vim-scripts/grep.vim'
-call vundle#end()
+" if MySys() == 'windows'
+"     set rtp+=$Vim/vimfiles/bundle/Vundle.vim/
+"     let path='$Vim/vundle'
+"     call vundle#begin(path)
+" else
+"     set rtp+=~/.vim/bundle/Vundle.vim/
+"     call vundle#begin()
+" endif
+" Bundle 'gmarik/vundle'
+" Bundle 'vim-scripts/L9'
+" Bundle 'taxilian/a.vim'
+" Bundle 'othree/vim-autocomplpop'
+" Bundle 'itchyny/calendar.vim'
+" Bundle 'tomtom/checksyntax_vim'
+" Bundle 'kien/ctrlp.vim'
+" Bundle 'Raimondi/delimitMate'
+" Bundle 'mattn/emmet-vim'
+" Bundle 'othree/html5.vim'
+" Bundle 'othree/html5-syntax.vim'
+" Bundle "msanders/snipmate.vim"
+" Bundle 'vim-scripts/tornadotmpl.vim'
+" Bundle "vim-scripts/indentpython.vim"
+" Bundle "mbriggs/mark.vim"
+" Bundle 'vim-scripts/mru.vim'
+" Bundle 'vim-scripts/OmniCppComplete'
+" Bundle 'rkulla/pydiction'
+" " Bundle 'vim-scripts/pydoc.vim'
+" " Bundle 'pythoncomplete'
+" Bundle 'vim-scripts/python_fold'
+" Bundle 'scrooloose/syntastic'
+" Bundle 'majutsushi/tagbar'
+" Bundle 'vim-scripts/tComment'
+" Bundle 'vim-scripts/vim-easy-align'
+" Bundle 'Lokaltog/vim-easymotion'
+" Bundle "edsono/vim-matchit"
+" Bundle 'tpope/vim-surround'
+" Bundle 'vimwiki/vimwiki'
+" Bundle 'vim-scripts/visualMarks.vim'
+" Bundle 'fholgado/minibufexpl.vim'
+" Plugin 'javascript.vim'
+" Plugin 'maksimr/vim-jsbeautify'
+" Plugin 'vim-scripts/grep.vim'
+" call vundle#end()
 "}}}
 
 """{{{
