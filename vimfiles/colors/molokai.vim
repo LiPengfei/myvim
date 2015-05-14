@@ -225,3 +225,49 @@ hi PmenuSel guibg=#ffff40 guifg=Black gui=none
 hi Comment         guifg=#bbbbbb guibg=bg      gui=italic
 highlight WhitespaceEOL ctermbg=black guibg=black
 match WhitespaceEOL /\s\+$/
+
+
+"==============================================================================================
+" common colors
+"==============================================================================================
+hi User2 guibg=White guifg=#00608B gui=bold
+hi User3 guibg=#008096 guifg=White gui=bold
+hi User4 guibg=#008096 guifg=#BFEFFF gui=none
+hi User5 guibg=#BFEFFF guifg=#00608B gui=bold
+"VISUAL mode show mode
+hi User6 gui=bold guibg=orange guifg=#8B1A1A gui=bold
+"SELECT and Repalce mode show mode
+hi User7 gui=bold guifg=White guibg=Red gui=bold
+"Normal mode show mode fileName guibg guifg percent ln
+hi User2 guibg=#7AC527 guifg=#117511 gui=bold
+hi User3 guibg=#404040 guifg=White gui=bold
+hi User4 guibg=#404040 guifg=#C9C9C9 gui=none
+hi User5 guibg=#C9C9C9 guifg=#404040 gui=bold
+hi link User1 User3
+
+augroup molokai_hi_status
+    autocmd!
+    au InsertEnter * hi User2 guibg=White guifg=#00608B gui=bold
+    au InsertEnter * hi User3 guibg=#008096 guifg=White gui=bold
+    au InsertEnter * hi User4 guibg=#008096 guifg=#BFEFFF gui=none
+    au InsertEnter * hi User5 guibg=#BFEFFF guifg=#00608B gui=bold
+    au InsertEnter * hi StatusLine guibg=#00608B guifg=#BFEFFF gui=none
+    au InsertEnter * hi link User1 User3
+    au InsertLeave * hi User2 guibg=#7AC527 guifg=#117511 gui=bold
+    au InsertLeave * hi User3 guibg=#404040 guifg=White gui=bold
+    au InsertLeave * hi User4 guibg=#404040 guifg=#C9C9C9 gui=none
+    au InsertLeave * hi User5 guibg=#C9C9C9 guifg=#404040 gui=bold
+    au InsertLeave * hi StatusLine guibg=#2B2B2B guifg=#C9C9C9 ctermfg=238 ctermbg=253 gui=none
+    au InsertLeave * hi link User1 User3
+" endif
+augroup END
+
+" for minibufexpl {{{ 
+highlight MBENormal guifg=LightBlue
+highlight MBEChanged guifg=Red
+highlight MBEVisibleNormal term=bold cterm=bold gui=bold guifg=LightGreen
+highlight MBEVisibleChanged term=bold cterm=bold gui=bold guifg=Green
+highlight MBEVisibleActiveNormal term=bold cterm=bold gui=bold guifg=Green
+highlight MBEVisibleActiveChanged term=bold cterm=bold gui=bold guifg=Green
+" }}}
+
