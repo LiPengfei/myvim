@@ -1,5 +1,6 @@
 set ts=4                        "tab键空格个数
 set expandtab                   "tab转为空格 
+set cinoptions={0,:0,g0,l1,t0,(0 " 访问缩进
 
 nnoremap <buffer> <C-F1> :call Do_CsTag()<CR>
 inoremap <buffer> <C-F1> <Esc>:call Do_CsTag()<CR><CR>a
@@ -124,4 +125,3 @@ inoremap <buffer> <C-;> <C-O>A;
 "====================================================
 iabbrev <buffer> Include include
 iabbrev <buffer> inlcude include
-
