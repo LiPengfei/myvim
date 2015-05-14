@@ -7,3 +7,4 @@ vim73/
 vim74/
 ./vundle/
 *.swp
+.netrwhist
