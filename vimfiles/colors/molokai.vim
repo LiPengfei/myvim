@@ -226,7 +226,6 @@ hi Comment         guifg=#bbbbbb guibg=bg      gui=italic
 highlight WhitespaceEOL ctermbg=black guibg=black
 match WhitespaceEOL /\s\+$/
 
-
 "==============================================================================================
 " common colors
 "==============================================================================================
@@ -270,4 +269,3 @@ highlight MBEVisibleChanged term=bold cterm=bold gui=bold guifg=Green
 highlight MBEVisibleActiveNormal term=bold cterm=bold gui=bold guifg=Green
 highlight MBEVisibleActiveChanged term=bold cterm=bold gui=bold guifg=Green
 " }}}
-

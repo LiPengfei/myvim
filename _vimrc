@@ -66,9 +66,11 @@ function! SimpleTag()
 endfunction
 
 function! MySetCurrentPath()
+    let l:path = bufname("%")
     if MySys() == "windows"
-        let l:path = bufname("%")
         let l:pathdir = substitute(l:path, '\\[^\\]\+$','','')
+	else
+            let l:pathdir = substitute(l:path, '/[^/]\+$', '','')
     endif
     if l:path != l:pathdir
         exec 'cd '.l:pathdir
@@ -148,7 +150,7 @@ set foldlevel=1
 set foldmethod=indent
 set diffopt+=vertical
 set fileencodings=utf-8,cp936
-set fileencoding=utf-8
+set fileencoding=cp936
 set list
 set listchars=tab:\|\ ,extends:>,precedes:<
 set nocompatible                "make it vim style, not vi style
@@ -200,9 +202,11 @@ set pastetoggle=<F3>
 set iskeyword&
 set iskeyword+=	    
 if MySys() == 'windows'
-     set guifont=monaco:h11
+     set guifont=monaco:h10
 else
-    set guifont=Courier\ new\ 13
+    " set guifont=Courier\ new\ 13
+    set guifont=monaco\ 12
+    set guifontwide=Kaiti\ 14
 endif
 "}}}
 
@@ -302,12 +306,8 @@ nnoremap <leader>wn :%s/\<<c-r>=expand("<cword>")<cr>\>//gn<cr>
 xnoremap <leader>f  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//g<left><left>
 xnoremap <leader>fc  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//gc<left><left><left>
 xnoremap <m-g>    :tag <c-r>=Get_visual_selection()<cr><cr>
-if MySys() == 'windows'
-    inoremap <C-V> <MiddleMouse>
-else
-    inoremap <C-V> <MiddleMouse>
-end
-"}}}
+inoremap <C-V> <MiddleMouse>
+
 
 " autocmd {{{
 augroup common_au
@@ -360,7 +360,6 @@ command! Spj :call SaveProject()
 "}}}
 
 " omnicppcomplete {{{
-let OmniCpp_ShowPrototypeInAbbr = 1
 let OmniCpp_MayCompleteDot = 1 " autocomplete with .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete with ::
@@ -417,7 +416,7 @@ let g:Lua_AuthorName = 'lipengfei'
 "}}}
 
 " netrw {{{
-"let g:netrw_winsize="30"
+let g:netrw_winsize=40
 "let g:netrw_altv=1
 let g:netrw_preview  = 1
 let g:netrw_liststyle = 1
@@ -451,7 +450,7 @@ if MySys() == 'windows'
     let MRU_File = 'd:\Vim\vimfiles\_vim_mru_files'
     let MRU_Exclude_Files = '^c:\\temp\\.*'           " For MS-Windows
 else
-    let MRU_File = '~/.vim/.vim_mru_files'
+    let MRU_File = '~/.vim_mru_files'
     let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
 endif
 "let MRU_Include_Files = '\.c$\|\.h$'
@@ -464,7 +463,7 @@ let g:ctrlp_map = '<m-N>'
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_max_height=30
-let g:ctrlp_by_filename=1
+let g:ctrlp_by_filename=0
 let g:ctrlp_regexp=1
 let g:ctrlp_reuse_window='help\|quickfix'
 let g:ctrlp_custom_ignore = {
@@ -474,15 +473,24 @@ let g:ctrlp_custom_ignore = {
     \ }
 let g:ctrlp_open_new_file='r'
 let g:ctrlp_open_multiple_files='i'
-" let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_working_path_mode = 'wr'
 "let g:ctrlp_root_makers=['.git', '.svn', '.hg', 'bzr', '_darcs']
 "press F5 quick refresh chache
 let g:ctrlp_clear_cache_on_exit=1
-let g:ctrlp_cache_dir=$VIM.'/vimfiles/ctrlp'
+let g:ctrlp_lazy_update = 1
+if MySys() == "windows"
+    let g:ctrlp_cache_dir=$VIM.'/vimfiles/ctrlp'
+else
+    let g:ctrlp_cache_dir=~/.ctrlp/
+endif
 let g:ctrlp_max_files=0
 let g:ctrlp_arg_map=1
 inoremap <m-N> <esc>:CtrlP<cr>
+" simple help
+" <c-d> troggle model file or path
+" <c-r> troggle model regex
+" <c-f> <c-b> search from change file mru or buffer
+" <c-z> mark  <c-o> open
 " }}}
 
 " checksyntax disable it {{{
@@ -514,6 +522,7 @@ let g:syntastic_enable_signs = 0
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_python_checkers = ['pyflakes']
 let g:syntastic_javascript_checkers = ['jsl']
+let g:syntastic_cpp_compiler_options = '-std=c++11'
 " }}}
 
 " vimwiki {{{
@@ -522,11 +531,16 @@ let g:vimwiki_folding = 'list'
 " let g:vimwiki_list      = [{'path': 'D:/vimwiki/person/', 'path_html': 'D:/vimwiki/person/html/', 'template_path': 'D:/vimwiki/template/', 'template_default': 'template'},
             " \{'path': 'D:/vimwiki/linux/', 'path_html': 'D:/vimwiki/linux/html/', 'template_path': 'D:/vimwiki/template/', 'template_default': 'template'}]
 " let g:vimwiki_list      = [{'path': 'D:/vimwiki/person/', 'path_html': 'D:/vimwiki/person/html/'}]
-let g:vimwiki_list = [{'path': 'd:/vimwiki/person/',
-			\ 'template_path': 'd:/vimwiki/public_html/templates/',
+if MySys()== "windows"
+   let path = 'd:/'
+else
+   let path = '~/.vim/'
+endif
+let g:vimwiki_list = [{'path': path . 'vimwiki/person/',
+			\ 'template_path': path . 'vimwiki/public_html/templates/',
 			\ 'template_default': 'template',
 			\ 'template_ext': '.html'},
-			\ {'path': "d:/vimwiki/mkdown/", 
+			\ {'path': path . "vimwiki/mkdown/", 
 			\ 'syntax': 'markdown', 'ext': '.md', 'template_ext': 'html',}]
 nmap <c-w><c-x> <Plug>VimwikiToggleListItem
 let g:vimwiki_hl_headers = 1
@@ -596,51 +610,6 @@ inoremap <M-F> <esc>:call FindLuaInWorkPath() <cr>
 xnoremap <M-F> <esc>:call FindInWorkPathVisual() <cr>
 " }}}
 
-" vundle {{{
-" if MySys() == 'windows'
-"     set rtp+=$Vim/vimfiles/bundle/Vundle.vim/
-"     let path='$Vim/vundle'
-"     call vundle#begin(path)
-" else
-"     set rtp+=~/.vim/bundle/Vundle.vim/
-"     call vundle#begin()
-" endif
-" Bundle 'gmarik/vundle'
-" Bundle 'vim-scripts/L9'
-" Bundle 'taxilian/a.vim'
-" Bundle 'othree/vim-autocomplpop'
-" Bundle 'itchyny/calendar.vim'
-" Bundle 'tomtom/checksyntax_vim'
-" Bundle 'kien/ctrlp.vim'
-" Bundle 'Raimondi/delimitMate'
-" Bundle 'mattn/emmet-vim'
-" Bundle 'othree/html5.vim'
-" Bundle 'othree/html5-syntax.vim'
-" Bundle "msanders/snipmate.vim"
-" Bundle 'vim-scripts/tornadotmpl.vim'
-" Bundle "vim-scripts/indentpython.vim"
-" Bundle "mbriggs/mark.vim"
-" Bundle 'vim-scripts/mru.vim'
-" Bundle 'vim-scripts/OmniCppComplete'
-" Bundle 'rkulla/pydiction'
-" " Bundle 'vim-scripts/pydoc.vim'
-" " Bundle 'pythoncomplete'
-" Bundle 'vim-scripts/python_fold'
-" Bundle 'scrooloose/syntastic'
-" Bundle 'majutsushi/tagbar'
-" Bundle 'vim-scripts/tComment'
-" Bundle 'vim-scripts/vim-easy-align'
-" Bundle 'Lokaltog/vim-easymotion'
-" Bundle "edsono/vim-matchit"
-" Bundle 'tpope/vim-surround'
-" Bundle 'vimwiki/vimwiki'
-" Bundle 'vim-scripts/visualMarks.vim'
-" Bundle 'fholgado/minibufexpl.vim'
-" Plugin 'javascript.vim'
-" Plugin 'maksimr/vim-jsbeautify'
-" Plugin 'vim-scripts/grep.vim'
-" call vundle#end()
-"}}}
 
 """{{{
 filetype plugin indent on       "根据文件类型定义缩进
@@ -658,9 +627,7 @@ set wildignore+=.gitignore
 " set wildignore+=*/doc/*
 "}}}
 
-"==============================================================================================
-" Note and change log
-"==============================================================================================
+" Note and change log {{{
 " 1. change vim74\ftplugin\python.vim python 2 python3        2013-10-15
 "    installed pyflakes for syntastic
 
@@ -678,10 +645,12 @@ set wildignore+=.gitignore
 " 5. add html5.vim and html5-syntax plugin                   2013-10-27
 "
 " 6. add function to change pythonomnifunc from 2 to 3 or 3 to 2, and add " command for it.  :P2 and :P3. 
-" add ,pc to close preview windoe                            2013-11-07
+" add ,pc to close preview window                            2013-11-07
 "
 " 7. add {% %} for tornado syntax                            2014-07-28
+     add grep.vim for linux                                  2014-09-15
 
 " 8. add search map number                                   2014-10-28
 
 " 9. remove pydoc                                            2015-05-12
+" }}}
