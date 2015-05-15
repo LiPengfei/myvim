@@ -696,7 +696,7 @@ set wildignore+=.gitignore
 " add ,pc to close preview window                            2013-11-07
 "
 " 7. add {% %} for tornado syntax                            2014-07-28
-     add grep.vim for linux                                  2014-09-15
+"    add grep.vim for linux                                  2014-09-15
 
 " 8. add search map number                                   2014-10-28
 
