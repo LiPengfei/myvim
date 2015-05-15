@@ -83,7 +83,8 @@ function! Do_CsTag()
         if(MySys()!='windows')
             silent! execute "!find . -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
         else
-            silent! execute "!dir /s/b *.hpp *.c,*.cpp,*.h,* >> cscope.files"
+            let cwd = getcwd()
+            silent! execute "!findex.exe " . cwd . " -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp  -o ! -path \"./DevEnv/*\" -o ! -path \"./.git/*\"' > cscope.files"
         endif
             silent! execute "!cscope -bq"
         execute "normal :"

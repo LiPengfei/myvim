@@ -19,7 +19,7 @@ function! ChangePythonVersion(ver)
         set omnifunc = python3complete#Complete
 endfunction
 function! MySys()
-    return "linux"
+    return "windows"
 endfunction
 
 function! ToggleNu()
@@ -150,7 +150,7 @@ set foldlevel=1
 set foldmethod=indent
 set diffopt+=vertical
 set fileencodings=utf-8,cp936
-set fileencoding=utf-8
+set fileencoding=cp936
 set list
 set listchars=tab:\|\ ,extends:>,precedes:<
 set nocompatible                "make it vim style, not vi style
@@ -308,27 +308,8 @@ xnoremap <leader>fc  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//gc<left><left><l
 xnoremap <m-g>    :tag <c-r>=Get_visual_selection()<cr><cr>
 inoremap <C-V> <MiddleMouse>
 
-"==============================================================================================
-" common colors
-"==============================================================================================
-hi User2 guibg=White guifg=#00608B gui=bold
-hi User3 guibg=#008096 guifg=White gui=bold
-hi User4 guibg=#008096 guifg=#BFEFFF gui=none
-hi User5 guibg=#BFEFFF guifg=#00608B gui=bold
-"VISUAL mode show mode
-hi User6 gui=bold guibg=orange guifg=#8B1A1A gui=bold
-"SELECT and Repalce mode show mode
-hi User7 gui=bold guifg=White guibg=Red gui=bold
-"Normal mode show mode fileName guibg guifg percent ln
-hi User2 guibg=#7AC527 guifg=#117511 gui=bold
-hi User3 guibg=#404040 guifg=White gui=bold
-hi User4 guibg=#404040 guifg=#C9C9C9 gui=none
-hi User5 guibg=#C9C9C9 guifg=#404040 gui=bold
-hi link User1 User3
 
-"==============================================================================================
-" autocmd
-"==============================================================================================
+" autocmd {{{
 augroup common_au
     autocmd!
     au VIMENTER * silent exec "set vb t_vb="
@@ -435,7 +416,7 @@ let g:Lua_AuthorName = 'lipengfei'
 "}}}
 
 " netrw {{{
-let g:netrw_winsize=30
+let g:netrw_winsize=40
 "let g:netrw_altv=1
 let g:netrw_preview  = 1
 let g:netrw_liststyle = 1
@@ -482,7 +463,7 @@ let g:ctrlp_map = '<m-N>'
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_max_height=30
-let g:ctrlp_by_filename=1
+let g:ctrlp_by_filename=0
 let g:ctrlp_regexp=1
 let g:ctrlp_reuse_window='help\|quickfix'
 let g:ctrlp_custom_ignore = {
@@ -496,10 +477,19 @@ let g:ctrlp_working_path_mode = 'wr'
 "let g:ctrlp_root_makers=['.git', '.svn', '.hg', 'bzr', '_darcs']
 "press F5 quick refresh chache
 let g:ctrlp_clear_cache_on_exit=1
-let g:ctrlp_cache_dir=$VIM.'/vimfiles/ctrlp'
+let g:ctrlp_lazy_update = 1
+if MySys() == "windows"
+    let g:ctrlp_cache_dir=$VIM.'/vimfiles/ctrlp'
+else
+    let g:ctrlp_cache_dir=~/.ctrlp/
 let g:ctrlp_max_files=0
 let g:ctrlp_arg_map=1
 inoremap <m-N> <esc>:CtrlP<cr>
+" simple help
+" <c-d> troggle model file or path
+" <c-r> troggle model regex
+" <c-f> <c-b> search from change file mru or buffer
+" <c-z> mark  <c-o> open
 " }}}
 
 " checksyntax disable it {{{
@@ -532,7 +522,7 @@ let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_python_checkers = ['pyflakes']
 let g:syntastic_javascript_checkers = ['jsl']
 let g:syntastic_cpp_compiler_options = '-std=c++11'
-
+" }}}
 
 " vimwiki {{{
 let g:vimwiki_use_mouse = 1
