@@ -450,7 +450,7 @@ if MySys() == 'windows'
     let MRU_File = 'd:\Vim\vimfiles\_vim_mru_files'
     let MRU_Exclude_Files = '^c:\\temp\\.*'           " For MS-Windows
 else
-    let MRU_File = $HOME . '/.vim_mru_files'
+    let MRU_File = '~/.vim_mru_files'
     let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
 endif
 "let MRU_Include_Files = '\.c$\|\.h$'
@@ -696,38 +696,9 @@ set wildignore+=.gitignore
 " add ,pc to close preview window                            2013-11-07
 "
 " 7. add {% %} for tornado syntax                            2014-07-28
+     add grep.vim for linux                                  2014-09-15
 
-" 8. ctrlp simple help 2014-09-15
-"  <c-d> choose path or file
-"  <c-r> chosse regexp or no
-"  <c-f> 'forward'
-"  <c-b> 'back'
-"  <c-c> <esc> exit
-"  <c-a> <c-e> head and tail
-"  <c-u> <c-w> as vim
-"  <c-n> <c-p> see history
-"  single: let g:ctrlp_open_new_file = 'v'
-    "  t - in a new tab.
-    "  h - in a new horizontal split.
-    "  v - in a new vertical split.
-    "  r - in the current window.
-"  multi: let g:ctrlp_open_multiple_files = '2vjr'
-    "  t - each file in a new tab.
-    "  h - each file in a new horizontal split.
-    "  v - each file in a new vertical split.
-    "  i - all files as hidden buffers.
-    "  j - after opening, jump to the first opened tab or window.
-    "  r - open the first file in the current window, then the remaining files in
-    "      new splits or new tabs depending on which of "h", "v" and "t" is also
-    "      present.
+" 8. add search map number                                   2014-10-28
 
-    "<c-o> <c-y> open multiple with option
-    "<cr> with setting
-"   : CtrlPRTS  search in script and doc of vim
-
-" add grep.vim for linux   2014-09-15
-
-" 9. add search map number                                   2014-10-28
-
-" 10. remove pydoc                                            2015-05-12
+" 9. remove pydoc                                            2015-05-12
 " }}}
