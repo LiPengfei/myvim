@@ -80,19 +80,30 @@ function! Do_CsTag()
     endif
 
     if(executable('cscope') && has("cscope") )
+        " ver 1
         if(MySys()!='windows')
             silent! execute "!find . -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
         else
             let cwd = getcwd()
             silent! execute "!findex.exe " . cwd . " -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp  -o ! -path \"./DevEnv/*\" -o ! -path \"./.git/*\"' > cscope.files"
         endif
-            silent! execute "!cscope -bq"
+	
+	" ver 2
+	" if(MySys()!='windows')
+        "     " let l:cmd = "!find " . getcwd() . " -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
+        "     " silent! execute "!find . -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
+        "     " silent! execute l:cmd
+        " else
+        "     silent! execute "!dir /s/b *.hpp *.c,*.cpp,*.h,* >> cscope.files"
+        " endif
+            
+	silent! execute "!cscope -bq"
         execute "normal :"
 
         if filereadable("cscope.out")
             execute "cs add cscope.out"
         endif
-    endif
+     endif
 endfunction
 
 " cscope 不需要添加目录,你包含的目录会自动添加,很好
