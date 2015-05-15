@@ -5,6 +5,9 @@ vimfiles/*-dict*
 vimfiles/ctrlp/mru/cache.txt
 vim73/
 vim74/
+vundle/
 ./vundle/
+!vimfiles/bundle/Vundle.vim/autoload/vundle/*
 *.swp
 .netrwhist
+cache.txt

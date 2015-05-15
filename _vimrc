@@ -202,7 +202,7 @@ set pastetoggle=<F3>
 set iskeyword&
 set iskeyword+=	    
 if MySys() == 'windows'
-     set guifont=monaco:h11
+     set guifont=monaco:h10
 else
     " set guifont=Courier\ new\ 13
     set guifont=monaco\ 12
@@ -482,6 +482,7 @@ if MySys() == "windows"
     let g:ctrlp_cache_dir=$VIM.'/vimfiles/ctrlp'
 else
     let g:ctrlp_cache_dir=~/.ctrlp/
+endif
 let g:ctrlp_max_files=0
 let g:ctrlp_arg_map=1
 inoremap <m-N> <esc>:CtrlP<cr>
@@ -534,7 +535,7 @@ if MySys()== "windows"
    let path = 'd:/'
 else
    let path = '~/.vim/'
-end   
+endif
 let g:vimwiki_list = [{'path': path . 'vimwiki/person/',
 			\ 'template_path': path . 'vimwiki/public_html/templates/',
 			\ 'template_default': 'template',
