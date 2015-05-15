@@ -80,24 +80,42 @@ function! Do_CsTag()
     endif
 
     if(executable('cscope') && has("cscope") )
-        if(MySys()!='windows')
-            silent! execute "!find . -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
-        else
-            let cwd = getcwd()
-            silent! execute "!findex.exe " . cwd . " -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp  -o ! -path \"./DevEnv/*\" -o ! -path \"./.git/*\"' > cscope.files"
-        endif
-            silent! execute "!cscope -bq"
+    " now now now
+        " if(MySys()!='windows')
+        "     " let l:cmd = "!find " . getcwd() . " -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
+        "     " silent! execute "!find . -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
+        "     " silent! execute l:cmd
+        " else
+        "     silent! execute "!dir /s/b *.hpp *.c,*.cpp,*.h,* >> cscope.files"
+        " endif
+        " silent! execute "!cscope -bq"
+        silent! execute "!cscope -bR"
         execute "normal :"
 
         if filereadable("cscope.out")
             execute "cs add cscope.out"
         endif
+    
+    "ther is. which ? 
+       " if(MySys()!='windows')
+       "     silent! execute "!find . -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
+       " else
+       "     silent! execute "!dir /s/b *.hpp *.c,*.cpp,*.h,* >> cscope.files"
+       " endif
+       "     silent! execute "!cscope -bq"
+       " execute "normal :"
+
+       " if filereadable("cscope.out")
+       "     execute "cs add cscope.out"
+       " endif
     endif
 endfunction
 
+" cscope 不需要添加目录,你包含的目录会自动添加,很好
+
 if MySys() == 'windows'
-	setlocal tags+=C:/Program\\\ Files/Microsoft\\\ Visual\\\ Studio\\\ 11.0/VC/include/tags
-	setlocal tags+=C:/Program\\\ Files/MySQL/MySQL\\\ Server\\\ 5.0/include/tags
+    setlocal tags+=C:/Program\\\ Files/Microsoft\\\ Visual\\\ Studio\\\ 11.0/VC/include/tags
+    setlocal tags+=C:/Program\\\ Files/MySQL/MySQL\\\ Server\\\ 5.0/include/tags
     setlocal path+=C:/Program\\\ Files/Microsoft\\\ Visual\\\ Studio\\\ 11.0/VC/include
     setlocal path+=C:/Program\\\ Files/MySQL/MySQL\\\ Server\\\ 5.0/include
     setlocal path+=C:/Program\\\ Files/Lua/5.1/include
