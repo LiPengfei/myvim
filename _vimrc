@@ -140,6 +140,10 @@ function! MyDiff()
 endfunction
 "}}}
 
+" pathogen add for vundle bug {{{ add plugin in .vim/bundle
+execute pathogen#infect()
+" }}}
+
 " common config before vundle {{{
 let mapleader = ","
 filetype off
@@ -652,7 +656,7 @@ Bundle 'javascript.vim'
 Bundle 'maksimr/vim-jsbeautify'
 Bundle 'vim-scripts/grep.vim'
 Bundle 'mbbill/code_complete'
-Bundle 'vimerl'
+" Bundle 'vimerl'
 Bundle 'sh.vim'
 " Plugin 'vim-scripts/STL-improved'
 " Bundle 'vim-scripts/pydoc.vim'
@@ -664,6 +668,7 @@ call vundle#end()
 """{{{
 filetype plugin indent on       "根据文件类型定义缩进
 filetype plugin on              "使用文件类型插件
+filetype on
 colorscheme molokai
 
 " set wildignore+=doc            " should not break helptags
