@@ -665,7 +665,7 @@ Bundle "mbriggs/mark.vim"
 Bundle 'vim-scripts/mru.vim'
 Bundle "SirVer/ultisnips"
 Bundle 'honza/vim-snippets'
-Bundle 'rkulla/pydiction'
+" Bundle 'rkulla/pydiction'
 Bundle 'vim-scripts/python_fold'
 Bundle 'scrooloose/syntastic'
 Bundle 'majutsushi/tagbar'
@@ -681,6 +681,9 @@ Bundle 'maksimr/vim-jsbeautify'
 Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/sh.vim'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'vimerl'
+Bundle 'lipengfei'
+Bundle 'Vundle.vim'
 " Plugin 'Valloric/ListToggle'
 " Bundle "msanders/snipmate.vim"
 " Bundle 'vim-scripts/OmniCppComplete'
