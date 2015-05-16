@@ -83,6 +83,7 @@ endfunction
 
 function! MyGoBackPath()
     exec 'cd -'
+    exec 'pwd'
 endfunction
 
 function! IsExitProjectFile()
