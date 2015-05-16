@@ -6,9 +6,13 @@ vimfiles/ctrlp/mru/cache.txt
 vim73/
 vim74/
 vundle/
+bundle/
 ./vundle/
 .git
-!vimfiles/bundle/Vundle.vim/autoload/vundle/*
+!vimfiles/bundle/Vundle.vim/autoload/vundle/
+!lipengfei/
 *.swp
+*.swo
+*.swt
 .netrwhist
 cache.txt

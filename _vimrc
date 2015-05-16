@@ -107,10 +107,6 @@ function! SaveProject()
     exec "wviminfo .viminfo"
 endfunction
 
-" function! GetSnipsInCurrentScope()
-"     return UltiSnips_SnippetsInCurrentScope()
-" endfunction
-
 function CscopeTips()
     echo 's: symbol, g: define, d: what I call, c: where call me, e:find word, f:open file, i: open file contains me'
 endfunction
@@ -160,7 +156,7 @@ set list
 set listchars=tab:\|\ ,extends:>,precedes:<
 set nocompatible                "make it vim style, not vi style
 set backspace=indent,eol,start  "set <BC> key
-set autoindent                  "set ×Ô¶¯Ëõ½ø(auto indent)
+set autoindent                  "set è‡ªåŠ¨ç¼©è¿›(auto indent)
 set incsearch                   "Search increase
 set hlsearch                    "Search highlight
 set magic                       " pattern mode
@@ -170,19 +166,19 @@ set history=400                  "set command history 50 and seach history 50
 set ruler                       "set show cursor position at right bottom
 set showcmd                     "help you use command mode easily
 set nobackup
-set shiftwidth=4                "×Ô¶¯Ëõ½ø4¸ñ
+set shiftwidth=4                "è‡ªåŠ¨ç¼©è¿›4æ ¼
 set tabstop=4
 set softtabstop=4
 set expandtab
-set autowrite                   "×Ô¶¯±£´æ
-set nu                          "ÏÔÊ¾ĞĞºÅ
-" set rnu                         "ÏÔÊ¾Ïà¶ÔĞĞºÅ
+set autowrite                   "è‡ªåŠ¨ä¿å­˜
+set nu                          "æ˜¾ç¤ºè¡Œå·
+" set rnu                         "æ˜¾ç¤ºç›¸å¯¹è¡Œå·
 set fileformats=unix,dos,mac
 set showmatch
 set matchtime=3
-set fillchars=vert:\ ,stl:\ ,stlnc:\       "ÔÚ±»·Ö¸îµÄ´°¿Ú¼äÏÔÊ¾¿Õ°×£¬±ãÓÚÔÄ¶Á
-set scrolloff=3                            "¹â±êÒÆ¶¯µ½bufferµÄ¶¥²¿ºÍµ×²¿Ê±±£³Ö3ĞĞ¾àÀë 
-set laststatus=2                           " ÎÒµÄ×´Ì¬ĞĞÏÔÊ¾µÄÄÚÈİ£¨°üÀ¨ÎÄ¼şÀàĞÍºÍ½âÂë) 
+set fillchars=vert:\ ,stl:\ ,stlnc:\       "åœ¨è¢«åˆ†å‰²çš„çª—å£é—´æ˜¾ç¤ºç©ºç™½ï¼Œä¾¿äºé˜…è¯»
+set scrolloff=3                            "å…‰æ ‡ç§»åŠ¨åˆ°bufferçš„é¡¶éƒ¨å’Œåº•éƒ¨æ—¶ä¿æŒ3è¡Œè·ç¦» 
+set laststatus=2                           " æˆ‘çš„çŠ¶æ€è¡Œæ˜¾ç¤ºçš„å†…å®¹ï¼ˆåŒ…æ‹¬æ–‡ä»¶ç±»å‹å’Œè§£ç ) 
 set stl=%!SetStatusLine()
 set helplang=cn
 set guioptions-=T
@@ -195,7 +191,7 @@ set tags+=./tags;
 "close pre window
 "set completeopt=longest,menu
 set sessionoptions =globals,options,resize,slash,unix
-set wildmenu "ÁĞ³öËùÓĞÃüÁî 
+set wildmenu "åˆ—å‡ºæ‰€æœ‰å‘½ä»¤ 
 set wildignore=*.swp,*.bak,*.pyc,*.class
 "set hidden
 "set nohidden
@@ -330,7 +326,7 @@ augroup END
 if MySys() == "windows"
     augroup windows_aug
         autocmd!
-        au GUIEnter * simalt ~x         "´ò¿ª×î´ó»¯
+        au GUIEnter * simalt ~x         "æ‰“å¼€æœ€å¤§åŒ–
     augroup END
 else
     augroup linux_aug
@@ -365,6 +361,7 @@ command! Spj :call SaveProject()
 "}}}
 
 " omnicppcomplete {{{
+set completeopt=longest,menu
 let OmniCpp_MayCompleteDot = 1 " autocomplete with .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete with ::
@@ -378,9 +375,9 @@ let OmniCpp_DefaultNamespaces=["std"]
 
 " taglist {{{ already remove now
 " let Tlist_Display_Prototype= 1
-" let Tlist_Auto_Open=1                  "×Ô¶¯´ò¿ªtag window
-" let Tlist_Use_Right_Window=1           "tag windowÏÔÊ¾ÔÚÓÒ±ß£¿
-" let Tlist_File_Fold_Auto_Close=0       "×Ô¶¯ÕÛµş·Çµ±Ç°ÎÄ¼şµÄtag
+" let Tlist_Auto_Open=1                  "è‡ªåŠ¨æ‰“å¼€tag window
+" let Tlist_Use_Right_Window=1           "tag windowæ˜¾ç¤ºåœ¨å³è¾¹ï¼Ÿ
+" let Tlist_File_Fold_Auto_Close=0       "è‡ªåŠ¨æŠ˜å éå½“å‰æ–‡ä»¶çš„tag
 " let Tlist_Use_SingleClick = 0
 " nnoremap <F4> :TlistUpdate<CR>
 " nnoremap <leader>tl :Tlist<CR>
@@ -437,7 +434,7 @@ let g:netrw_banner=0
 if MySys() == 'windows'
     let g:pydiction_location='d:/Vim/vimfiles/complete-dict'
 else
-    let g:pydiction_location='~/.vim/complete-dict'
+    let g:pydiction_location=$HOME .'/.vim/complete-dict'
 endif
 " attention <C-F4> is run for script language
 "}}}
@@ -485,7 +482,7 @@ let g:ctrlp_lazy_update = 1
 if MySys() == "windows"
     let g:ctrlp_cache_dir=$VIM.'/vimfiles/ctrlp'
 else
-    let g:ctrlp_cache_dir="~/.ctrlp"
+    let g:ctrlp_cache_dir=$HOME ."/.ctrlp"
 endif
 let g:ctrlp_max_files=0
 let g:ctrlp_arg_map=1
@@ -538,7 +535,7 @@ let g:vimwiki_folding = 'list'
 if MySys()== "windows"
    let path = 'd:/'
 else
-   let path = '~/.vim/'
+   let path = $HOME . '/.vim/'
 endif
 let g:vimwiki_list = [{'path': path . 'vimwiki/person/',
 			\ 'template_path': path . 'vimwiki/public_html/templates/',
@@ -614,20 +611,47 @@ inoremap <M-F> <esc>:call FindLuaInWorkPath() <cr>
 xnoremap <M-F> <esc>:call FindInWorkPathVisual() <cr>
 " }}}
 
+"code complete {{{
+let g:disable_codecomplete = 1
+let g:completekey = "<c-y><c-n>"
+"}}}
+
+"ycm {{{ .ycm_extra_conf.py
+let g:ycm_enable_diagnostic_signse = '>'
+" for FlagsForFile
+let g:ycm_extra_conf_vim_data = []
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 0
+let g:ycm_autoclose_preview_window_after_insertion = 0
+let g:ycm_key_list_select_completion = ['<m-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<m-k>', '<Up>']
+let g:ycm_key_invoke_completion = '<c-y><c-y>'
+let g:ycm_global_ycm_extra_conf = ''
+let g:ycm_extra_conf_globlist = []
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_global_ycm_extra_conf = $HOME.'/.ycm_extra_conf.py'
+"" Do not ask when starting vim
+let g:ycm_confirm_extra_conf = 0
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap <F5> :YcmDiags<CR>
+"}}}
+
 " vundle {{{
 if MySys() == 'windows'
     set rtp+=$Vim/vimfiles/bundle/Vundle.vim/
-    let path='$Vim/vundle'
+    let path=$Vim/ . "vimfiles/bundle"
     call vundle#begin(path)
 else
     set rtp+=~/.vim/bundle/Vundle.vim/
-    let path='~/vundle'
+    let path=$HOME. '/.vim/bundle'
     call vundle#begin(path)
 endif
 Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/L9'
 Bundle 'taxilian/a.vim'
-Bundle 'othree/vim-autocomplpop'
 Bundle 'itchyny/calendar.vim'
 Bundle 'tomtom/checksyntax_vim'
 Bundle 'kien/ctrlp.vim'
@@ -635,12 +659,12 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'mattn/emmet-vim'
 Bundle 'othree/html5.vim'
 Bundle 'othree/html5-syntax.vim'
-Bundle "msanders/snipmate.vim"
 Bundle 'vim-scripts/tornadotmpl.vim'
 Bundle "vim-scripts/indentpython.vim"
 Bundle "mbriggs/mark.vim"
 Bundle 'vim-scripts/mru.vim'
-Bundle 'vim-scripts/OmniCppComplete'
+Bundle "SirVer/ultisnips"
+Bundle 'honza/vim-snippets'
 Bundle 'rkulla/pydiction'
 Bundle 'vim-scripts/python_fold'
 Bundle 'scrooloose/syntastic'
@@ -652,26 +676,36 @@ Bundle "edsono/vim-matchit"
 Bundle 'tpope/vim-surround'
 Bundle 'vimwiki/vimwiki'
 Bundle 'fholgado/minibufexpl.vim'
-Bundle 'javascript.vim'
+Bundle 'pangloss/vim-javascript'
 Bundle 'maksimr/vim-jsbeautify'
 Bundle 'vim-scripts/grep.vim'
-Bundle 'mbbill/code_complete'
-" Bundle 'vimerl'
-Bundle 'sh.vim'
-" Plugin 'vim-scripts/STL-improved'
+Bundle 'vim-scripts/sh.vim'
+Bundle 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/ListToggle'
+" Bundle "msanders/snipmate.vim"
+" Bundle 'vim-scripts/OmniCppComplete'
+" Bundle 'othree/vim-autocomplpop'
+" Bundle 'mbbill/code_complete'
+" Plugin 'vim-scripts/echofunc.vim'
+" Plugin 'vim-scripts/TagHighlight'
+" Plugin 'drmingdrmer/xptemplate'
 " Bundle 'vim-scripts/pydoc.vim'
 " Bundle 'pythoncomplete'
-" Bundle 'vim-scripts/visualMarks.vim'
 call vundle#end()
 "}}}
 
 """{{{
-filetype plugin indent on       "¸ù¾İÎÄ¼şÀàĞÍ¶¨ÒåËõ½ø
-filetype plugin on              "Ê¹ÓÃÎÄ¼şÀàĞÍ²å¼ş
+filetype plugin indent on       "æ ¹æ®æ–‡ä»¶ç±»å‹å®šä¹‰ç¼©è¿›
+filetype plugin on              "ä½¿ç”¨æ–‡ä»¶ç±»å‹æ’ä»¶
 filetype on
 colorscheme molokai
 
-" set wildignore+=doc            " should not break helptags
+" ultisnip {{{
+let g:UltiSnipsEditSplit='vertical'
+" let g:UltisnipsSnippetsDir=$HOME . "/.vim/bundle/vim-snippets"
+" let g:UltiSnipsSnippetDirectories=["Ultisnips"]
+" }}}
+
 set wildignore+=.git           " should not break clone
 set wildignore+=.git/*         " should not break clone
 set wildignore+=README
