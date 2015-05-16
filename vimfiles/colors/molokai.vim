@@ -217,11 +217,6 @@ end
 " add by lipengfei
 hi Pmenu guibg=DarkGray guifg=White gui=none
 hi PmenuSel guibg=#ffff40 guifg=Black gui=none
-"" hi Type  gui=none
-"" hi Statement gui=none
-"" hi Comment         ctermfg=59
-"" hi Comment         guifg=#465457
-"" hi Comment         guifg=#75715E
 hi Comment         guifg=#bbbbbb guibg=bg      gui=italic
 highlight WhitespaceEOL ctermbg=black guibg=black
 match WhitespaceEOL /\s\+$/
@@ -264,8 +259,9 @@ augroup END
 " for minibufexpl {{{ 
 highlight MBENormal guifg=LightBlue
 highlight MBEChanged guifg=Red
-highlight MBEVisibleNormal term=bold cterm=bold gui=bold guifg=LightGreen
-highlight MBEVisibleChanged term=bold cterm=bold gui=bold guifg=Green
-highlight MBEVisibleActiveNormal term=bold cterm=bold gui=bold guifg=Green
-highlight MBEVisibleActiveChanged term=bold cterm=bold gui=bold guifg=Green
+highlight MBEVisibleNormal term=bold cterm=bold gui=bold guifg=LightGreen ctermfg=59
+highlight MBEVisibleChanged term=bold cterm=bold gui=bold guifg=Green ctermfg=59
+highlight MBEVisibleActiveNormal term=bold cterm=bold gui=bold guifg=Green ctermfg=green
+highlight MBEVisibleActiveChanged term=bold cterm=bold gui=bold guifg=Green ctermfg=green
+
 " }}}
