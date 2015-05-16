@@ -33,17 +33,3 @@ hi link cppMathOperator3  operator
 hi link cppPtrOperator    operator
 hi link cppLogicOperator1 operator
 hi link cppLogicOperator2 operator
-
-"========================================================
-" common STL class typedefine
-"========================================================
-
-syn keyword stlType string map set vector list
-hi link stlType type
-
-
-
-
-
-
-

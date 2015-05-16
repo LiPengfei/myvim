@@ -155,16 +155,16 @@ command! -bar Helptags :call pathogen#helptags()
 
 " Execute the given command.  This is basically a backdoor for --remote-expr.
 function! pathogen#execute(...) abort
-  for command in a:000
-    execute command
-  endfor
-  return ''
+for command in a:000
+  execute command
+endfor
+return ''
 endfunction
 
 " Section: Unofficial
 
 function! pathogen#is_absolute(path) abort
-  return a:path =~# (has('win32') ? '^\%([\\/]\|\w:\)[\\/]\|^[~$]' : '^[/~$]')
+return a:path =~# (has('win32') ? '^\%([\\/]\|\w:\)[\\/]\|^[~$]' : '^[/~$]')
 endfunction
 
 " Given a string, returns all possible permutations of comma delimited braced
@@ -172,171 +172,171 @@ endfunction
 " ['/a/c', '/a/d', '/b/c', '/b/d'].  Empty braces are treated as a wildcard
 " and globbed.  Actual globs are preserved.
 function! pathogen#expand(pattern) abort
-  if a:pattern =~# '{[^{}]\+}'
-    let [pre, pat, post] = split(substitute(a:pattern, '\(.\{-\}\){\([^{}]\+\)}\(.*\)', "\\1\001\\2\001\\3", ''), "\001", 1)
-    let found = map(split(pat, ',', 1), 'pre.v:val.post')
-    let results = []
-    for pattern in found
-      call extend(results, pathogen#expand(pattern))
-    endfor
-    return results
-  elseif a:pattern =~# '{}'
-    let pat = matchstr(a:pattern, '^.*{}[^*]*\%($\|[\\/]\)')
-    let post = a:pattern[strlen(pat) : -1]
-    return map(split(glob(substitute(pat, '{}', '*', 'g')), "\n"), 'v:val.post')
-  else
-    return [a:pattern]
-  endif
+if a:pattern =~# '{[^{}]\+}'
+  let [pre, pat, post] = split(substitute(a:pattern, '\(.\{-\}\){\([^{}]\+\)}\(.*\)', "\\1\001\\2\001\\3", ''), "\001", 1)
+  let found = map(split(pat, ',', 1), 'pre.v:val.post')
+  let results = []
+  for pattern in found
+    call extend(results, pathogen#expand(pattern))
+  endfor
+  return results
+elseif a:pattern =~# '{}'
+  let pat = matchstr(a:pattern, '^.*{}[^*]*\%($\|[\\/]\)')
+  let post = a:pattern[strlen(pat) : -1]
+  return map(split(glob(substitute(pat, '{}', '*', 'g')), "\n"), 'v:val.post')
+else
+  return [a:pattern]
+endif
 endfunction
 
 " \ on Windows unless shellslash is set, / everywhere else.
 function! pathogen#slash() abort
-  return !exists("+shellslash") || &shellslash ? '/' : '\'
+return !exists("+shellslash") || &shellslash ? '/' : '\'
 endfunction
 
 function! pathogen#separator() abort
-  return pathogen#slash()
+return pathogen#slash()
 endfunction
 
 " Convenience wrapper around glob() which returns a list.
 function! pathogen#glob(pattern) abort
-  let files = split(glob(a:pattern),"\n")
-  return map(files,'substitute(v:val,"[".pathogen#slash()."/]$","","")')
+let files = split(glob(a:pattern),"\n")
+return map(files,'substitute(v:val,"[".pathogen#slash()."/]$","","")')
 endfunction "}}}1
 
 " Like pathogen#glob(), only limit the results to directories.
 function! pathogen#glob_directories(pattern) abort
-  return filter(pathogen#glob(a:pattern),'isdirectory(v:val)')
+return filter(pathogen#glob(a:pattern),'isdirectory(v:val)')
 endfunction "}}}1
 
 " Remove duplicates from a list.
 function! pathogen#uniq(list) abort
-  let i = 0
-  let seen = {}
-  while i < len(a:list)
-    if (a:list[i] ==# '' && exists('empty')) || has_key(seen,a:list[i])
-      call remove(a:list,i)
-    elseif a:list[i] ==# ''
-      let i += 1
-      let empty = 1
-    else
-      let seen[a:list[i]] = 1
-      let i += 1
-    endif
-  endwhile
-  return a:list
+let i = 0
+let seen = {}
+while i < len(a:list)
+  if (a:list[i] ==# '' && exists('empty')) || has_key(seen,a:list[i])
+    call remove(a:list,i)
+  elseif a:list[i] ==# ''
+    let i += 1
+    let empty = 1
+  else
+    let seen[a:list[i]] = 1
+    let i += 1
+  endif
+endwhile
+return a:list
 endfunction
 
 " Backport of fnameescape().
 function! pathogen#fnameescape(string) abort
-  if exists('*fnameescape')
-    return fnameescape(a:string)
-  elseif a:string ==# '-'
-    return '\-'
-  else
-    return substitute(escape(a:string," \t\n*?[{`$\\%#'\"|!<"),'^[+>]','\\&','')
-  endif
+if exists('*fnameescape')
+  return fnameescape(a:string)
+elseif a:string ==# '-'
+  return '\-'
+else
+  return substitute(escape(a:string," \t\n*?[{`$\\%#'\"|!<"),'^[+>]','\\&','')
+endif
 endfunction
 
 " Like findfile(), but hardcoded to use the runtimepath.
 function! pathogen#runtime_findfile(file,count) abort "{{{1
-  let rtp = pathogen#join(1,pathogen#split(&rtp))
-  let file = findfile(a:file,rtp,a:count)
-  if file ==# ''
-    return ''
-  else
-    return fnamemodify(file,':p')
-  endif
+let rtp = pathogen#join(1,pathogen#split(&rtp))
+let file = findfile(a:file,rtp,a:count)
+if file ==# ''
+  return ''
+else
+  return fnamemodify(file,':p')
+endif
 endfunction
 
 " Section: Deprecated
 
 function! s:warn(msg) abort
-  echohl WarningMsg
-  echomsg a:msg
-  echohl NONE
+echohl WarningMsg
+echomsg a:msg
+echohl NONE
 endfunction
 
 " Prepend all subdirectories of path to the rtp, and append all 'after'
 " directories in those subdirectories.  Deprecated.
 function! pathogen#runtime_prepend_subdirectories(path) abort
-  call s:warn('Change pathogen#runtime_prepend_subdirectories('.string(a:path).') to pathogen#infect('.string(a:path.'/{}').')')
-  return pathogen#surround(a:path . pathogen#slash() . '{}')
+call s:warn('Change pathogen#runtime_prepend_subdirectories('.string(a:path).') to pathogen#infect('.string(a:path.'/{}').')')
+return pathogen#surround(a:path . pathogen#slash() . '{}')
 endfunction
 
 function! pathogen#incubate(...) abort
-  let name = a:0 ? a:1 : 'bundle/{}'
-  call s:warn('Change pathogen#incubate('.(a:0 ? string(a:1) : '').') to pathogen#infect('.string(name).')')
-  return pathogen#interpose(name)
+let name = a:0 ? a:1 : 'bundle/{}'
+call s:warn('Change pathogen#incubate('.(a:0 ? string(a:1) : '').') to pathogen#infect('.string(name).')')
+return pathogen#interpose(name)
 endfunction
 
 " Deprecated alias for pathogen#interpose().
 function! pathogen#runtime_append_all_bundles(...) abort
-  if a:0
-    call s:warn('Change pathogen#runtime_append_all_bundles('.string(a:1).') to pathogen#infect('.string(a:1.'/{}').')')
-  else
-    call s:warn('Change pathogen#runtime_append_all_bundles() to pathogen#infect()')
-  endif
-  return pathogen#interpose(a:0 ? a:1 . '/{}' : 'bundle/{}')
+if a:0
+  call s:warn('Change pathogen#runtime_append_all_bundles('.string(a:1).') to pathogen#infect('.string(a:1.'/{}').')')
+else
+  call s:warn('Change pathogen#runtime_append_all_bundles() to pathogen#infect()')
+endif
+return pathogen#interpose(a:0 ? a:1 . '/{}' : 'bundle/{}')
 endfunction
 
 if exists(':Vedit')
-  finish
+finish
 endif
 
 let s:vopen_warning = 0
 
 function! s:find(count,cmd,file,lcd)
-  let rtp = pathogen#join(1,pathogen#split(&runtimepath))
-  let file = pathogen#runtime_findfile(a:file,a:count)
-  if file ==# ''
-    return "echoerr 'E345: Can''t find file \"".a:file."\" in runtimepath'"
-  endif
-  if !s:vopen_warning
-    let s:vopen_warning = 1
-    let warning = '|echohl WarningMsg|echo "Install scriptease.vim to continue using :V'.a:cmd.'"|echohl NONE'
-  else
-    let warning = ''
-  endif
-  if a:lcd
-    let path = file[0:-strlen(a:file)-2]
-    execute 'lcd `=path`'
-    return a:cmd.' '.pathogen#fnameescape(a:file) . warning
-  else
-    return a:cmd.' '.pathogen#fnameescape(file) . warning
-  endif
+let rtp = pathogen#join(1,pathogen#split(&runtimepath))
+let file = pathogen#runtime_findfile(a:file,a:count)
+if file ==# ''
+  return "echoerr 'E345: Can''t find file \"".a:file."\" in runtimepath'"
+endif
+if !s:vopen_warning
+  let s:vopen_warning = 1
+  let warning = '|echohl WarningMsg|echo "Install scriptease.vim to continue using :V'.a:cmd.'"|echohl NONE'
+else
+  let warning = ''
+endif
+if a:lcd
+  let path = file[0:-strlen(a:file)-2]
+  execute 'lcd `=path`'
+  return a:cmd.' '.pathogen#fnameescape(a:file) . warning
+else
+  return a:cmd.' '.pathogen#fnameescape(file) . warning
+endif
 endfunction
 
 function! s:Findcomplete(A,L,P)
-  let sep = pathogen#slash()
-  let cheats = {
-        \'a': 'autoload',
-        \'d': 'doc',
-        \'f': 'ftplugin',
-        \'i': 'indent',
-        \'p': 'plugin',
-        \'s': 'syntax'}
-  if a:A =~# '^\w[\\/]' && has_key(cheats,a:A[0])
-    let request = cheats[a:A[0]].a:A[1:-1]
-  else
-    let request = a:A
-  endif
-  let pattern = substitute(request,'/\|\'.sep,'*'.sep,'g').'*'
-  let found = {}
-  for path in pathogen#split(&runtimepath)
-    let path = expand(path, ':p')
-    let matches = split(glob(path.sep.pattern),"\n")
-    call map(matches,'isdirectory(v:val) ? v:val.sep : v:val')
-    call map(matches,'expand(v:val, ":p")[strlen(path)+1:-1]')
-    for match in matches
-      let found[match] = 1
-    endfor
+let sep = pathogen#slash()
+let cheats = {
+      \'a': 'autoload',
+      \'d': 'doc',
+      \'f': 'ftplugin',
+      \'i': 'indent',
+      \'p': 'plugin',
+      \'s': 'syntax'}
+if a:A =~# '^\w[\\/]' && has_key(cheats,a:A[0])
+  let request = cheats[a:A[0]].a:A[1:-1]
+else
+  let request = a:A
+endif
+let pattern = substitute(request,'/\|\'.sep,'*'.sep,'g').'*'
+let found = {}
+for path in pathogen#split(&runtimepath)
+  let path = expand(path, ':p')
+  let matches = split(glob(path.sep.pattern),"\n")
+  call map(matches,'isdirectory(v:val) ? v:val.sep : v:val')
+  call map(matches,'expand(v:val, ":p")[strlen(path)+1:-1]')
+  for match in matches
+    let found[match] = 1
   endfor
-  return sort(keys(found))
+endfor
+return sort(keys(found))
 endfunction
 
-command! -bar -bang -range=1 -nargs=1 -complete=customlist,s:Findcomplete Ve       :execute s:find(<count>,'edit<bang>',<q-args>,0)
-command! -bar -bang -range=1 -nargs=1 -complete=customlist,s:Findcomplete Vedit    :execute s:find(<count>,'edit<bang>',<q-args>,0)
+command! -bar -bang -range=1 -nargs=1 -complete=customlist,s:Findcomplete PVe      :execute s:find(<count>,'edit<bang>',<q-args>,0)
+command! -bar -bang -range=1 -nargs=1 -complete=customlist,s:Findcomplete PVedit   :execute s:find(<count>,'edit<bang>',<q-args>,0)
 command! -bar -bang -range=1 -nargs=1 -complete=customlist,s:Findcomplete Vopen    :execute s:find(<count>,'edit<bang>',<q-args>,1)
 command! -bar -bang -range=1 -nargs=1 -complete=customlist,s:Findcomplete Vsplit   :execute s:find(<count>,'split',<q-args>,<bang>1)
 command! -bar -bang -range=1 -nargs=1 -complete=customlist,s:Findcomplete Vvsplit  :execute s:find(<count>,'vsplit',<q-args>,<bang>1)
