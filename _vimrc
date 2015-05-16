@@ -222,7 +222,7 @@ nnoremap <c-w>- 25<c-w>-
 nnoremap <c-w>+ 25<c-w>+
 nnoremap <c-w>> 80<c-w>>
 nnoremap <c-w>< 80<c-w><
-nnoremap <c-@><c-@> :call CscopeTips()<cr>
+nnoremap <c-h><c-h> :call CscopeTips()<cr>
 inoremap  <esc>:b#<cr>
 nnoremap  :b#<cr>
 nnoremap <M-g> g<c-]>
@@ -255,8 +255,8 @@ inoremap <M-6> <Esc>^i
 inoremap <M-4> <Esc>$a
 inoremap <M-c> <Esc>:let @/ = ""<CR>a
 nnoremap <M-c> :let @/ = ""<CR>
-inoremap <C-F1> <Esc>:call SimpleTag()<CR>a
-nnoremap <C-F1> :call SimpleTag()<CR>
+inoremap  <Esc>:call SimpleTag()<CR>a
+nnoremap  :call SimpleTag()<CR>
 inoremap <C-F5> <C-O>:call MySetCurrentPath()<CR>
 nnoremap <C-F5> :call MySetCurrentPath()<CR>
 inoremap <C-F6> <C-O>:cal MyGoBackPath()<CR>

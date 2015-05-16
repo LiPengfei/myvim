@@ -2,8 +2,8 @@ set ts=4                        "tab键空格个数
 set expandtab                   "tab转为空格 
 set cinoptions={0,:0,g0,l1,t0,(0 " 访问缩进
 
-nnoremap <buffer> <C-F1> :call Do_CsTag()<CR>
-inoremap <buffer> <C-F1> <Esc>:call Do_CsTag()<CR><CR>a
+nnoremap <buffer> <leader>b :call Do_CsTag()<CR>
+inoremap <buffer> <leader>b <Esc>:call Do_CsTag()<CR><CR>a
 
 " for cscope 
 "s: 查找C语言符号，即查找函数名、宏、枚举值等出现的地方
