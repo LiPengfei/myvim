@@ -37,13 +37,14 @@ import ycm_core
 flags = [
 '-Wall',
 '-Wextra',
-'-Werror',
+'-predantic'
+# '-Werror',
+'-Wno-deprecated'
 '-Wc++98-compat',
 '-Wno-long-long',
 '-Wno-variadic-macros',
 '-fexceptions',
 '-DNDEBUG',
-'-Wno-c++98-compat',
 '-Wno-c++98-compat-pedantic',
 # You 100% do NOT need -DUSE_CLANG_COMPLETER in your flags; only the YCM
 # source code needs it.
