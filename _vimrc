@@ -107,7 +107,7 @@ function! SaveProject()
     exec "wviminfo .viminfo"
 endfunction
 
-function CscopeTips()
+function! CscopeTips()
     echo 's: symbol, g: define, d: what I call, c: where call me, e:find word, f:open file, i: open file contains me'
 endfunction
 
@@ -187,9 +187,6 @@ set selection=exclusive
 set selectmode=mouse,key
 set mousemodel=extend
 set tags+=./tags;
-" set cscopequickfix=s-,c-,d-,i-,t-,e-
-"close pre window
-"set completeopt=longest,menu
 set sessionoptions =globals,options,resize,slash,unix
 set wildmenu "列出所有命令 
 set wildignore=*.swp,*.bak,*.pyc,*.class
@@ -256,13 +253,11 @@ inoremap <M-6> <Esc>^i
 inoremap <M-4> <Esc>$a
 inoremap <M-c> <Esc>:let @/ = ""<CR>a
 nnoremap <M-c> :let @/ = ""<CR>
-inoremap  <Esc>:call SimpleTag()<CR>a
-nnoremap  :call SimpleTag()<CR>
 inoremap <C-F5> <C-O>:call MySetCurrentPath()<CR>
 nnoremap <C-F5> :call MySetCurrentPath()<CR>
 inoremap <C-F6> <C-O>:cal MyGoBackPath()<CR>
 nnoremap <C-F6> :call MyGoBackPath()<CR>
-inoremap <expr> <C-L>  pumvisible()?"\<C-L>":"<C-X><C-L>"
+" inoremap <expr> <C-L>  pumvisible()?"\<C-L>":"<C-X><C-L>"
 inoremap <m-a> <esc>A
 inoremap <M-;> <C-O>A;
 nnoremap zz :clo!<CR>
@@ -307,8 +302,14 @@ nnoremap <leader>wn :%s/\<<c-r>=expand("<cword>")<cr>\>//gn<cr>
 xnoremap <leader>f  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//g<left><left>
 xnoremap <leader>fc  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//gc<left><left><left>
 xnoremap <m-g>    :tag <c-r>=Get_visual_selection()<cr><cr>
-inoremap <C-V> <MiddleMouse>
 
+if MySys() == "windows"
+    inoremap <C-V> <MiddleMouse>
+else
+    inoremap <C-V> <C-R><C-R>+
+endif
+
+"}}}
 
 " autocmd {{{
 augroup common_au
@@ -361,7 +362,8 @@ command! Spj :call SaveProject()
 "}}}
 
 " omnicppcomplete {{{
-set completeopt=longest,menu
+" set completeopt=longest,menu
+" set cscopequickfix=s-,c-,d-,i-,t-,e-
 let OmniCpp_MayCompleteDot = 1 " autocomplete with .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete with ::
@@ -372,18 +374,6 @@ let OmniCpp_GlobalScopeSearch=1
 let OmniCpp_DisplayMode=1
 let OmniCpp_DefaultNamespaces=["std"]
 " }}}
-
-" taglist {{{ already remove now
-" let Tlist_Display_Prototype= 1
-" let Tlist_Auto_Open=1                  "自动打开tag window
-" let Tlist_Use_Right_Window=1           "tag window显示在右边？
-" let Tlist_File_Fold_Auto_Close=0       "自动折叠非当前文件的tag
-" let Tlist_Use_SingleClick = 0
-" nnoremap <F4> :TlistUpdate<CR>
-" nnoremap <leader>tl :Tlist<CR>
-" inoremap <F4> <Esc>:TlistUpdate<CR>a
-" inoremap <leader>tl <C-[>:Tlist<CR>
-"}}}
 
 " minibufexpl {{{
 let g:miniBufExplModSelTarget = 1 
@@ -452,7 +442,7 @@ if MySys() == 'windows'
     let MRU_File = 'd:\Vim\vimfiles\_vim_mru_files'
     let MRU_Exclude_Files = '^c:\\temp\\.*'           " For MS-Windows
 else
-    let MRU_File = $HOME . '/vundle/_vim_mru_files'
+    let MRU_File = $HOME . '/.vim/bundle/_vim_mru_files'
     let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
 endif
 let MRU_Auto_Close = 1
@@ -494,11 +484,6 @@ inoremap <m-N> <esc>:CtrlP<cr>
 " <c-z> mark  <c-o> open
 " }}}
 
-" checksyntax disable it {{{
-let g:checksyntax_key_single="<c-,>"
-let g:checksyntax_key_all="<c-,>"
-"}}}
-
 " tagbar {{{
 let g:tagbar_left = 1
 let g:tagbar_width = 30
@@ -514,12 +499,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['lua', 'javascript', 'python'],
-                           \ 'passive_filetypes': ['puppet'] }
-" let g:syntastic_quiet_warnings = 0
-" let g:syntastic_quiet_messages = {'level' : 'warnings'}
+                           \ 'active_filetypes': ['lua', 'javascript'],
+                           \ 'passive_filetypes': ['puppet', 'python', 'c', 'cpp', 'objc'] }
+let g:syntastic_quiet_messages = {'level' : 'warnings'}
 let g:syntastic_enable_signs = 0
-" let g:syntastic_debug = 1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_python_checkers = ['pyflakes']
 let g:syntastic_javascript_checkers = ['jsl']
@@ -529,7 +512,8 @@ let g:syntastic_cpp_compiler_options = '-std=c++11'
 " vimwiki {{{
 let g:vimwiki_use_mouse = 1
 let g:vimwiki_folding = 'list'
-" let g:vimwiki_list      = [{'path': 'D:/vimwiki/person/', 'path_html': 'D:/vimwiki/person/html/', 'template_path': 'D:/vimwiki/template/', 'template_default': 'template'},
+" after test it can remove
+"let g:vimwiki_list      = [{'path': 'D:/vimwiki/person/', 'path_html': 'D:/vimwiki/person/html/', 'template_path': 'D:/vimwiki/template/', 'template_default': 'template'},
             " \{'path': 'D:/vimwiki/linux/', 'path_html': 'D:/vimwiki/linux/html/', 'template_path': 'D:/vimwiki/template/', 'template_default': 'template'}]
 " let g:vimwiki_list      = [{'path': 'D:/vimwiki/person/', 'path_html': 'D:/vimwiki/person/html/'}]
 if MySys()== "windows"
@@ -554,11 +538,6 @@ let g:vimwiki_html_header_numbering = 2
 
 " easy-align {{{
 xnoremap <silent> <cr> :EasyAlign<cr>
-" }}}
-
-" snipMate {{{
-" ino  <tab> <c-r>=TriggerSnippet()<cr>
-" snor <tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
 " }}}
 
 " emmet {{{
@@ -617,18 +596,21 @@ let g:completekey = "<c-y><c-n>"
 "}}}
 
 "ycm {{{ .ycm_extra_conf.py
-let g:ycm_enable_diagnostic_signse = '>'
-" for FlagsForFile
-let g:ycm_extra_conf_vim_data = []
+" let g:ycm_enable_diagnostic_signse = 1
+" let g:ycm_enable_diagnostic_highlighting = 1
+" let g:ycm_always_populate_location_list = 1
+" let g:ycm_show_diagnostics_ui = 1
+" let g:ycm_error_symbol = '>>'
+" let g:ycm_warning_symbol = '>!'
+let g:ycm_error_symbol = '✗'
+let g:ycm_warning_symbol = '⚠'
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_autoclose_preview_window_after_insertion = 0
 let g:ycm_key_list_select_completion = ['<m-j>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<m-k>', '<Up>']
-let g:ycm_key_invoke_completion = '<c-y><c-y>'
-let g:ycm_global_ycm_extra_conf = ''
-let g:ycm_extra_conf_globlist = []
+let g:ycm_key_invoke_completion = '<c-j>'
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_global_ycm_extra_conf = $HOME.'/.ycm_extra_conf.py'
 "" Do not ask when starting vim
@@ -637,7 +619,21 @@ nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F5> :YcmDiags<CR>
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
 "}}}
+"
+" ultisnip {{{
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsExpandTrigger='<tab>'
+" }}}
+"
+" listtoggle {{{
+let g:lt_location_list_toggle_map = '<leader>l'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
+let g:lt_height = 15
+" }}}
 
 " vundle {{{
 if MySys() == 'windows'
@@ -665,7 +661,6 @@ Bundle "mbriggs/mark.vim"
 Bundle 'vim-scripts/mru.vim'
 Bundle "SirVer/ultisnips"
 Bundle 'honza/vim-snippets'
-" Bundle 'rkulla/pydiction'
 Bundle 'vim-scripts/python_fold'
 Bundle 'scrooloose/syntastic'
 Bundle 'majutsushi/tagbar'
@@ -681,12 +676,16 @@ Bundle 'maksimr/vim-jsbeautify'
 Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/sh.vim'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'vimerl'
+Bundle 'Valloric/ListToggle'
+Bundle 'oscarh/vimerl'
 Bundle 'lipengfei'
+Bundle 'Visual-Mark'
+Plugin 'visualmarks'
 Bundle 'Vundle.vim'
-" Plugin 'Valloric/ListToggle'
-" Bundle "msanders/snipmate.vim"
+Bundle 'vim-scripts/visualMarks.vim'
 " Bundle 'vim-scripts/OmniCppComplete'
+" Bundle 'rkulla/pydiction'
+" Bundle 'msanders/snipmate.vim'
 " Bundle 'othree/vim-autocomplpop'
 " Bundle 'mbbill/code_complete'
 " Plugin 'vim-scripts/echofunc.vim'
@@ -702,12 +701,6 @@ filetype plugin indent on       "根据文件类型定义缩进
 filetype plugin on              "使用文件类型插件
 filetype on
 colorscheme molokai
-
-" ultisnip {{{
-let g:UltiSnipsEditSplit='vertical'
-" let g:UltisnipsSnippetsDir=$HOME . "/.vim/bundle/vim-snippets"
-" let g:UltiSnipsSnippetDirectories=["Ultisnips"]
-" }}}
 
 set wildignore+=.git           " should not break clone
 set wildignore+=.git/*         " should not break clone
