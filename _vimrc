@@ -181,7 +181,7 @@ set matchtime=3
 set fillchars=vert:\ ,stl:\ ,stlnc:\       "在被分割的窗口间显示空白，便于阅读
 set scrolloff=3                            "光标移动到buffer的顶部和底部时保持3行距离 
 set laststatus=2                           " 我的状态行显示的内容（包括文件类型和解码) 
-" set stl=%!SetStatusLine()
+set stl=%!SetStatusLine()
 set helplang=cn
 set guioptions-=T
 set guioptions-=m
@@ -308,7 +308,7 @@ xnoremap <m-g>    :tag <c-r>=Get_visual_selection()<cr><cr>
 if MySys() == "windows"
     inoremap <C-V> <MiddleMouse>
 else
-    inoremap <C-V> <C-R><C-R>+
+    inoremap <C-V> <C-R><C-P>+
 endif
 
 "}}}
@@ -500,6 +500,8 @@ nnoremap <m-M> :TagbarToggle<cr>
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 1
 let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': ['lua', 'javascript', 'python', 'c', 'cpp', 'objc'],
                            \ 'passive_filetypes': ['puppet'] }
@@ -630,18 +632,17 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
 "}}}
-"
+
 " ultisnip {{{
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsExpandTrigger='<tab>'
 " }}}
-"
+
 " listtoggle {{{
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 let g:lt_height = 10
 " }}}
-
 
 " vundle {{{
 if MySys() == 'windows'
@@ -688,7 +689,6 @@ Bundle 'Valloric/ListToggle'
 Bundle 'oscarh/vimerl'
 Bundle 'lipengfei'
 Bundle 'Vundle.vim'
-Bundle 'powerline/powerline'
 " Bundle 'vim-scripts/OmniCppComplete'
 " Bundle 'rkulla/pydiction'
 " Bundle ' pythoncomplete'
