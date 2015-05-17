@@ -499,12 +499,18 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['lua', 'javascript'],
-                           \ 'passive_filetypes': ['puppet', 'python', 'c', 'cpp', 'objc'] }
-let g:syntastic_quiet_messages = {'level' : 'warnings'}
-let g:syntastic_enable_signs = 0
+                           \ 'active_filetypes': ['lua', 'javascript', 'python', 'c', 'cpp', 'objc'],
+                           \ 'passive_filetypes': ['puppet'] }
+let g:syntastic_quiet_messages = {'level' : 'warnnings'}
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = ">>"
+let g:syntastic_warning_symbol = ">>"
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+" if MySys() == 'windows'
 let g:syntastic_python_checkers = ['pyflakes']
+" else
+    " let g:syntastic_python_checkers = ['pylint']
+" endif
 let g:syntastic_javascript_checkers = ['jsl']
 let g:syntastic_cpp_compiler_options = '-std=c++11'
 " }}}
@@ -590,20 +596,14 @@ inoremap <M-F> <esc>:call FindLuaInWorkPath() <cr>
 xnoremap <M-F> <esc>:call FindInWorkPathVisual() <cr>
 " }}}
 
-"code complete {{{
-let g:disable_codecomplete = 1
-let g:completekey = "<c-y><c-n>"
-"}}}
-
 "ycm {{{ .ycm_extra_conf.py
-" let g:ycm_enable_diagnostic_signse = 1
-" let g:ycm_enable_diagnostic_highlighting = 1
-" let g:ycm_always_populate_location_list = 1
-" let g:ycm_show_diagnostics_ui = 1
-" let g:ycm_error_symbol = '>>'
-" let g:ycm_warning_symbol = '>!'
-let g:ycm_error_symbol = '✗'
-let g:ycm_warning_symbol = '⚠'
+let g:ycm_enable_diagnostic_signs = 1
+let g:ycm_enable_diagnostic_highlighting = 1
+let g:ycm_always_populate_location_list = 1
+let g:ycm_open_loclist_on_ycm_diags = 0
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_error_symbol = "✗"
+let g:ycm_warning_symbol = "⚠"
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 0
@@ -632,7 +632,7 @@ let g:UltiSnipsExpandTrigger='<tab>'
 " listtoggle {{{
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
-let g:lt_height = 15
+let g:lt_height = 10
 " }}}
 
 " vundle {{{
@@ -649,17 +649,16 @@ Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/L9'
 Bundle 'taxilian/a.vim'
 Bundle 'itchyny/calendar.vim'
-Bundle 'tomtom/checksyntax_vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'mattn/emmet-vim'
 Bundle 'othree/html5.vim'
 Bundle 'othree/html5-syntax.vim'
 Bundle 'vim-scripts/tornadotmpl.vim'
-Bundle "vim-scripts/indentpython.vim"
-Bundle "mbriggs/mark.vim"
+Bundle 'vim-scripts/indentpython.vim'
+Bundle 'mbriggs/mark.vim'
 Bundle 'vim-scripts/mru.vim'
-Bundle "SirVer/ultisnips"
+Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'vim-scripts/python_fold'
 Bundle 'scrooloose/syntastic'
@@ -667,7 +666,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/tComment'
 Bundle 'vim-scripts/vim-easy-align'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle "edsono/vim-matchit"
+Bundle 'edsono/vim-matchit'
 Bundle 'tpope/vim-surround'
 Bundle 'vimwiki/vimwiki'
 Bundle 'fholgado/minibufexpl.vim'
@@ -679,19 +678,12 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'Valloric/ListToggle'
 Bundle 'oscarh/vimerl'
 Bundle 'lipengfei'
-Bundle 'Visual-Mark'
-Plugin 'visualmarks'
 Bundle 'Vundle.vim'
-Bundle 'vim-scripts/visualMarks.vim'
+" Bundle 'tomtom/checksyntax_vim'
+" Bundle 'vim-scripts/visualMarks.vim'
 " Bundle 'vim-scripts/OmniCppComplete'
 " Bundle 'rkulla/pydiction'
-" Bundle 'msanders/snipmate.vim'
 " Bundle 'othree/vim-autocomplpop'
-" Bundle 'mbbill/code_complete'
-" Plugin 'vim-scripts/echofunc.vim'
-" Plugin 'vim-scripts/TagHighlight'
-" Plugin 'drmingdrmer/xptemplate'
-" Bundle 'vim-scripts/pydoc.vim'
 " Bundle 'pythoncomplete'
 call vundle#end()
 "}}}
