@@ -19,7 +19,7 @@ function! ChangePythonVersion(ver)
         set omnifunc = python3complete#Complete
 endfunction
 function! MySys()
-    return "linux"
+    return "windows"
 endfunction
 
 function! ToggleNu()
@@ -200,7 +200,7 @@ set pastetoggle=<F3>
 set iskeyword&
 set iskeyword+=	    
 if MySys() == 'windows'
-     set guifont=monaco:h10
+     set guifont=monaco:h11
 else
     " set guifont=Courier\ new\ 13
     set guifont=monaco\ 12
@@ -503,14 +503,14 @@ let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'passive_filetypes': ['puppet'] }
 let g:syntastic_quiet_messages = {'level' : 'warnnings'}
 let g:syntastic_enable_signs = 1
-let g:syntastic_error_symbol = ">>"
-let g:syntastic_warning_symbol = ">>"
+let g:syntastic_error_symbol = "X"
+let g:syntastic_warning_symbol = "!"
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-" if MySys() == 'windows'
+if MySys() == 'windows'
 let g:syntastic_python_checkers = ['pyflakes']
-" else
-    " let g:syntastic_python_checkers = ['pylint']
-" endif
+else
+    let g:syntastic_python_checkers = ['pylint']
+endif
 let g:syntastic_javascript_checkers = ['jsl']
 let g:syntastic_cpp_compiler_options = '-std=c++11'
 " }}}
@@ -602,8 +602,11 @@ let g:ycm_enable_diagnostic_highlighting = 1
 let g:ycm_always_populate_location_list = 1
 let g:ycm_open_loclist_on_ycm_diags = 0
 let g:ycm_show_diagnostics_ui = 1
-let g:ycm_error_symbol = "✗"
-let g:ycm_warning_symbol = "⚠"
+if MySys()== "windows"
+    let g:ycm_error_symbol = 'X'
+    let g:ycm_warning_symbol = "!"
+else
+end
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 0
@@ -638,7 +641,7 @@ let g:lt_height = 10
 " vundle {{{
 if MySys() == 'windows'
     set rtp+=$Vim/vimfiles/bundle/Vundle.vim/
-    let path=$Vim/ . "vimfiles/bundle"
+    let path="$Vim/vimfiles/bundle"
     call vundle#begin(path)
 else
     set rtp+=~/.vim/bundle/Vundle.vim/
@@ -684,7 +687,7 @@ Bundle 'Vundle.vim'
 " Bundle 'vim-scripts/OmniCppComplete'
 " Bundle 'rkulla/pydiction'
 " Bundle 'othree/vim-autocomplpop'
-" Bundle 'pythoncomplete'
+" Bundle ' p ythoncomplete'
 call vundle#end()
 "}}}
 
