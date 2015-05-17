@@ -596,48 +596,6 @@ inoremap <M-F> <esc>:call FindLuaInWorkPath() <cr>
 xnoremap <M-F> <esc>:call FindInWorkPathVisual() <cr>
 " }}}
 
-"ycm {{{ .ycm_extra_conf.py
-let g:ycm_enable_diagnostic_signs = 1
-let g:ycm_enable_diagnostic_highlighting = 1
-let g:ycm_always_populate_location_list = 1
-let g:ycm_open_loclist_on_ycm_diags = 0
-let g:ycm_show_diagnostics_ui = 1
-if MySys()== "windows"
-    let g:ycm_error_symbol = 'X'
-    let g:ycm_warning_symbol = "!"
-else
-end
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion = 0
-let g:ycm_autoclose_preview_window_after_insertion = 0
-let g:ycm_key_list_select_completion = ['<m-j>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<m-k>', '<Up>']
-let g:ycm_key_invoke_completion = '<c-j>'
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let g:ycm_global_ycm_extra_conf = $HOME.'/.ycm_extra_conf.py'
-"" Do not ask when starting vim
-let g:ycm_confirm_extra_conf = 0
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nmap <F5> :YcmDiags<CR>
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-"}}}
-"
-" ultisnip {{{
-let g:UltiSnipsEditSplit='vertical'
-let g:UltiSnipsExpandTrigger='<tab>'
-" }}}
-"
-" listtoggle {{{
-let g:lt_location_list_toggle_map = '<leader>l'
-let g:lt_quickfix_list_toggle_map = '<leader>q'
-let g:lt_height = 10
-" }}}
-
 " vundle {{{
 if MySys() == 'windows'
     set rtp+=$Vim/vimfiles/bundle/Vundle.vim/
@@ -651,7 +609,9 @@ endif
 Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/L9'
 Bundle 'taxilian/a.vim'
+Bundle 'othree/vim-autocomplpop'
 Bundle 'itchyny/calendar.vim'
+Bundle 'tomtom/checksyntax_vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'mattn/emmet-vim'
@@ -682,12 +642,9 @@ Bundle 'Valloric/ListToggle'
 Bundle 'oscarh/vimerl'
 Bundle 'lipengfei'
 Bundle 'Vundle.vim'
-" Bundle 'tomtom/checksyntax_vim'
-" Bundle 'vim-scripts/visualMarks.vim'
 " Bundle 'vim-scripts/OmniCppComplete'
 " Bundle 'rkulla/pydiction'
-" Bundle 'othree/vim-autocomplpop'
-" Bundle ' p ythoncomplete'
+" Bundle ' pythoncomplete'
 call vundle#end()
 "}}}
 
