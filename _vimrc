@@ -19,7 +19,7 @@ function! ChangePythonVersion(ver)
         set omnifunc = python3complete#Complete
 endfunction
 function! MySys()
-    return "linux"
+    return "windows"
 endfunction
 
 function! ToggleNu()
@@ -107,11 +107,7 @@ function! SaveProject()
     exec "wviminfo .viminfo"
 endfunction
 
-" function! GetSnipsInCurrentScope()
-"     return UltiSnips_SnippetsInCurrentScope()
-" endfunction
-
-function CscopeTips()
+function! CscopeTips()
     echo 's: symbol, g: define, d: what I call, c: where call me, e:find word, f:open file, i: open file contains me'
 endfunction
 
@@ -191,9 +187,6 @@ set selection=exclusive
 set selectmode=mouse,key
 set mousemodel=extend
 set tags+=./tags;
-" set cscopequickfix=s-,c-,d-,i-,t-,e-
-"close pre window
-"set completeopt=longest,menu
 set sessionoptions =globals,options,resize,slash,unix
 set wildmenu "列出所有命令 
 set wildignore=*.swp,*.bak,*.pyc,*.class
@@ -207,7 +200,7 @@ set pastetoggle=<F3>
 set iskeyword&
 set iskeyword+=	    
 if MySys() == 'windows'
-     set guifont=monaco:h10
+     set guifont=monaco:h11
 else
     " set guifont=Courier\ new\ 13
     set guifont=monaco\ 12
@@ -260,13 +253,11 @@ inoremap <M-6> <Esc>^i
 inoremap <M-4> <Esc>$a
 inoremap <M-c> <Esc>:let @/ = ""<CR>a
 nnoremap <M-c> :let @/ = ""<CR>
-inoremap  <Esc>:call SimpleTag()<CR>a
-nnoremap  :call SimpleTag()<CR>
 inoremap <C-F5> <C-O>:call MySetCurrentPath()<CR>
 nnoremap <C-F5> :call MySetCurrentPath()<CR>
 inoremap <C-F6> <C-O>:cal MyGoBackPath()<CR>
 nnoremap <C-F6> :call MyGoBackPath()<CR>
-inoremap <expr> <C-L>  pumvisible()?"\<C-L>":"<C-X><C-L>"
+" inoremap <expr> <C-L>  pumvisible()?"\<C-L>":"<C-X><C-L>"
 inoremap <m-a> <esc>A
 inoremap <M-;> <C-O>A;
 nnoremap zz :clo!<CR>
@@ -311,8 +302,14 @@ nnoremap <leader>wn :%s/\<<c-r>=expand("<cword>")<cr>\>//gn<cr>
 xnoremap <leader>f  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//g<left><left>
 xnoremap <leader>fc  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//gc<left><left><left>
 xnoremap <m-g>    :tag <c-r>=Get_visual_selection()<cr><cr>
-inoremap <C-V> <MiddleMouse>
 
+if MySys() == "windows"
+    inoremap <C-V> <MiddleMouse>
+else
+    inoremap <C-V> <C-R><C-R>+
+endif
+
+"}}}
 
 " autocmd {{{
 augroup common_au
@@ -365,6 +362,8 @@ command! Spj :call SaveProject()
 "}}}
 
 " omnicppcomplete {{{
+" set completeopt=longest,menu
+" set cscopequickfix=s-,c-,d-,i-,t-,e-
 let OmniCpp_MayCompleteDot = 1 " autocomplete with .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete with ::
@@ -375,18 +374,6 @@ let OmniCpp_GlobalScopeSearch=1
 let OmniCpp_DisplayMode=1
 let OmniCpp_DefaultNamespaces=["std"]
 " }}}
-
-" taglist {{{ already remove now
-" let Tlist_Display_Prototype= 1
-" let Tlist_Auto_Open=1                  "自动打开tag window
-" let Tlist_Use_Right_Window=1           "tag window显示在右边？
-" let Tlist_File_Fold_Auto_Close=0       "自动折叠非当前文件的tag
-" let Tlist_Use_SingleClick = 0
-" nnoremap <F4> :TlistUpdate<CR>
-" nnoremap <leader>tl :Tlist<CR>
-" inoremap <F4> <Esc>:TlistUpdate<CR>a
-" inoremap <leader>tl <C-[>:Tlist<CR>
-"}}}
 
 " minibufexpl {{{
 let g:miniBufExplModSelTarget = 1 
@@ -437,7 +424,7 @@ let g:netrw_banner=0
 if MySys() == 'windows'
     let g:pydiction_location='d:/Vim/vimfiles/complete-dict'
 else
-    let g:pydiction_location='~/.vim/complete-dict'
+    let g:pydiction_location=$HOME .'/.vim/complete-dict'
 endif
 " attention <C-F4> is run for script language
 "}}}
@@ -455,7 +442,7 @@ if MySys() == 'windows'
     let MRU_File = 'd:\Vim\vimfiles\_vim_mru_files'
     let MRU_Exclude_Files = '^c:\\temp\\.*'           " For MS-Windows
 else
-    let MRU_File = $HOME . '/vundle/_vim_mru_files'
+    let MRU_File = $HOME . '/.vim/bundle/_vim_mru_files'
     let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
 endif
 let MRU_Auto_Close = 1
@@ -485,7 +472,7 @@ let g:ctrlp_lazy_update = 1
 if MySys() == "windows"
     let g:ctrlp_cache_dir=$VIM.'/vimfiles/ctrlp'
 else
-    let g:ctrlp_cache_dir="~/.ctrlp"
+    let g:ctrlp_cache_dir=$HOME ."/.ctrlp"
 endif
 let g:ctrlp_max_files=0
 let g:ctrlp_arg_map=1
@@ -496,11 +483,6 @@ inoremap <m-N> <esc>:CtrlP<cr>
 " <c-f> <c-b> search from change file mru or buffer
 " <c-z> mark  <c-o> open
 " }}}
-
-" checksyntax disable it {{{
-let g:checksyntax_key_single="<c-,>"
-let g:checksyntax_key_all="<c-,>"
-"}}}
 
 " tagbar {{{
 let g:tagbar_left = 1
@@ -517,14 +499,18 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['lua', 'javascript', 'python'],
+                           \ 'active_filetypes': ['lua', 'javascript', 'python', 'c', 'cpp', 'objc'],
                            \ 'passive_filetypes': ['puppet'] }
-" let g:syntastic_quiet_warnings = 0
-" let g:syntastic_quiet_messages = {'level' : 'warnings'}
-let g:syntastic_enable_signs = 0
-" let g:syntastic_debug = 1
+let g:syntastic_quiet_messages = {'level' : 'warnnings'}
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = "X"
+let g:syntastic_warning_symbol = "!"
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+if MySys() == 'windows'
 let g:syntastic_python_checkers = ['pyflakes']
+else
+    let g:syntastic_python_checkers = ['pylint']
+endif
 let g:syntastic_javascript_checkers = ['jsl']
 let g:syntastic_cpp_compiler_options = '-std=c++11'
 " }}}
@@ -532,13 +518,14 @@ let g:syntastic_cpp_compiler_options = '-std=c++11'
 " vimwiki {{{
 let g:vimwiki_use_mouse = 1
 let g:vimwiki_folding = 'list'
-" let g:vimwiki_list      = [{'path': 'D:/vimwiki/person/', 'path_html': 'D:/vimwiki/person/html/', 'template_path': 'D:/vimwiki/template/', 'template_default': 'template'},
+" after test it can remove
+"let g:vimwiki_list      = [{'path': 'D:/vimwiki/person/', 'path_html': 'D:/vimwiki/person/html/', 'template_path': 'D:/vimwiki/template/', 'template_default': 'template'},
             " \{'path': 'D:/vimwiki/linux/', 'path_html': 'D:/vimwiki/linux/html/', 'template_path': 'D:/vimwiki/template/', 'template_default': 'template'}]
 " let g:vimwiki_list      = [{'path': 'D:/vimwiki/person/', 'path_html': 'D:/vimwiki/person/html/'}]
 if MySys()== "windows"
    let path = 'd:/'
 else
-   let path = '~/.vim/'
+   let path = $HOME . '/.vim/'
 endif
 let g:vimwiki_list = [{'path': path . 'vimwiki/person/',
 			\ 'template_path': path . 'vimwiki/public_html/templates/',
@@ -557,11 +544,6 @@ let g:vimwiki_html_header_numbering = 2
 
 " easy-align {{{
 xnoremap <silent> <cr> :EasyAlign<cr>
-" }}}
-
-" snipMate {{{
-" ino  <tab> <c-r>=TriggerSnippet()<cr>
-" snor <tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
 " }}}
 
 " emmet {{{
@@ -617,11 +599,11 @@ xnoremap <M-F> <esc>:call FindInWorkPathVisual() <cr>
 " vundle {{{
 if MySys() == 'windows'
     set rtp+=$Vim/vimfiles/bundle/Vundle.vim/
-    let path='$Vim/vundle'
+    let path="$Vim/vimfiles/bundle"
     call vundle#begin(path)
 else
     set rtp+=~/.vim/bundle/Vundle.vim/
-    let path='~/vundle'
+    let path=$HOME. '/.vim/bundle'
     call vundle#begin(path)
 endif
 Bundle 'gmarik/vundle'
@@ -635,33 +617,33 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'mattn/emmet-vim'
 Bundle 'othree/html5.vim'
 Bundle 'othree/html5-syntax.vim'
-Bundle "msanders/snipmate.vim"
 Bundle 'vim-scripts/tornadotmpl.vim'
-Bundle "vim-scripts/indentpython.vim"
-Bundle "mbriggs/mark.vim"
+Bundle 'vim-scripts/indentpython.vim'
+Bundle 'mbriggs/mark.vim'
 Bundle 'vim-scripts/mru.vim'
 Bundle 'vim-scripts/OmniCppComplete'
 Bundle 'rkulla/pydiction'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 Bundle 'vim-scripts/python_fold'
 Bundle 'scrooloose/syntastic'
 Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/tComment'
 Bundle 'vim-scripts/vim-easy-align'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle "edsono/vim-matchit"
+Bundle 'edsono/vim-matchit'
 Bundle 'tpope/vim-surround'
 Bundle 'vimwiki/vimwiki'
 Bundle 'fholgado/minibufexpl.vim'
-Bundle 'javascript.vim'
+Bundle 'pangloss/vim-javascript'
 Bundle 'maksimr/vim-jsbeautify'
 Bundle 'vim-scripts/grep.vim'
+Bundle 'vim-scripts/sh.vim'
 Bundle 'mbbill/code_complete'
-" Bundle 'vimerl'
-Bundle 'sh.vim'
-" Plugin 'vim-scripts/STL-improved'
-" Bundle 'vim-scripts/pydoc.vim'
-" Bundle 'pythoncomplete'
-" Bundle 'vim-scripts/visualMarks.vim'
+Bundle 'oscarh/vimerl'
+Bundle 'lipengfei'
+Bundle 'Vundle.vim'
+Bundle 'pythoncomplete'
 call vundle#end()
 "}}}
 
@@ -671,7 +653,6 @@ filetype plugin on              "使用文件类型插件
 filetype on
 colorscheme molokai
 
-" set wildignore+=doc            " should not break helptags
 set wildignore+=.git           " should not break clone
 set wildignore+=.git/*         " should not break clone
 set wildignore+=README

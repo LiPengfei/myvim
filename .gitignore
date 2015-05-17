@@ -5,10 +5,11 @@ vimfiles/*-dict*
 vimfiles/ctrlp/mru/cache.txt
 vim73/
 vim74/
-vundle/
-./vundle/
+bundle/
 .git
 !vimfiles/bundle/Vundle.vim/autoload/vundle/*
+!vimfiles/bundle/lipengfei
 *.swp
+*.swo
 .netrwhist
 cache.txt
