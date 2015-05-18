@@ -200,7 +200,7 @@ set pastetoggle=<F3>
 set iskeyword&
 set iskeyword+=	    
 if MySys() == 'windows'
-     set guifont=monaco:h11
+     set guifont=monaco:h10
 else
     " set guifont=Courier\ new\ 13
     set guifont=monaco\ 12
