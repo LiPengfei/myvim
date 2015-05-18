@@ -151,7 +151,11 @@ set foldlevel=1
 set foldmethod=indent
 set diffopt+=vertical
 set fileencodings=utf-8,cp936
-set fileencoding=utf-8
+if MySys() == "windows"
+    set fileencoding=cp936
+else
+    set fileencoding=utf-8
+endif
 set list
 set listchars=tab:\|\ ,extends:>,precedes:<
 set nocompatible                "make it vim style, not vi style
@@ -611,7 +615,6 @@ Bundle 'vim-scripts/L9'
 Bundle 'taxilian/a.vim'
 Bundle 'othree/vim-autocomplpop'
 Bundle 'itchyny/calendar.vim'
-Bundle 'tomtom/checksyntax_vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'mattn/emmet-vim'
@@ -639,11 +642,10 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'maksimr/vim-jsbeautify'
 Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/sh.vim'
-Bundle 'mbbill/code_complete'
 Bundle 'oscarh/vimerl'
+Bundle 'pythoncomplete'
 Bundle 'lipengfei'
 Bundle 'Vundle.vim'
-Bundle 'pythoncomplete'
 call vundle#end()
 "}}}
 
