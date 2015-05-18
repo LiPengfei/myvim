@@ -204,7 +204,7 @@ set pastetoggle=<F3>
 set iskeyword&
 set iskeyword+=	    
 if MySys() == 'windows'
-     set guifont=monaco:h10
+     set guifont=monaco:h11
 else
     " set guifont=Courier\ new\ 13
     set guifont=monaco\ 12
@@ -600,6 +600,14 @@ inoremap <M-F> <esc>:call FindLuaInWorkPath() <cr>
 xnoremap <M-F> <esc>:call FindInWorkPathVisual() <cr>
 " }}}
 
+" ultisnips {{{
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsListSnippets='<c-l>'
+let g:UltiSnipsJumpForwardTrigger='<c-y><c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<c-y><c-k>'
+" }}}
+
 " vundle {{{
 if MySys() == 'windows'
     set rtp+=$Vim/vimfiles/bundle/Vundle.vim/
@@ -643,7 +651,20 @@ Bundle 'maksimr/vim-jsbeautify'
 Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/sh.vim'
 Bundle 'oscarh/vimerl'
+"comfict with ultisnips need change script
 Bundle 'pythoncomplete'
+" colorscheme
+  "distinguished
+Bundle 'Lokaltog/vim-distinguished'
+  "base 16
+Bundle 'atelierbram/vim-colors_atelier-schemes'
+  "BusyBee
+Bundle 'vim-scripts/BusyBee'
+Bundle 'zefei/cake16'
+Bundle 'sandeepsinghmails/Dev_Delight'
+Bundle 'benjaminwhite/Benokai'
+  "sandydune
+Bundle 'idbrii/vim-sandydune'
 Bundle 'lipengfei'
 Bundle 'Vundle.vim'
 call vundle#end()
