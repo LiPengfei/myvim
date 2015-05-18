@@ -636,7 +636,7 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 0
 " ultisnip {{{
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsListSnippets='<c-y><c-l>'
+let g:UltiSnipsListSnippets='<c-y><c-j>'
 let g:UltiSnipsJumpForwardTrigger='<c-y>n'
 let g:UltiSnipsJumpBackwardTrigger='<c-y>N'
 " }}}
