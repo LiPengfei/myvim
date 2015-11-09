@@ -202,7 +202,7 @@ set pastetoggle=<F3>
 set iskeyword&
 set iskeyword+=	    
 if MySys() == 'windows'
-     set guifont=monaco:h10
+     set guifont=monaco:h11
 else
     " set guifont=Courier\ new\ 13
     set guifont=monaco\ 12
@@ -447,7 +447,7 @@ xmap s S
 
 " MRU {{{
 if MySys() == 'windows'
-    let MRU_File = 'd:\Vim\vimfiles\_vim_mru_files'
+    let MRU_File = $VIM . '\vimfiles\_vim_mru_files'
     let MRU_Exclude_Files = '^c:\\temp\\.*'           " For MS-Windows
 else
     let MRU_File = '~/.vim_mru_files'
