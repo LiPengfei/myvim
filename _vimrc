@@ -19,7 +19,7 @@ function! ChangePythonVersion(ver)
         set omnifunc = python3complete#Complete
 endfunction
 function! MySys()
-    return "windows"
+    return "linux"
 endfunction
 
 function! ToggleNu()
@@ -450,7 +450,7 @@ if MySys() == 'windows'
     let MRU_File = 'd:\Vim\vimfiles\_vim_mru_files'
     let MRU_Exclude_Files = '^c:\\temp\\.*'           " For MS-Windows
 else
-    let MRU_File = '~/.vim_mru_files'
+    let MRU_File = $HOME . '/vim_mru_files'
     let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
 endif
 "let MRU_Include_Files = '\.c$\|\.h$'
@@ -481,7 +481,7 @@ let g:ctrlp_lazy_update = 1
 if MySys() == "windows"
     let g:ctrlp_cache_dir=$VIM.'/vimfiles/ctrlp'
 else
-    let g:ctrlp_cache_dir=~/.ctrlp/
+    let g:ctrlp_cache_dir='~/.ctrlp'
 endif
 let g:ctrlp_max_files=0
 let g:ctrlp_arg_map=1
