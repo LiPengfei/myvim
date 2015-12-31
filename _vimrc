@@ -110,7 +110,7 @@ endfunction
 "     return UltiSnips_SnippetsInCurrentScope()
 " endfunction
 
-function CscopeTips()
+function! CscopeTips()
     echo 's: symbol, g: define, d: what I call, c: where call me, e:find word, f:open file, i: open file contains me'
 endfunction
 
@@ -460,6 +460,7 @@ let MRU_Add_Menu = 0
 
 " ControlP {{{
 let g:ctrlp_map = '<m-N>'
+noremap <m-S> :CtrlPTag<CR>
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_max_height=30
@@ -577,43 +578,47 @@ augroup END
 " grep.vim {{{
 if MySys() == 'windows'
     let Grep_Find_Path= 'findex'
+    function! FindLuaInWorkPath()
+        let pattern=expand("<cword>")
+        let cwd = getcwd()
+        if g:Grep_Cygwin_Find == 1
+            let cwd = substitute(cwd, "\\", "/", "g")
+        endif
+        if has('win32') && !has('win32unix') && !has('win95')
+            let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name "*.lua" | xargs grep -in "\\<' . pattern . '\\>"'
+            echo cmd
+        endif
+        call s:RunGrepCmd(cmd, pattern, "")
+    endfunction
+
+    function! FindInWorkPathVisual()
+        let pattern=Get_visual_selection()
+        let cwd = getcwd()
+        if g:Grep_Cygwin_Find == 1
+            let cwd = substitute(cwd, "\\", "/", "g")
+        endif
+        if has('win32') && !has('win32unix') && !has('win95')
+            " let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name '. '"*.lua" '. '| xargs grep -in "' . pattern . '"'
+            let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name ' . '"*.c *.h *.cpp" ' . '| xargs grep -in "' . pattern . '"'
+            echo cmd
+        endif
+        call s:RunGrepCmd(cmd, pattern, "")
+    endfunction
+
+    noremap <M-F> :call FindLuaInWorkPath() <cr>
+    inoremap <M-F> <esc>:call FindLuaInWorkPath() <cr>
+    xnoremap <M-F> <esc>:call FindInWorkPathVisual() <cr>
 endif
-function! FindLuaInWorkPath()
-    let pattern=expand("<cword>")
-    let cwd = getcwd()
-    if g:Grep_Cygwin_Find == 1
-        let cwd = substitute(cwd, "\\", "/", "g")
-    endif
-    if has('win32') && !has('win32unix') && !has('win95')
-        let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name "*.lua" | xargs grep -in "\\<' . pattern . '\\>"'
-        echo cmd
-    endif
-    call s:RunGrepCmd(cmd, pattern, "")
-endfunction
 
-function! FindInWorkPathVisual()
-    let pattern=Get_visual_selection()
-    let cwd = getcwd()
-    if g:Grep_Cygwin_Find == 1
-        let cwd = substitute(cwd, "\\", "/", "g")
-    endif
-    if has('win32') && !has('win32unix') && !has('win95')
-        " let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name '. '"*.lua" '. '| xargs grep -in "' . pattern . '"'
-        let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name ' . '"*.c *.h *.cpp" ' . '| xargs grep -in "' . pattern . '"'
-        echo cmd
-    endif
-    call s:RunGrepCmd(cmd, pattern, "")
-endfunction
+nnoremap <M-f> :Rgrep -i <C-R>=expand("<cword>")<CR><CR><CR><CR>
+nnoremap <m-F> :Rgrep -w <C-R>=expand("<cword>")<CR><CR><CR><CR>
 
-noremap <M-F> :call FindLuaInWorkPath() <cr>
-inoremap <M-F> <esc>:call FindLuaInWorkPath() <cr>
-xnoremap <M-F> <esc>:call FindInWorkPathVisual() <cr>
-
-noremap <buffer> <leader><leader>s :Rgrep -i <C-R>=expand("<cword>")<CR>
-noremap <buffer> <leader><leader>S :Rgrep -w <C-R>=expand("<cword>")<CR>
 let Grep_Default_Options = ''
 let Grep_Skip_Files = "*.bak *.swp *~"
 let Grep_Default_Filelist = "*.c *.cpp *.h *.hpp *.lua *.cs *.asm *.vim *.php"
+if MySys() == 'windows'
+    let Grep_Find_Path = 'findex'
+endif
 " }}}
 
 
