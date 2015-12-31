@@ -314,7 +314,7 @@ augroup common_au
     autocmd!
     au VIMENTER * silent exec "set vb t_vb="
   " autocmd VimLeavePre *.lua silent call SaveProject()
-    au FileType lua setlocal fileencoding=cp936
+    " au FileType lua setlocal fileencoding=cp936
     au FileType python exec 'nnoremap <buffer> K :call ShowPyDoc(expand("<cword>"), 1)<cr>'
     au FileType python setlocal fileencodings=utf-8
     au FileType python setlocal fileencoding=utf-8
@@ -608,6 +608,12 @@ endfunction
 noremap <M-F> :call FindLuaInWorkPath() <cr>
 inoremap <M-F> <esc>:call FindLuaInWorkPath() <cr>
 xnoremap <M-F> <esc>:call FindInWorkPathVisual() <cr>
+
+noremap <buffer> <leader><leader>s :Rgrep -i <C-R>=expand("<cword>")<CR>
+noremap <buffer> <leader><leader>S :Rgrep -w <C-R>=expand("<cword>")<CR>
+let Grep_Default_Options = ''
+let Grep_Skip_Files = "*.bak *.swp *~"
+let Grep_Default_Filelist = "*.c *.cpp *.h *.hpp *.lua *.cs *.asm *.vim *.php"
 " }}}
 
 
