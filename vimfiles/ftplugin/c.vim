@@ -4,6 +4,7 @@ set cinoptions={0,:0,g0,l1,t0,(0 " 访问缩进
 
 nnoremap <buffer> <C-F1> :call Do_CsTag()<CR>
 inoremap <buffer> <C-F1> <Esc>:call Do_CsTag()<CR><CR>a
+nnoremap <leader>st  :vsplit $VIM\vimfiles\ftplugin\c.vim<CR>
 
 " for cscope 
 "s: 查找C语言符号，即查找函数名、宏、枚举值等出现的地方
@@ -84,8 +85,9 @@ function! Do_CsTag()
         if(MySys()!='windows')
             silent! execute "!find . -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
         else
-            let cwd = getcwd()
-            silent! execute "!findex.exe " . cwd . " -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp  -o ! -path \"./DevEnv/*\" -o ! -path \"./.git/*\"' > cscope.files"
+            silent! execute "!dir /s/b *.hpp *.c,*.cpp,*.h,* >> cscope.files"
+            " let cwd = getcwd()
+            " silent! execute "!findex.exe " . cwd . " -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp  -o ! -path \"./DevEnv/*\" -o ! -path \"./.git/*\"' > cscope.files"
         endif
 	
 	" ver 2
@@ -94,10 +96,10 @@ function! Do_CsTag()
         "     " silent! execute "!find . -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
         "     " silent! execute l:cmd
         " else
-        "     silent! execute "!dir /s/b *.hpp *.c,*.cpp,*.h,* >> cscope.files"
+        "     silent! execute "!dir /s/b *.hpp *.c,*.cpp,*.h,* > cscope.files"
         " endif
             
-	silent! execute "!cscope -bq"
+	silent! execute "!cscope -b"
         execute "normal :"
 
         if filereadable("cscope.out")

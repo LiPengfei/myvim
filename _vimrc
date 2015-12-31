@@ -168,7 +168,7 @@ set nobackup
 set shiftwidth=4                "自动缩进4格
 set tabstop=4
 set softtabstop=4
-set expandtab
+" set expandtab
 set autowrite                   "自动保存
 set nu                          "显示行号
 " set rnu                         "显示相对行号
@@ -318,7 +318,9 @@ augroup common_au
     au FileType python exec 'nnoremap <buffer> K :call ShowPyDoc(expand("<cword>"), 1)<cr>'
     au FileType python setlocal fileencodings=utf-8
     au FileType python setlocal fileencoding=utf-8
-    au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile setlocal noexpandtab
+    au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile,*.lua setlocal noexpandtab
+    " au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile,*.lua setlocal listchars=extends:>,precedes:<
+    au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile,*.lua setlocal nolist
     au FileType javascript setlocal dictionary=d:/Vim/vimfiles/javascript.dict
 augroup END
 
