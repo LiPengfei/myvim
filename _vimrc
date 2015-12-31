@@ -12,23 +12,26 @@ fun! Get_visual_selection()
 endfun
 
 function! ChangePythonVersion(ver)
-    if a:ver == 2
-        exec 'set omnifunc = pythoncomplete#Complete'
+    if l:ver == 2
+        set omnifunc = pythoncomplete#Complete
     endif
-    if a:ver == 3
-        exec 'set omnifunc = python3complete#Complete'
-    endif
+    if l:ver == 3
+        set omnifunc = python3complete#Complete
 endfunction
-
 function! MySys()
-    return "linux"
+    return "windows"
 endfunction
 
+function! IsVundle()
+    return 'vundle'
+endfunction
+
+set rnu
 function! ToggleNu()
-    if &rnu == 0 
-        exec 'set rnu'
+    if &nu == 0 
+        set nu
     else
-        exec 'set nornu'
+        set rnu
     endif
 endfunction
 
@@ -109,6 +112,7 @@ function! SaveProject()
     exec "wviminfo .viminfo"
 endfunction
 
+
 function! CscopeTips()
     echo 's: symbol, g: define, d: what I call, c: where call me, e:find word, f:open file, i: open file contains me'
 endfunction
@@ -137,10 +141,11 @@ function! MyDiff()
 	silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 "}}}
-
+if IsVundle() == 'vundle'
 " pathogen add for vundle bug {{{ add plugin in .vim/bundle
 execute pathogen#infect()
 " }}}
+endif
 
 " common config before vundle {{{
 let mapleader = ","
@@ -158,7 +163,7 @@ set list
 set listchars=tab:\|\ ,extends:>,precedes:<
 set nocompatible                "make it vim style, not vi style
 set backspace=indent,eol,start  "set <BC> key
-set autoindent                  "set è‡ªåŠ¨ç¼©è¿›(auto indent)
+set autoindent                  "set ×Ô¶¯Ëõ½ø(auto indent)
 set incsearch                   "Search increase
 set hlsearch                    "Search highlight
 set magic                       " pattern mode
@@ -168,19 +173,19 @@ set history=400                  "set command history 50 and seach history 50
 set ruler                       "set show cursor position at right bottom
 set showcmd                     "help you use command mode easily
 set nobackup
-set shiftwidth=4                "è‡ªåŠ¨ç¼©è¿›4æ ¼
+set shiftwidth=4                "×Ô¶¯Ëõ½ø4¸ñ
 set tabstop=4
 set softtabstop=4
 set expandtab
-set autowrite                   "è‡ªåŠ¨ä¿å­˜
-set nu                          "æ˜¾ç¤ºè¡Œå·
-" set rnu                         "æ˜¾ç¤ºç›¸å¯¹è¡Œå·
+set autowrite                   "×Ô¶¯±£´æ
+set nu                          "ÏÔÊ¾ĞĞºÅ
+" set rnu                         "ÏÔÊ¾Ïà¶ÔĞĞºÅ
 set fileformats=unix,dos,mac
 set showmatch
 set matchtime=3
-set fillchars=vert:\ ,stl:\ ,stlnc:\       "åœ¨è¢«åˆ†å‰²çš„çª—å£é—´æ˜¾ç¤ºç©ºç™½ï¼Œä¾¿äºé˜…è¯»
-set scrolloff=3                            "å…‰æ ‡ç§»åŠ¨åˆ°bufferçš„é¡¶éƒ¨å’Œåº•éƒ¨æ—¶ä¿æŒ3è¡Œè·ç¦» 
-set laststatus=2                           " æˆ‘çš„çŠ¶æ€è¡Œæ˜¾ç¤ºçš„å†…å®¹ï¼ˆåŒ…æ‹¬æ–‡ä»¶ç±»å‹å’Œè§£ç ) 
+set fillchars=vert:\ ,stl:\ ,stlnc:\       "ÔÚ±»·Ö¸îµÄ´°¿Ú¼äÏÔÊ¾¿Õ°×£¬±ãÓÚÔÄ¶Á
+set scrolloff=3                            "¹â±êÒÆ¶¯µ½bufferµÄ¶¥²¿ºÍµ×²¿Ê±±£³Ö3ĞĞ¾àÀë 
+set laststatus=2                           " ÎÒµÄ×´Ì¬ĞĞÏÔÊ¾µÄÄÚÈİ£¨°üÀ¨ÎÄ¼şÀàĞÍºÍ½âÂë) 
 set stl=%!SetStatusLine()
 set helplang=cn
 set guioptions-=T
@@ -189,8 +194,11 @@ set selection=exclusive
 set selectmode=mouse,key
 set mousemodel=extend
 set tags+=./tags;
+" set cscopequickfix=s-,c-,d-,i-,t-,e-
+"close pre window
+"set completeopt=longest,menu
 set sessionoptions =globals,options,resize,slash,unix
-set wildmenu "åˆ—å‡ºæ‰€æœ‰å‘½ä»¤ 
+set wildmenu "ÁĞ³öËùÓĞÃüÁî 
 set wildignore=*.swp,*.bak,*.pyc,*.class
 "set hidden
 "set nohidden
@@ -255,11 +263,13 @@ inoremap <M-6> <Esc>^i
 inoremap <M-4> <Esc>$a
 inoremap <M-c> <Esc>:let @/ = ""<CR>a
 nnoremap <M-c> :let @/ = ""<CR>
+inoremap <C-F1> <Esc>:call SimpleTag()<CR>a
+nnoremap <C-F1> :call SimpleTag()<CR>
 inoremap <C-F5> <C-O>:call MySetCurrentPath()<CR>
 nnoremap <C-F5> :call MySetCurrentPath()<CR>
 inoremap <C-F6> <C-O>:cal MyGoBackPath()<CR>
 nnoremap <C-F6> :call MyGoBackPath()<CR>
-" inoremap <expr> <C-L>  pumvisible()?"\<C-L>":"<C-X><C-L>"
+inoremap <expr> <C-L>  pumvisible()?"\<C-L>":"<C-X><C-L>"
 inoremap <m-a> <esc>A
 inoremap <M-;> <C-O>A;
 nnoremap zz :clo!<CR>
@@ -304,9 +314,8 @@ nnoremap <leader>wn :%s/\<<c-r>=expand("<cword>")<cr>\>//gn<cr>
 xnoremap <leader>f  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//g<left><left>
 xnoremap <leader>fc  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//gc<left><left><left>
 xnoremap <m-g>    :tag <c-r>=Get_visual_selection()<cr><cr>
-
 if MySys() == "windows"
-    inoremap <C-V> <MiddleMouse>
+inoremap <C-V> <MiddleMouse>
 else
     inoremap <C-V> <C-R><C-P>+
 endif
@@ -318,18 +327,20 @@ augroup common_au
     autocmd!
     au VIMENTER * silent exec "set vb t_vb="
   " autocmd VimLeavePre *.lua silent call SaveProject()
-    au FileType lua setlocal fileencoding=cp936
+    " au FileType lua setlocal fileencoding=cp936
     au FileType python exec 'nnoremap <buffer> K :call ShowPyDoc(expand("<cword>"), 1)<cr>'
     au FileType python setlocal fileencodings=utf-8
     au FileType python setlocal fileencoding=utf-8
-    au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile setlocal noexpandtab
+    au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile,*.lua setlocal noexpandtab
+    " au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile,*.lua setlocal listchars=extends:>,precedes:<
+    au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile,*.lua setlocal nolist
     au FileType javascript setlocal dictionary=d:/Vim/vimfiles/javascript.dict
 augroup END
 
 if MySys() == "windows"
     augroup windows_aug
         autocmd!
-        au GUIEnter * simalt ~x         "æ‰“å¼€æœ€å¤§åŒ–
+        au GUIEnter * simalt ~x         "´ò¿ª×î´ó»¯
     augroup END
 else
     augroup linux_aug
@@ -364,8 +375,6 @@ command! Spj :call SaveProject()
 "}}}
 
 " omnicppcomplete {{{
-" set completeopt=longest,menu
-" set cscopequickfix=s-,c-,d-,i-,t-,e-
 let OmniCpp_MayCompleteDot = 1 " autocomplete with .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete with ::
@@ -376,6 +385,18 @@ let OmniCpp_GlobalScopeSearch=1
 let OmniCpp_DisplayMode=1
 let OmniCpp_DefaultNamespaces=["std"]
 " }}}
+
+" taglist {{{ already remove now
+" let Tlist_Display_Prototype= 1
+" let Tlist_Auto_Open=1                  "×Ô¶¯´ò¿ªtag window
+" let Tlist_Use_Right_Window=1           "tag windowÏÔÊ¾ÔÚÓÒ±ß£¿
+" let Tlist_File_Fold_Auto_Close=0       "×Ô¶¯ÕÛµş·Çµ±Ç°ÎÄ¼şµÄtag
+" let Tlist_Use_SingleClick = 0
+" nnoremap <F4> :TlistUpdate<CR>
+" nnoremap <leader>tl :Tlist<CR>
+" inoremap <F4> <Esc>:TlistUpdate<CR>a
+" inoremap <leader>tl <C-[>:Tlist<CR>
+"}}}
 
 " minibufexpl {{{
 let g:miniBufExplModSelTarget = 1 
@@ -441,7 +462,7 @@ xmap s S
 
 " MRU {{{
 if MySys() == 'windows'
-    let MRU_File = 'd:\Vim\vimfiles\_vim_mru_files'
+    let MRU_File = $VIM . '\vimfiles\_vim_mru_files'
     let MRU_Exclude_Files = '^c:\\temp\\.*'           " For MS-Windows
 else
     let MRU_File = $HOME . '/.vim/bundle/_vim_mru_files'
@@ -453,6 +474,7 @@ let MRU_Add_Menu = 0
 
 " ControlP {{{
 let g:ctrlp_map = '<m-N>'
+noremap <m-S> :CtrlPTag<CR>
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_max_height=30
@@ -485,6 +507,11 @@ inoremap <m-N> <esc>:CtrlP<cr>
 " <c-f> <c-b> search from change file mru or buffer
 " <c-z> mark  <c-o> open
 " }}}
+
+" checksyntax disable it {{{
+let g:checksyntax_key_single="<c-,>"
+let g:checksyntax_key_all="<c-,>"
+"}}}
 
 " tagbar {{{
 let g:tagbar_left = 1
@@ -523,7 +550,7 @@ let g:syntastic_cpp_compiler_options = '-std=c++11'
 let g:vimwiki_use_mouse = 1
 let g:vimwiki_folding = 'list'
 " after test it can remove
-"let g:vimwiki_list      = [{'path': 'D:/vimwiki/person/', 'path_html': 'D:/vimwiki/person/html/', 'template_path': 'D:/vimwiki/template/', 'template_default': 'template'},
+" let g:vimwiki_list      = [{'path': 'D:/vimwiki/person/', 'path_html': 'D:/vimwiki/person/html/', 'template_path': 'D:/vimwiki/template/', 'template_default': 'template'},
             " \{'path': 'D:/vimwiki/linux/', 'path_html': 'D:/vimwiki/linux/html/', 'template_path': 'D:/vimwiki/template/', 'template_default': 'template'}]
 " let g:vimwiki_list      = [{'path': 'D:/vimwiki/person/', 'path_html': 'D:/vimwiki/person/html/'}]
 if MySys()== "windows"
@@ -550,6 +577,11 @@ let g:vimwiki_html_header_numbering = 2
 xnoremap <silent> <cr> :EasyAlign<cr>
 " }}}
 
+" snipMate {{{
+" ino  <tab> <c-r>=TriggerSnippet()<cr>
+" snor <tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
+" }}}
+
 " emmet {{{
 let g:user_emmet_settings = {'indentation' : '    ' } 
 " let g:user_emmet_leader_key = '<m-n>'
@@ -567,39 +599,49 @@ augroup END
 " grep.vim {{{
 if MySys() == 'windows'
     let Grep_Find_Path= 'findex'
+    function! FindLuaInWorkPath()
+        let pattern=expand("<cword>")
+        let cwd = getcwd()
+        if g:Grep_Cygwin_Find == 1
+            let cwd = substitute(cwd, "\\", "/", "g")
+        endif
+        if has('win32') && !has('win32unix') && !has('win95')
+            let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name "*.lua" | xargs grep -in "\\<' . pattern . '\\>"'
+            echo cmd
+        endif
+        call s:RunGrepCmd(cmd, pattern, "")
+    endfunction
+
+    function! FindInWorkPathVisual()
+        let pattern=Get_visual_selection()
+        let cwd = getcwd()
+        if g:Grep_Cygwin_Find == 1
+            let cwd = substitute(cwd, "\\", "/", "g")
+        endif
+        if has('win32') && !has('win32unix') && !has('win95')
+            " let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name '. '"*.lua" '. '| xargs grep -in "' . pattern . '"'
+            let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name ' . '"*.c *.h *.cpp" ' . '| xargs grep -in "' . pattern . '"'
+            echo cmd
+        endif
+        call s:RunGrepCmd(cmd, pattern, "")
+    endfunction
+
+    noremap <M-F> :call FindLuaInWorkPath() <cr>
+    inoremap <M-F> <esc>:call FindLuaInWorkPath() <cr>
+    xnoremap <M-F> <esc>:call FindInWorkPathVisual() <cr>
 endif
-function! FindLuaInWorkPath()
-    let pattern=expand("<cword>")
-    let cwd = getcwd()
-    if g:Grep_Cygwin_Find == 1
-        let cwd = substitute(cwd, "\\", "/", "g")
-    endif
-    if has('win32') && !has('win32unix') && !has('win95')
-        let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name "*.lua" | xargs grep -in "\\<' . pattern . '\\>"'
-        echo cmd
-    endif
-    call s:RunGrepCmd(cmd, pattern, "")
-endfunction
 
-function! FindInWorkPathVisual()
-    let pattern=Get_visual_selection()
-    let cwd = getcwd()
-    if g:Grep_Cygwin_Find == 1
-        let cwd = substitute(cwd, "\\", "/", "g")
-    endif
-    if has('win32') && !has('win32unix') && !has('win95')
-        " let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name '. '"*.lua" '. '| xargs grep -in "' . pattern . '"'
-        let cmd = g:Grep_Find_Path . ' "' . cwd . '"' . ' -name ' . '"*.c *.h *.cpp" ' . '| xargs grep -in "' . pattern . '"'
-        echo cmd
-    endif
-    call s:RunGrepCmd(cmd, pattern, "")
-endfunction
+nnoremap <M-f> :Rgrep -i <C-R>=expand("<cword>")<CR><CR><CR><CR>
+nnoremap <m-F> :Rgrep -w <C-R>=expand("<cword>")<CR><CR><CR><CR>
 
-noremap <M-F> :call FindLuaInWorkPath() <cr>
-inoremap <M-F> <esc>:call FindLuaInWorkPath() <cr>
-xnoremap <M-F> <esc>:call FindInWorkPathVisual() <cr>
+let Grep_Default_Options = ''
+let Grep_Skip_Files = "*.bak *.swp *~"
+let Grep_Default_Filelist = "*.c *.cpp *.h *.hpp *.lua *.cs *.asm *.vim *.php"
+if MySys() == 'windows'
+    let Grep_Find_Path = 'findex'
+endif
 " }}}
-
+if IsVundle() == 'vundle'
 "ycm {{{ .ycm_extra_conf.py
 let g:ycm_enable_diagnostic_signs = 1
 let g:ycm_enable_diagnostic_highlighting = 1
@@ -610,8 +652,8 @@ if MySys()== "windows"
     let g:ycm_error_symbol = 'X'
     let g:ycm_warning_symbol = "!"
 else
-    let g:ycm_error_symbol = "âœ—"
-    let g:ycm_warning_symbol = "âš "
+    let g:ycm_error_symbol = "?"
+    let g:ycm_warning_symbol = "?"
 end
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_add_preview_to_completeopt = 1
@@ -640,13 +682,11 @@ let g:UltiSnipsListSnippets='<c-y><c-j>'
 let g:UltiSnipsJumpForwardTrigger='<c-y>n'
 let g:UltiSnipsJumpBackwardTrigger='<c-y>N'
 " }}}
-
 " listtoggle {{{
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 let g:lt_height = 10
 " }}}
-
 " vundle {{{
 if MySys() == 'windows'
     set rtp+=$Vim/vimfiles/bundle/Vundle.vim/
@@ -697,11 +737,13 @@ Bundle 'Vundle.vim'
 " Bundle ' pythoncomplete'
 call vundle#end()
 "}}}
-
+endif
 """{{{
-filetype plugin indent on       "æ ¹æ®æ–‡ä»¶ç±»å‹å®šä¹‰ç¼©è¿›
-filetype plugin on              "ä½¿ç”¨æ–‡ä»¶ç±»å‹æ’ä»¶
+filetype plugin indent on       "¸ù¾İÎÄ¼şÀàĞÍ¶¨ÒåËõ½ø
+filetype plugin on              "Ê¹ÓÃÎÄ¼şÀàĞÍ²å¼ş
+if IsVundle() == 'vundle'
 filetype on
+endif
 colorscheme molokai
 
 set wildignore+=.git           " should not break clone
