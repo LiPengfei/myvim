@@ -323,7 +323,7 @@ endif
 
 " Location of the find utility
 if !exists("Grep_Find_Path")
-    let Grep_Find_Path = 'findex'
+    let Grep_Find_Path = 'find'
 endif
 
 " Location of the xargs utility
