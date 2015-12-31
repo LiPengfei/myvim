@@ -6,7 +6,7 @@
 " 如果在gnome-terminal 下就可以设置鼠标了
 
 if &cp || exists("g:loaded_escalt") || has("gui_running") || has("win32") || has("win64")
-  finish
+" finish
 endif
 
 if &term == "screen-256color" || &term == "xterm-256color"
@@ -26,7 +26,7 @@ let g:loaded_escalt = 1
 set cpo&vim
 " ---------------------------------------------------------------------
 " Functions:
-function Escalt_console()
+function! Escalt_console()
   for i in range(48, 57) + range(65, 90) + range(97, 122)
     exe "set <M-".nr2char(i).">=\<Esc>".nr2char(i)
   endfor
