@@ -149,6 +149,7 @@ syntax enable
 "}}}
 
 " common set {{{
+set cino+=:2
 set foldlevel=1
 set foldmethod=indent
 set diffopt+=vertical
@@ -189,7 +190,7 @@ set selection=exclusive
 set selectmode=mouse,key
 set mousemodel=extend
 set tags+=./tags;
-set sessionoptions =globals,options,resize,slash,unix
+set sessionoptions =blank,buffers,curdir,folds,help,options,tabpages,winsize
 set wildmenu "列出所有命令 
 set wildignore=*.swp,*.bak,*.pyc,*.class
 "set hidden
@@ -205,8 +206,8 @@ if MySys() == 'windows'
      set guifont=monaco:h11
 else
     " set guifont=Courier\ new\ 13
-    set guifont=monaco\ 12
-    set guifontwide=Kaiti\ 14
+    set guifont=monaco\ 11
+    set guifontwide=Kaiti\ 13
 endif
 "}}}
 
@@ -222,7 +223,7 @@ nnoremap <c-w>- 25<c-w>-
 nnoremap <c-w>+ 25<c-w>+
 nnoremap <c-w>> 80<c-w>>
 nnoremap <c-w>< 80<c-w><
-nnoremap <c-h><c-h> :call CscopeTips()<cr>
+nnoremap <c-y><c-h> :call CscopeTips()<cr>
 inoremap  <esc>:b#<cr>
 nnoremap  :b#<cr>
 nnoremap <M-g> g<c-]>
@@ -333,8 +334,8 @@ if MySys() == "windows"
     augroup END
 else
     augroup linux_aug
-	autocmd!
-	au GUIEnter * call MaximizeWindow()
+        autocmd!
+        au VimEnter * call MaximizeWindow()
     augroup END
 end
 
@@ -606,6 +607,9 @@ let g:ycm_enable_diagnostic_highlighting = 1
 let g:ycm_always_populate_location_list = 1
 let g:ycm_open_loclist_on_ycm_diags = 0
 let g:ycm_show_diagnostics_ui = 1
+let g:ycm_filetype_specific_completion_to_disable = {
+        \ 'text': 1
+        \}
 if MySys()== "windows"
     let g:ycm_error_symbol = 'X'
     let g:ycm_warning_symbol = "!"
@@ -660,20 +664,20 @@ endif
 Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/L9'
 Bundle 'taxilian/a.vim'
-Bundle 'othree/vim-autocomplpop'
 Bundle 'itchyny/calendar.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'mattn/emmet-vim'
 Bundle 'othree/html5.vim'
 Bundle 'othree/html5-syntax.vim'
-Bundle 'vim-scripts/tornadotmpl.vim'
-Bundle 'vim-scripts/indentpython.vim'
 Bundle 'mbriggs/mark.vim'
 Bundle 'vim-scripts/mru.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'vim-scripts/python_fold'
+Bundle 'vim-scripts/tornadotmpl.vim'
+Bundle 'vim-scripts/indentpython.vim'
+Bundle 'othree/vim-autocomplpop'
 Bundle 'scrooloose/syntastic'
 Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/tComment'
@@ -698,7 +702,7 @@ Bundle 'Vundle.vim'
 call vundle#end()
 "}}}
 
-"""{{{
+""" config after vundle {{{
 filetype plugin indent on       "根据文件类型定义缩进
 filetype plugin on              "使用文件类型插件
 filetype on
