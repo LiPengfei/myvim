@@ -2,9 +2,25 @@
 " Author:       lilydjwg <lilydjwg@gmail.com>
 " ---------------------------------------------------------------------
 " Load Once:
+
+" 如果在gnome-terminal 下就可以设置鼠标了
+
 if &cp || exists("g:loaded_escalt") || has("gui_running") || has("win32") || has("win64")
   finish
 endif
+
+if &term == "screen-256color" || &term == "xterm-256color"
+    let s:ep = "!~/.vim/bundle/lipengfei/plugin/ccs.sh"
+    au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
+    au InsertEnter,InsertChange *
+                \ if v:insertmode == 'i' | 
+                \   silent execute '!echo -ne "\e[6 q"' | redraw! |
+                \ elseif v:insertmode == 'r' |
+                \   silent execute '!echo -ne "\e[4 q"' | redraw! |
+                \ endif
+    au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!'
+endif
+
 let s:keepcpo = &cpo
 let g:loaded_escalt = 1
 set cpo&vim
