@@ -510,7 +510,7 @@ let g:ctrlp_custom_ignore = {
     \ }
 let g:ctrlp_open_new_file='r'
 let g:ctrlp_open_multiple_files='i'
-let g:ctrlp_working_path_mode = 'wr'
+let g:ctrlp_working_path_mode = 'ra'
 "let g:ctrlp_root_makers=['.git', '.svn', '.hg', 'bzr', '_darcs']
 "press F5 quick refresh chache
 let g:ctrlp_clear_cache_on_exit=1
@@ -552,8 +552,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['lua', 'javascript', 'python', 'c', 'cpp', 'objc'],
-                           \ 'passive_filetypes': ['puppet'] }
+                           \ 'active_filetypes': ['lua', 'javascript', 'python', 'objc'],
+                           \ 'passive_filetypes': ['puppet', 'c', 'cpp'] }
 let g:syntastic_quiet_messages = {'level' : 'warnnings'}
 let g:syntastic_enable_signs = 1
 let g:syntastic_error_symbol = "X"
