@@ -470,7 +470,7 @@ if MySys() == 'windows'
     let MRU_File = $VIM . '\vimfiles\_vim_mru_files'
     let MRU_Exclude_Files = '^c:\\temp\\.*'           " For MS-Windows
 else
-    let MRU_File = $HOME . '/.vim/bundle/_vim_mru_files'
+    let MRU_File = $HOME . '/_vim_mru_files'
     let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
 endif
 let MRU_Auto_Close = 1
