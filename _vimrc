@@ -214,7 +214,7 @@ if MySys() == 'windows'
      set guifont=monaco:h11
 else
     " set guifont=Courier\ new\ 13
-    set guifont=monaco\ 11
+    set guifont=monaco\ 12
     set guifontwide=Kaiti\ 13
 endif
 "}}}
@@ -656,8 +656,8 @@ if MySys()== "windows"
     let g:ycm_error_symbol = 'X'
     let g:ycm_warning_symbol = "!"
 else
-    let g:ycm_error_symbol = "?"
-    let g:ycm_warning_symbol = "?"
+    let g:ycm_error_symbol = ">>"
+    let g:ycm_warning_symbol = ">"
 end
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_add_preview_to_completeopt = 1
@@ -701,6 +701,12 @@ else
     let path=$HOME. '/.vim/bundle'
     call vundle#begin(path)
 endif
+
+" Bundle 'petdance/ack'
+" Bundle 'rking/ag.vim'
+" Bundle 'dyng/ctrlsf.vim'
+Bundle 'yonchu/accelerated-smooth-scroll'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/L9'
 Bundle 'taxilian/a.vim'
