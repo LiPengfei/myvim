@@ -314,6 +314,10 @@ nnoremap <leader>wc :%s/\<<c-r>=expand("<cword>")<cr>\>//gc<Left><Left><Left>
 nnoremap <leader>wn :%s/\<<c-r>=expand("<cword>")<cr>\>//gn<cr>
 xnoremap <leader>f  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//g<left><left>
 xnoremap <leader>fc  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//gc<left><left><left>
+map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
+map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
+map <silent> <leader>3 :diffget 3<CR> :diffupdate<CR>
+map <silent> <leader>4 :diffget 4<CR> :diffupdate<CR>
 xnoremap <m-g>    :tag <c-r>=Get_visual_selection()<cr><cr>
 if MySys() == "windows"
 inoremap <C-V> <MiddleMouse>
@@ -466,7 +470,7 @@ if MySys() == 'windows'
     let MRU_File = $VIM . '\vimfiles\_vim_mru_files'
     let MRU_Exclude_Files = '^c:\\temp\\.*'           " For MS-Windows
 else
-    let MRU_File = $HOME . '/.vim/bundle/_vim_mru_files'
+    let MRU_File = $HOME . '/_vim_mru_files'
     let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
 endif
 let MRU_Auto_Close = 1
