@@ -205,13 +205,13 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 "set nohidden
 set whichwrap=<,>,h,l
 set nolazyredraw
-set diffexpr=MyDiff()
 set pastetoggle=<F3>
 "set colorcolumn=80         " 80 column will write a redline
 set iskeyword&
 set iskeyword+=	    
 if MySys() == 'windows'
      set guifont=monaco:h11
+    set diffexpr=MyDiff()
 else
     " set guifont=Courier\ new\ 13
     set guifont=monaco\ 12
@@ -336,6 +336,7 @@ augroup common_au
     au FileType python exec 'nnoremap <buffer> K :call ShowPyDoc(expand("<cword>"), 1)<cr>'
     au FileType python setlocal fileencodings=utf-8
     au FileType python setlocal fileencoding=utf-8
+    au FileType go setlocal nolist
     au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile,*.lua setlocal noexpandtab
     " au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile,*.lua setlocal listchars=extends:>,precedes:<
     au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile,*.lua setlocal nolist
@@ -656,6 +657,7 @@ let g:ycm_show_diagnostics_ui = 1
 let g:ycm_filetype_specific_completion_to_disable = {
         \ 'text': 1
         \}
+let g:ycm_auto_trigger = 0
 if MySys()== "windows"
     let g:ycm_error_symbol = 'X'
     let g:ycm_warning_symbol = "!"
@@ -745,6 +747,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'Valloric/ListToggle'
 Bundle 'oscarh/vimerl'
 Bundle 'lipengfei'
+Bundle 'fatih/vim-go'
 Bundle 'Vundle.vim'
 " Bundle 'vim-scripts/OmniCppComplete'
 " Bundle 'rkulla/pydiction'
