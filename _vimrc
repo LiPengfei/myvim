@@ -155,7 +155,7 @@ syntax enable
 "}}}
 
 " common set {{{
-set rnu
+set nu
 set cino+=:2
 set foldlevel=1
 set foldmethod=indent
