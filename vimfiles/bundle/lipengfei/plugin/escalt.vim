@@ -20,10 +20,10 @@ if &term == "screen-256color" || &term == "xterm-256color"
                 \ endif
     au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!'
 endif
-
-let s:keepcpo = &cpo
 let g:loaded_escalt = 1
-set cpo&vim
+
+" let s:keepcpo = &cpo
+" set cpo&vim
 " ---------------------------------------------------------------------
 " Functions:
 " function Escalt_console()
@@ -81,8 +81,8 @@ set cpo&vim
 " call Escalt_console()
 " " ---------------------------------------------------------------------
 " " Restoration And Modelines:
-let &cpo= s:keepcpo
-unlet s:keepcpo
+" let &cpo= s:keepcpo
+" unlet s:keepcpo
 
 function! Terminal_MetaMode(mode)
     if has('nvim') || has('gui_running')
@@ -121,11 +121,10 @@ function! Terminal_MetaMode(mode)
         set ttimeout
     endif
     if &ttimeoutlen <= 0
-        set ttimeoutlen=100
+        set ttimeoutlen=50
     endif
 endfunc
 
-command! -nargs=0 -bang VimMetaInit call Terminal_MetaMode(<bang>0)
-exec "VimMetaInit"
+call Terminal_MetaMode(1)
 
 " vim:fdm=expr:fde=getline(v\:lnum-1)=~'\\v"\\s*-{20,}'?'>1'\:1
