@@ -22,8 +22,8 @@ if &term == "screen-256color" || &term == "xterm-256color"
 endif
 let g:loaded_escalt = 1
 
-" let s:keepcpo = &cpo
-" set cpo&vim
+let s:keepcpo = &cpo
+set cpo&vim
 " ---------------------------------------------------------------------
 " Functions:
 function! Escalt_console()
