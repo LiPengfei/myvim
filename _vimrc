@@ -155,7 +155,7 @@ syntax enable
 "}}}
 
 " common set {{{
-set rnu
+set nu
 set cino+=:2
 set foldlevel=1
 set foldmethod=indent
@@ -205,16 +205,16 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 "set nohidden
 set whichwrap=<,>,h,l
 set nolazyredraw
-set diffexpr=MyDiff()
 set pastetoggle=<F3>
 "set colorcolumn=80         " 80 column will write a redline
 set iskeyword&
 set iskeyword+=	    
 if MySys() == 'windows'
      set guifont=monaco:h11
+    set diffexpr=MyDiff()
 else
     " set guifont=Courier\ new\ 13
-    set guifont=monaco\ 11
+    set guifont=monaco\ 12
     set guifontwide=Kaiti\ 13
 endif
 "}}}
@@ -336,6 +336,7 @@ augroup common_au
     au FileType python exec 'nnoremap <buffer> K :call ShowPyDoc(expand("<cword>"), 1)<cr>'
     au FileType python setlocal fileencodings=utf-8
     au FileType python setlocal fileencoding=utf-8
+    au FileType go setlocal nolist
     au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile,*.lua setlocal noexpandtab
     " au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile,*.lua setlocal listchars=extends:>,precedes:<
     au VimEnter,BufNewFile,BufReadPre *.txt,*.sh,makfile,*.lua setlocal nolist
@@ -347,11 +348,11 @@ if MySys() == "windows"
         autocmd!
         au GUIEnter * simalt ~x         "窗口最大化
     augroup END
-else
-    augroup linux_aug
-        autocmd!
-        au VimEnter * call MaximizeWindow()
-    augroup END
+" else
+"     augroup linux_aug
+"         autocmd!
+"         au VimEnter * call MaximizeWindow()
+"     augroup END
 end
 
 augroup filetype_vim
@@ -487,7 +488,7 @@ if MySys() == 'windows'
     let MRU_File = $VIM . '\vimfiles\_vim_mru_files'
     let MRU_Exclude_Files = '^c:\\temp\\.*'           " For MS-Windows
 else
-    let MRU_File = $HOME . '/.vim/bundle/_vim_mru_files'
+    let MRU_File = $HOME . '/_vim_mru_files'
     let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
 endif
 let MRU_Auto_Close = 1
@@ -673,12 +674,13 @@ let g:ycm_show_diagnostics_ui = 1
 let g:ycm_filetype_specific_completion_to_disable = {
         \ 'text': 1
         \}
+let g:ycm_auto_trigger = 0
 if MySys()== "windows"
     let g:ycm_error_symbol = 'X'
     let g:ycm_warning_symbol = "!"
 else
-    let g:ycm_error_symbol = "?"
-    let g:ycm_warning_symbol = "?"
+    let g:ycm_error_symbol = ">>"
+    let g:ycm_warning_symbol = ">"
 end
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_add_preview_to_completeopt = 1
@@ -722,6 +724,12 @@ else
     let path=$HOME. '/.vim/bundle'
     call vundle#begin(path)
 endif
+
+" Bundle 'petdance/ack'
+Bundle 'rking/ag.vim'
+" Bundle 'dyng/ctrlsf.vim'
+Bundle 'yonchu/accelerated-smooth-scroll'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/L9'
 Bundle 'taxilian/a.vim'
@@ -750,12 +758,13 @@ Bundle 'vimwiki/vimwiki'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'maksimr/vim-jsbeautify'
-Bundle 'vim-scripts/grep.vim'
+" Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/sh.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Valloric/ListToggle'
 Bundle 'oscarh/vimerl'
 Bundle 'lipengfei'
+Bundle 'fatih/vim-go'
 Bundle 'Vundle.vim'
 " Bundle 'vim-scripts/OmniCppComplete'
 " Bundle 'rkulla/pydiction'

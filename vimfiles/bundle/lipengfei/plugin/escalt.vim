@@ -20,10 +20,10 @@ if &term == "screen-256color" || &term == "xterm-256color"
                 \ endif
     au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!'
 endif
-
-let s:keepcpo = &cpo
 let g:loaded_escalt = 1
-set cpo&vim
+
+" let s:keepcpo = &cpo
+" set cpo&vim
 " ---------------------------------------------------------------------
 " Functions:
 function! Escalt_console()
