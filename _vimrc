@@ -348,11 +348,11 @@ if MySys() == "windows"
         autocmd!
         au GUIEnter * simalt ~x         "窗口最大化
     augroup END
-else
-    augroup linux_aug
-        autocmd!
-        au VimEnter * call MaximizeWindow()
-    augroup END
+" else
+"     augroup linux_aug
+"         autocmd!
+"         au VimEnter * call MaximizeWindow()
+"     augroup END
 end
 
 augroup filetype_vim
@@ -709,7 +709,7 @@ else
 endif
 
 " Bundle 'petdance/ack'
-" Bundle 'rking/ag.vim'
+Bundle 'rking/ag.vim'
 " Bundle 'dyng/ctrlsf.vim'
 Bundle 'yonchu/accelerated-smooth-scroll'
 Bundle 'airblade/vim-gitgutter'
@@ -741,7 +741,7 @@ Bundle 'vimwiki/vimwiki'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'maksimr/vim-jsbeautify'
-Bundle 'vim-scripts/grep.vim'
+" Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/sh.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Valloric/ListToggle'
