@@ -5,9 +5,6 @@ vimfiles/*-dict*
 vimfiles/ctrlp/mru/cache.txt
 vim73/
 vim74/
-vundle/
-bundle/
-./vundle/
 .git
 !vimfiles/bundle/Vundle.vim/autoload/vundle/
 !lipengfei/
