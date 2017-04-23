@@ -642,7 +642,7 @@ nnoremap <m-F> :Rgrep -w <C-R>=expand("<cword>")<CR><CR><CR><CR>
 
 let Grep_Default_Options = ''
 let Grep_Skip_Files = "*.bak *.swp *~"
-let Grep_Default_Filelist = "*.c *.cpp *.h *.hpp *.lua *.cs *.asm *.vim *.php"
+let Grep_Default_Filelist = "*.c *.cpp *.h *.hpp *.lua *.cs *.asm *.vim *.php *.go"
 if MySys() == 'windows'
     let Grep_Find_Path = 'findex'
 endif
@@ -749,6 +749,7 @@ Bundle 'oscarh/vimerl'
 Bundle 'lipengfei'
 Bundle 'fatih/vim-go'
 Bundle 'Vundle.vim'
+var http = require('http');
 " Bundle 'vim-scripts/OmniCppComplete'
 " Bundle 'rkulla/pydiction'
 " Bundle ' pythoncomplete'
