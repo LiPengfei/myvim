@@ -766,7 +766,7 @@ Bundle 'jimenezrick/vimerl'
 Bundle 'lipengfei'
 Bundle 'fatih/vim-go'
 Bundle 'Vundle.vim'
-var http = require('http');
+Bundle 'marijnh/tern_for_vim'
 " Bundle 'vim-scripts/OmniCppComplete'
 " Bundle 'rkulla/pydiction'
 " Bundle ' pythoncomplete'
