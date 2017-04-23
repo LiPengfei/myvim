@@ -348,11 +348,11 @@ if MySys() == "windows"
         autocmd!
         au GUIEnter * simalt ~x         "窗口最大化
     augroup END
-else
-    augroup linux_aug
-        autocmd!
-        au VimEnter * call MaximizeWindow()
-    augroup END
+" else
+"     augroup linux_aug
+"         autocmd!
+"         au VimEnter * call MaximizeWindow()
+"     augroup END
 end
 
 augroup filetype_vim
@@ -379,6 +379,23 @@ command! P3 :call ChangePythonVersion(3)
 command! Lpj :call LoadProject()
 command! Spj :call SaveProject()
 "}}}
+
+" tmux {{{
+" if exists("$TMUX")
+"     set term=screen-256color
+" endif
+"
+" if exists("$ITERM_PROFILE")
+"     if exists("$TMUX")
+"         let &amp;t_SI = "<Esc>[3 q"
+"         let &amp;t_EI = "<Esc>[0 q"
+"     else
+"         let &amp;t_SI = "<Esc>50;CursorShape=1x7"
+"         let &amp;t_EI = "<Esc>50;CursorShape=0x7"
+"     endif
+" endif
+" }}}
+
 
 " omnicppcomplete {{{
 let OmniCpp_MayCompleteDot = 1 " autocomplete with .
@@ -494,7 +511,7 @@ let g:ctrlp_custom_ignore = {
     \ }
 let g:ctrlp_open_new_file='r'
 let g:ctrlp_open_multiple_files='i'
-let g:ctrlp_working_path_mode = 'wr'
+let g:ctrlp_working_path_mode = 'ra'
 "let g:ctrlp_root_makers=['.git', '.svn', '.hg', 'bzr', '_darcs']
 "press F5 quick refresh chache
 let g:ctrlp_clear_cache_on_exit=1
@@ -536,8 +553,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['lua', 'javascript', 'python', 'c', 'cpp', 'objc'],
-                           \ 'passive_filetypes': ['puppet'] }
+                           \ 'active_filetypes': ['lua', 'javascript', 'python', 'objc'],
+                           \ 'passive_filetypes': ['puppet', 'c', 'cpp'] }
 let g:syntastic_quiet_messages = {'level' : 'warnnings'}
 let g:syntastic_enable_signs = 1
 let g:syntastic_error_symbol = "X"
@@ -709,7 +726,7 @@ else
 endif
 
 " Bundle 'petdance/ack'
-" Bundle 'rking/ag.vim'
+Bundle 'rking/ag.vim'
 " Bundle 'dyng/ctrlsf.vim'
 Bundle 'yonchu/accelerated-smooth-scroll'
 Bundle 'airblade/vim-gitgutter'
@@ -741,11 +758,11 @@ Bundle 'vimwiki/vimwiki'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'maksimr/vim-jsbeautify'
-Bundle 'vim-scripts/grep.vim'
+" Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/sh.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Valloric/ListToggle'
-Bundle 'oscarh/vimerl'
+Bundle 'jimenezrick/vimerl'
 Bundle 'lipengfei'
 Bundle 'fatih/vim-go'
 Bundle 'Vundle.vim'
