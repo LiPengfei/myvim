@@ -171,7 +171,7 @@ set incsearch                   "Search increase
 set hlsearch                    "Search highlight
 set magic                       " pattern mode
 set cursorline                  "highlight currentline
-set ignorecase                    "ignore case   
+set smartcase                    "ignore case   
 set history=400                  "set command history 50 and seach history 50
 set ruler                       "set show cursor position at right bottom
 set showcmd                     "help you use command mode easily
@@ -185,7 +185,7 @@ set fileformats=unix,dos,mac
 set showmatch
 set matchtime=3
 set fillchars=vert:\ ,stl:\ ,stlnc:\
-set scrolloff=3
+set scrolloff=8
 set laststatus=2
 set stl=%!SetStatusLine()
 set helplang=cn
@@ -222,48 +222,29 @@ endif
 " common map {{{
 nnoremap %{ I{%<space><esc>A<space>%}<esc>
 nnoremap <leader>p "0p
-inoremap <leader>cp <c-o>:cp<cr>
+inoremap <leader>cp <C-o>:cp<cr>
 nnoremap <leader>cp :cp<cr>
-inoremap <m-i> <c-[>I
 "for mymistake
 inoremap  <esc>
-nnoremap <c-w>- 25<c-w>-
-nnoremap <c-w>+ 25<c-w>+
-nnoremap <c-w>> 80<c-w>>
-nnoremap <c-w>< 80<c-w><
-nnoremap <c-y><c-h> :call CscopeTips()<cr>
+nnoremap <C-w>- 25<C-w>-
+nnoremap <C-w>+ 25<C-w>+
+nnoremap <C-w>> 80<C-w>>
+nnoremap <C-w>< 80<C-w><
+nnoremap <C-y><C-h> :call CscopeTips()<cr>
 inoremap  <esc>:b#<cr>
 nnoremap  :b#<cr>
-nnoremap <M-g> g<c-]>
-xnoremap <M-g> g<c-]>
-nnoremap <M-p> <c-w>}
-xnoremap <M-p> <c-w>}
+nnoremap <C-]> g<C-]>
+xnoremap <C-]> g<C-]>
+nnoremap g<C-]> <C-]>
+xnoremap g<C-]> <C-]>
 nnoremap cp <esc>:pclose<cr>
-inoremap <C-S> <Esc>:w!<CR>a
-nnoremap <C-S> :w!<CR>
 inoremap <C-Z> <Esc>ua
-inoremap <M-u> <Esc>ui
-inoremap <M-r> <Esc><C-R>a
 nnoremap <C-Z> u
-snoremap <c-z> u
+snoremap <C-z> u
 xnoremap <C-C> "+y
 inoremap <C-C> <C-O>yy
-inoremap <M-p> <Esc>p
 xnoremap <C-X> "+x
-inoremap <M-o> <Esc>o
-inoremap <M-O> <Esc>O
-inoremap <M-h> <Left>
-inoremap <M-l> <Right>
-inoremap <M-j> <Down>
-inoremap <M-k> <Up>
-inoremap <M-w> <Esc><Space>wi
-inoremap <M-b> <Esc>bi
-inoremap <M-e> <Esc><Space>ea
-inoremap <M-0> <Esc>0i
-inoremap <M-6> <Esc>^i
-inoremap <M-4> <Esc>$a
-inoremap <M-c> <Esc>:let @/ = ""<CR>a
-nnoremap <M-c> :let @/ = ""<CR>
+nnoremap <leader><leader>f :let @/ = ""<CR>
 inoremap <C-F1> <Esc>:call SimpleTag()<CR>a
 nnoremap <C-F1> :call SimpleTag()<CR>
 inoremap <C-F5> <C-O>:call MySetCurrentPath()<CR>
@@ -271,9 +252,7 @@ nnoremap <C-F5> :call MySetCurrentPath()<CR>
 inoremap <C-F6> <C-O>:cal MyGoBackPath()<CR>
 nnoremap <C-F6> :call MyGoBackPath()<CR>
 inoremap <expr> <C-L>  pumvisible()?"\<C-L>":"<C-X><C-L>"
-inoremap <m-a> <esc>A
-inoremap <M-;> <C-O>A;
-nnoremap zz :clo!<CR>
+" nnoremap zz :clo!<CR>
 " leader
 noremap <leader>nu :call ToggleNu()<cr>
 nnoremap <leader>se :vsplit $MYVIMRC<CR>
@@ -303,22 +282,21 @@ nnoremap <leader>cl :cl<cr>
 nnoremap <leader>tp :tp<cr>
 nnoremap <leader>tn :tp<cr>
 " faster s
-inoremap <leader>f <esc>:%s/<c-r>=expand("<cword>")<cr>//g<left><left>
-nnoremap <leader>f :%s/<c-r>=expand("<cword>")<cr>//g<left><left>
-inoremap <leader>w <Esc>:%s/\<<c-r>=expand("<cword>")<cr>\>//g<Left><Left>
-nnoremap <leader>w :%s/\<<c-r>=expand("<cword>")<cr>\>//g<Left><Left>
-inoremap <leader>fc <esc>:%s/<c-r>=expand("<cword>")<cr>//gc<left><left><left>
-nnoremap <leader>fc :%s/<c-r>=expand("<cword>")<cr>//gc<left><left><left>
-inoremap <leader>wc <Esc>:%s/\<<c-r>=expand("<cword>")<cr>\>//gc<Left><Left><Left>
-nnoremap <leader>wc :%s/\<<c-r>=expand("<cword>")<cr>\>//gc<Left><Left><Left>
-nnoremap <leader>wn :%s/\<<c-r>=expand("<cword>")<cr>\>//gn<cr>
-xnoremap <leader>f  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//g<left><left>
-xnoremap <leader>fc  :<c-u>%s/<c-r>=Get_visual_selection()<cr>//gc<left><left><left>
+inoremap <leader>f <esc>:%s/<C-r>=expand("<cword>")<cr>//g<left><left>
+nnoremap <leader>f :%s/<C-r>=expand("<cword>")<cr>//g<left><left>
+inoremap <leader>w <Esc>:%s/\<<C-r>=expand("<cword>")<cr>\>//g<Left><Left>
+nnoremap <leader>w :%s/\<<C-r>=expand("<cword>")<cr>\>//g<Left><Left>
+inoremap <leader>fc <esc>:%s/<C-r>=expand("<cword>")<cr>//gc<left><left><left>
+nnoremap <leader>fc :%s/<C-r>=expand("<cword>")<cr>//gc<left><left><left>
+inoremap <leader>wc <Esc>:%s/\<<C-r>=expand("<cword>")<cr>\>//gc<Left><Left><Left>
+nnoremap <leader>wc :%s/\<<C-r>=expand("<cword>")<cr>\>//gc<Left><Left><Left>
+nnoremap <leader>wn :%s/\<<C-r>=expand("<cword>")<cr>\>//gn<cr>
+xnoremap <leader>f  :<C-u>%s/<C-r>=Get_visual_selection()<cr>//g<left><left>
+xnoremap <leader>fc  :<C-u>%s/<C-r>=Get_visual_selection()<cr>//gc<left><left><left>
 map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
 map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
 map <silent> <leader>3 :diffget 3<CR> :diffupdate<CR>
 map <silent> <leader>4 :diffget 4<CR> :diffupdate<CR>
-xnoremap <m-g>    :tag <c-r>=Get_visual_selection()<cr><cr>
 if MySys() == "windows"
 inoremap <C-V> <MiddleMouse>
 else
@@ -333,6 +311,9 @@ augroup common_au
     au VIMENTER * silent exec "set vb t_vb="
   " autocmd VimLeavePre *.lua silent call SaveProject()
     " au FileType lua setlocal fileencoding=cp936
+    au FileType erlang setlocal shiftwidth=2
+    au FileType erlang setlocal tabstop=2
+    au FileType erlang setlocal softtabstop=2
     au FileType python exec 'nnoremap <buffer> K :call ShowPyDoc(expand("<cword>"), 1)<cr>'
     au FileType python setlocal fileencodings=utf-8
     au FileType python setlocal fileencoding=utf-8
@@ -365,12 +346,15 @@ augroup END
 iabbrev slef self
 iabbrev lpf lipengfei
 iabbrev ksf kingsoft
-iabbrev @@@ phone:18688186905   mail:lipengfei@kingsoft.com   <c-r>=strftime("%Y-%m-%d")<cr>
+iabbrev @@@ phone:18688186905   mail:lipengfei@kingsoft.com   <C-r>=strftime("%Y-%m-%d")<cr>
 iabbrev cpr Copyright 2013 LiPengfei, all right reserved
 " my error
 iabbrev inlcude include
 iabbrev gropu   group
 iabbrev lcoal local
+iabbrev opitonal optional
+
+" commond
 command! -nargs=1 Vsb call VsbFuntion(<f-args>)
 command! -nargs=1 Go :e #<<args>                   " go to recent openfiles with num
 command! -nargs=1 Rmk :source <args>               " recover from session
@@ -378,6 +362,7 @@ command! P2 :call ChangePythonVersion(2)
 command! P3 :call ChangePythonVersion(3)
 command! Lpj :call LoadProject()
 command! Spj :call SaveProject()
+command! P4 :!p4 open %
 "}}}
 
 " tmux {{{
@@ -420,6 +405,11 @@ let OmniCpp_DefaultNamespaces=["std"]
 " inoremap <F4> <Esc>:TlistUpdate<CR>a
 " inoremap <leader>tl <C-[>:Tlist<CR>
 "}}}
+
+" ag
+" let g:ag_prg = "ag --vimgrep --smart-case --file-search-regex \\\\.erl$\\\\|\\\\.proto$\\\\|\\\\.hrl$\\\\|\\\\.log$\\\\|template$"
+let g:ag_prg = "rg --vimgrep --smart-case -g '*'.erl -g '*'.proto -g '*'.hrl  -g '*'.csv -g '*'.log"
+let g:ag_working_path_mode='r'
 
 " minibufexpl {{{
 let g:miniBufExplModSelTarget = 1 
@@ -476,28 +466,34 @@ endif
 "}}}
 
 " tcomment {{{
-let g:tcommentMapLeader1='<c-f>'
+let g:tcommentMapLeader1='<C-f>'
 "}}}
 
 " surround {{{
 xmap s S
 " }}}
 
-" MRU {{{
-if MySys() == 'windows'
-    let MRU_File = $VIM . '\vimfiles\_vim_mru_files'
-    let MRU_Exclude_Files = '^c:\\temp\\.*'           " For MS-Windows
-else
-    let MRU_File = $HOME . '/_vim_mru_files'
-    let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
-endif
-let MRU_Auto_Close = 1
-let MRU_Add_Menu = 0
-"}}}
+" " MRU {{{
+" if MySys() == 'windows'
+"     let MRU_File = $VIM . '\vimfiles\_vim_mru_files'
+"     let MRU_Exclude_Files = '^c:\\temp\\.*'           " For MS-Windows
+" else
+"     let MRU_File = $HOME . '/_vim_mru_files'
+"     let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
+" endif
+" let MRU_Auto_Close = 1
+" let MRU_Add_Menu = 0
+" "}}}
 
 " ControlP {{{
-let g:ctrlp_map = '<m-N>'
-noremap <m-S> :CtrlPTag<CR>
+let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
+let g:ctrlp_user_command = 'find %s -type f | grep "\.erl$\|\.proto$\|\.hrl$\|\.log$\|\.csv$"'
+let ctrlp_mruf_max = 300
+let g:ctrlp_mruf_save_on_update = 1
+
+let g:ctrlp_map = '<C-p>'
+noremap <C-S> :CtrlPTag<CR>
+noremap <C-s> :CtrlPMRU<CR>
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_max_height=30
@@ -523,17 +519,16 @@ else
 endif
 let g:ctrlp_max_files=0
 let g:ctrlp_arg_map=1
-inoremap <m-N> <esc>:CtrlP<cr>
 " simple help
-" <c-d> troggle model file or path
-" <c-r> troggle model regex
-" <c-f> <c-b> search from change file mru or buffer
-" <c-z> mark  <c-o> open
+" <C-d> troggle model file or path
+" <C-r> troggle model regex
+" <C-f> <C-b> search from change file mru or buffer
+" <C-z> mark  <C-o> open
 " }}}
 
 " checksyntax disable it {{{
-let g:checksyntax_key_single="<c-,>"
-let g:checksyntax_key_all="<c-,>"
+let g:checksyntax_key_single="<C-,>"
+let g:checksyntax_key_all="<C-,>"
 "}}}
 
 " tagbar {{{
@@ -542,8 +537,8 @@ let g:tagbar_width = 30
 let g:tagbar_autofocus = 1
 let g:tagbar_autoshowtag = 1
 let g:tagbar_indent = 1
-nnoremap <m-m> :TagbarOpenAutoClose<cr>
-nnoremap <m-M> :TagbarToggle<cr>
+nnoremap <C-m> :TagbarOpenAutoClose<cr>
+nnoremap <C-M> :TagbarToggle<cr>
 "}}}
 
 " syntastic {{{
@@ -554,7 +549,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': ['lua', 'javascript', 'python', 'objc'],
-                           \ 'passive_filetypes': ['puppet', 'c', 'cpp'] }
+                           \ 'passive_filetypes': ['puppet', 'c', 'cpp', 'erlang'] }
 let g:syntastic_quiet_messages = {'level' : 'warnnings'}
 let g:syntastic_enable_signs = 1
 let g:syntastic_error_symbol = "X"
@@ -587,7 +582,7 @@ let g:vimwiki_list = [{'path': path . 'vimwiki/person/',
 			\ 'template_ext': '.html'},
 			\ {'path': path . "vimwiki/mkdown/", 
 			\ 'syntax': 'markdown', 'ext': '.md', 'template_ext': 'html',}]
-nmap <c-w><c-x> <Plug>VimwikiToggleListItem
+nmap <C-w><C-x> <Plug>VimwikiToggleListItem
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_ext2syntax = {'.md': 'markdown', 
@@ -601,13 +596,12 @@ xnoremap <silent> <cr> :EasyAlign<cr>
 " }}}
 
 " snipMate {{{
-" ino  <tab> <c-r>=TriggerSnippet()<cr>
-" snor <tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
+" ino  <tab> <C-r>=TriggerSnippet()<cr>
+" snor <tab> <esc>i<right><C-r>=TriggerSnippet()<cr>
 " }}}
 
 " emmet {{{
 let g:user_emmet_settings = {'indentation' : '    ' } 
-" let g:user_emmet_leader_key = '<m-n>'
 "}}}
 
 " delimitMate c-g g jump out to end {{{
@@ -649,13 +643,7 @@ if MySys() == 'windows'
         call s:RunGrepCmd(cmd, pattern, "")
     endfunction
 
-    noremap <M-F> :call FindLuaInWorkPath() <cr>
-    inoremap <M-F> <esc>:call FindLuaInWorkPath() <cr>
-    xnoremap <M-F> <esc>:call FindInWorkPathVisual() <cr>
 endif
-
-nnoremap <M-f> :Rgrep -i <C-R>=expand("<cword>")<CR><CR><CR><CR>
-nnoremap <m-F> :Rgrep -w <C-R>=expand("<cword>")<CR><CR><CR><CR>
 
 let Grep_Default_Options = ''
 let Grep_Skip_Files = "*.bak *.swp *~"
@@ -686,9 +674,9 @@ let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_autoclose_preview_window_after_insertion = 0
-let g:ycm_key_list_select_completion = ['<m-j>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<m-k>', '<Up>']
-let g:ycm_key_invoke_completion = '<c-j>'
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+let g:ycm_key_invoke_completion = '<C-j>'
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_global_ycm_extra_conf = $HOME.'/.ycm_extra_conf.py'
 "" Do not ask when starting vim
@@ -705,15 +693,31 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 0
 " ultisnip {{{
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsListSnippets='<c-y><c-j>'
-let g:UltiSnipsJumpForwardTrigger='<c-y>n'
-let g:UltiSnipsJumpBackwardTrigger='<c-y>N'
+let g:UltiSnipsListSnippets='<C-y><C-j>'
+let g:UltiSnipsJumpForwardTrigger='<C-y>n'
+let g:UltiSnipsJumpBackwardTrigger='<C-y>N'
 " }}}
+
 " listtoggle {{{
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 let g:lt_height = 10
 " }}}
+
+" ctrlspace {{{
+set nocompatible
+set hidden
+set showtabline=0
+" let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+let g:CtrlSpaceGlobCommand = 'ag ag --vimgrep --smart-case --file-search-regex \\\\.erl$\\\\|\\\\.proto$\\\\|\\\\.hrl$\\\\|\\\\.log$ ""'
+let g:CtrlSpaceSearchTiming = 500
+let g:CtrlSpaceDefaultMappingKey = "<leader>d"
+let g:CtrlSpaceSaveWorkspaceOnExit = 1
+let g:CtrlSpaceSaveWorkSapceOnSwitch = 0
+let g:CtrlSpaceUseUnicode = 0
+" }}}
+
+
 " vundle {{{
 if MySys() == 'windows'
     set rtp+=$Vim/vimfiles/bundle/Vundle.vim/
@@ -728,7 +732,7 @@ endif
 " Bundle 'petdance/ack'
 Bundle 'rking/ag.vim'
 " Bundle 'dyng/ctrlsf.vim'
-Bundle 'yonchu/accelerated-smooth-scroll'
+" Bundle 'yonchu/accelerated-smooth-scroll'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/L9'
@@ -740,7 +744,7 @@ Bundle 'mattn/emmet-vim'
 Bundle 'othree/html5.vim'
 Bundle 'othree/html5-syntax.vim'
 Bundle 'mbriggs/mark.vim'
-Bundle 'vim-scripts/mru.vim'
+" Bundle 'vim-scripts/mru.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'vim-scripts/python_fold'
@@ -766,6 +770,7 @@ Bundle 'jimenezrick/vimerl'
 Bundle 'lipengfei'
 Bundle 'fatih/vim-go'
 Bundle 'Vundle.vim'
+Bundle 'vim-ctrlspace/vim-ctrlspace'
 " Bundle 'vim-scripts/OmniCppComplete'
 " Bundle 'rkulla/pydiction'
 " Bundle ' pythoncomplete'
