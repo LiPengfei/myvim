@@ -486,7 +486,7 @@ xmap s S
 
 " ControlP {{{
 let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
-let g:ctrlp_user_command = 'find %s -type f | grep "\.erl$\|\.proto$\|\.hrl$\|\.log$\|\.csv$"'
+let g:ctrlp_user_command = 'find %s -type f | grep "\.erl$\|\.proto$\|\.hrl$\|\.log$\|\.csv$\|\.go$\|\.cpp$\|\.h$\|\.c$"'
 let ctrlp_mruf_max = 300
 let g:ctrlp_mruf_save_on_update = 1
 
