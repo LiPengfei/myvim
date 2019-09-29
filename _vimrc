@@ -210,9 +210,7 @@ if MySys() == 'windows'
      set guifont=monaco:h11
     set diffexpr=MyDiff()
 else
-    " set guifont=Courier\ new\ 13
-    set guifont=monaco\ 12
-    set guifontwide=Kaiti\ 13
+    set guifont=Monaco:h14
 endif
 "}}}
 
@@ -235,8 +233,6 @@ xnoremap <C-]> g<C-]>
 nnoremap g<C-]> <C-]>
 xnoremap g<C-]> <C-]>
 nnoremap cp <esc>:pclose<cr>
-inoremap <C-S> <Esc>:w!<CR>a
-nnoremap <C-S> :w!<CR>
 inoremap <C-Z> <Esc>ua
 nnoremap <C-Z> u
 snoremap <C-z> u
@@ -296,7 +292,6 @@ map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
 map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
 map <silent> <leader>3 :diffget 3<CR> :diffupdate<CR>
 map <silent> <leader>4 :diffget 4<CR> :diffupdate<CR>
-xnoremap <m-g>    :tag <C-r>=Get_visual_selection()<cr><cr>
 if MySys() == "windows"
 inoremap <C-V> <MiddleMouse>
 else
@@ -397,8 +392,8 @@ let OmniCpp_DefaultNamespaces=["std"]
 "}}}
 
 " ag
-" let g:ag_prg = "ag --vimgrep --smart-case --file-search-regex \\\\.erl$\\\\|\\\\.proto$\\\\|\\\\.hrl$\\\\|\\\\.log$\\\\|template$"
-let g:ag_prg = "rg --vimgrep --smart-case -g '*'.erl -g '*'.proto -g '*'.hrl  -g '*'.csv -g '*'.log -g '*'.c -g '*'.h"
+let g:ag_prg = "ag --vimgrep --smart-case --file-search-regex \\\\.erl$\\\\|\\\\.proto$\\\\|\\\\.hrl$\\\\|\\\\.log$\\\\|.template$\\\\|.go$"
+" let g:ag_prg = "rg --vimgrep --smart-case -g '*'.erl -g '*'.proto -g '*'.hrl  -g '*'.csv -g '*'.log -g '*'.c -g '*'.h"
 let g:ag_working_path_mode='r'
 
 " minibufexpl {{{
@@ -477,13 +472,11 @@ xmap s S
 
 " ControlP {{{
 let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
-let g:ctrlp_user_command = 'find %s -type f | grep "\.c$\|\.h$\|\.erl$\|\.proto$\|\.hrl$\|\.log$\|\.csv$"'
+let g:ctrlp_user_command = 'find %s -type f | grep "\.erl$\|\.proto$\|\.hrl$\|\.log$\|\.csv$\|\.go$\|\.cpp$\|\.h$\|\.c$"'
 let ctrlp_mruf_max = 300
 let g:ctrlp_mruf_save_on_update = 1
 
-let g:ctrlp_map = '<C-P>'
-noremap <C-'> :CtrlPTag<CR>
-noremap <C-;> :CtrlPMRU<CR>
+let g:ctrlp_map = '<C-p>'
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_max_height=30
@@ -527,7 +520,7 @@ let g:tagbar_width = 30
 let g:tagbar_autofocus = 1
 let g:tagbar_autoshowtag = 1
 let g:tagbar_indent = 1
-nnoremap <leader>lm :TagbarToggle<cr>
+nnoremap <leader>tl :TagbarToggle<cr>
 "}}}
 
 " syntastic {{{
@@ -591,7 +584,6 @@ xnoremap <silent> <cr> :EasyAlign<cr>
 
 " emmet {{{
 let g:user_emmet_settings = {'indentation' : '    ' } 
-" let g:user_emmet_leader_key = '<m-n>'
 "}}}
 
 " delimitMate c-g g jump out to end {{{
@@ -637,7 +629,7 @@ endif
 
 let Grep_Default_Options = ''
 let Grep_Skip_Files = "*.bak *.swp *~"
-let Grep_Default_Filelist = "*.c *.cpp *.h *.hpp *.lua *.cs *.asm *.vim *.php"
+let Grep_Default_Filelist = "*.c *.cpp *.h *.hpp *.lua *.cs *.asm *.vim *.php *.go"
 if MySys() == 'windows'
     let Grep_Find_Path = 'findex'
 endif
@@ -649,10 +641,10 @@ let g:ycm_enable_diagnostic_highlighting = 1
 let g:ycm_always_populate_location_list = 1
 let g:ycm_open_loclist_on_ycm_diags = 0
 let g:ycm_show_diagnostics_ui = 1
-let g:ycm_filetype_specific_completion_to_disable = {
-        \ 'text': 1
-        \}
-let g:ycm_auto_trigger = 0
+" let g:ycm_filetype_specific_completion_to_disable = {
+"         \ 'text': 1
+"         \}
+let g:ycm_auto_trigger = 1
 if MySys()== "windows"
     let g:ycm_error_symbol = 'X'
     let g:ycm_warning_symbol = "!"
@@ -660,21 +652,21 @@ else
     let g:ycm_error_symbol = ">>"
     let g:ycm_warning_symbol = ">"
 end
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion = 0
-let g:ycm_autoclose_preview_window_after_insertion = 0
-let g:ycm_key_list_select_completion = ['<m-j>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<m-k>', '<Up>']
-let g:ycm_key_invoke_completion = '<C-j>'
+" let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+let g:ycm_key_invoke_completion = '<c-j>'
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let g:ycm_global_ycm_extra_conf = $HOME.'/.ycm_extra_conf.py'
+" let g:ycm_global_ycm_extra_conf = $HOME.'/.ycm_extra_conf.py'
 "" Do not ask when starting vim
 let g:ycm_confirm_extra_conf = 0
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nmap <F5> :YcmDiags<CR>
+nmap <leader><leader>r :YcmDiags<CR>
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
@@ -727,31 +719,31 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/L9'
 Bundle 'taxilian/a.vim'
-Bundle 'itchyny/calendar.vim'
+" Bundle 'itchyny/calendar.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'mattn/emmet-vim'
-Bundle 'othree/html5.vim'
-Bundle 'othree/html5-syntax.vim'
+" Bundle 'othree/html5.vim'
+" Bundle 'othree/html5-syntax.vim'
 Bundle 'mbriggs/mark.vim'
 " Bundle 'vim-scripts/mru.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
-Bundle 'vim-scripts/python_fold'
-Bundle 'vim-scripts/tornadotmpl.vim'
-Bundle 'vim-scripts/indentpython.vim'
-Bundle 'othree/vim-autocomplpop'
-Bundle 'scrooloose/syntastic'
+" Bundle 'vim-scripts/python_fold'
+" Bundle 'vim-scripts/tornadotmpl.vim'
+" Bundle 'vim-scripts/indentpython.vim'
+" Bundle 'othree/vim-autocomplpop'
+" Bundle 'scrooloose/syntastic'
 Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/tComment'
 Bundle 'vim-scripts/vim-easy-align'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'edsono/vim-matchit'
+Bundle 'bumaociyuan/vim-matchit'
 Bundle 'tpope/vim-surround'
-Bundle 'vimwiki/vimwiki'
+" Bundle 'vimwiki/vimwiki'
 Bundle 'fholgado/minibufexpl.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'maksimr/vim-jsbeautify'
+" Bundle 'pangloss/vim-javascript'
+" Bundle 'maksimr/vim-jsbeautify'
 " Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/sh.vim'
 Bundle 'Valloric/YouCompleteMe'
