@@ -12,4 +12,4 @@ function batch_convert(){
 }
 
 batch_convert ~/.vim
-batch_convert ~/vundle
+# batch_convert ~/vundle
